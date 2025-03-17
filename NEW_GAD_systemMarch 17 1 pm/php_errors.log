@@ -1,0 +1,60 @@
+[05-Mar-2025 07:18:30 UTC] Received data: Array
+(
+    [id] => 121
+    [name] => Test3
+    [category] => Non-teaching
+    [status] => Casual
+    [gender] => male
+    [academicRank] => Instructor II
+    [campus] => Lipa
+)
+
+[05-Mar-2025 07:18:30 UTC] Sanitized data - ID: 121, Name: Test3, Category: Non-teaching, Status: Casual, Gender: male, Academic Rank: Instructor II, Campus: Lipa
+[05-Mar-2025 07:23:12 UTC] Received data: Array
+(
+    [id] => 120
+    [name] => Test2
+    [category] => Teaching
+    [status] => Temporary
+    [gender] => male
+    [academicRank] => Instructor II
+    [campus] => Lipa
+)
+
+[05-Mar-2025 07:23:12 UTC] Sanitized data - ID: 120, Name: Test2, Category: Teaching, Status: Temporary, Gender: male, Academic Rank: Instructor II, Campus: Lipa
+[05-Mar-2025 07:23:21 UTC] Received data: Array
+(
+    [id] => 121
+    [name] => Test3
+    [category] => Non-teaching
+    [status] => Job Order
+    [gender] => male
+    [academicRank] => Instructor II
+    [campus] => Lipa
+)
+
+[05-Mar-2025 07:23:21 UTC] Sanitized data - ID: 121, Name: Test3, Category: Non-teaching, Status: Job Order, Gender: male, Academic Rank: Instructor II, Campus: Lipa
+[05-Mar-2025 07:37:52 UTC] Received data: Array
+(
+    [id] => 126
+    [name] => TEst11
+    [category] => Teaching
+    [status] => Guest Lecturer
+    [gender] => female
+    [academicRank] => Instructor I
+    [campus] => Lipa
+)
+
+[05-Mar-2025 07:37:52 UTC] Sanitized data - ID: 126, Name: TEst11, Category: Teaching, Status: Guest Lecturer, Gender: female, Academic Rank: Instructor I, Campus: Lipa
+[05-Mar-2025 07:38:14 UTC] Received data: Array
+(
+    [id] => 120
+    [name] => Test2
+    [category] => Teaching
+    [status] => Temporary
+    [gender] => male
+    [academicRank] => Instructor II
+    [campus] => Lipa
+)
+
+[05-Mar-2025 07:38:14 UTC] Sanitized data - ID: 120, Name: Test2, Category: Teaching, Status: Temporary, Gender: male, Academic Rank: Instructor II, Campus: Lipa
