@@ -1,0 +1,140 @@
+[21-Feb-2025 03:30:20 UTC] Received JSON input: {"year":"2022","quarter":"Q1","title":"lkj","location":"lipa","date":"2025-02-26","startTime":"02:29","endTime":"05:32","hasLunchBreak":1,"totalDuration":"2.05","approvedBudget":"8909","sourceOfBudget":"Grants","beneficiaries":{"internalMaleStudents":5,"internalFemaleStudents":3,"internalMaleFaculty":0,"internalFemaleFaculty":2,"externalType":"Student","externalMale":3,"externalFemale":2},"personnel":{"projectLeader":[],"asstProjectLeader":[{"id":"9","name":"Sophia Martinez","gender":"Female","academicRank":"Assistant Professor","monthlySalary":"6400.00","hourlyRate":"40.00"}],"projectStaff":[{"id":"11","name":"Olivia Garcia","gender":"Female","academicRank":"Lecturer","monthlySalary":"3500.00","hourlyRate":"35.00"}],"otherParticipants":[]}}
+[21-Feb-2025 03:30:20 UTC] Inserted PPAS form with ID: 14
+[21-Feb-2025 03:30:20 UTC] Inserting personnel: 9 as Assistant Project Leader
+[21-Feb-2025 03:30:20 UTC] Inserting personnel: 11 as Project Staff
+[21-Feb-2025 03:30:20 UTC] Inserted beneficiaries data
+[21-Feb-2025 03:30:20 UTC] Transaction committed successfully
+[21-Feb-2025 05:49:08 UTC] Received JSON input: {"year":"2021","quarter":"Q1","title":"j","location":"korea","date":"2025-02-21","startTime":"01:48","endTime":"13:51","hasLunchBreak":1,"totalDuration":"11.05","approvedBudget":"2222","sourceOfBudget":"Other","beneficiaries":{"internalMaleStudents":2,"internalFemaleStudents":2,"internalMaleFaculty":2,"internalFemaleFaculty":2,"externalType":"customer","externalMale":2,"externalFemale":2},"personnel":{"projectLeader":[{"id":"10","name":"James Taylor","gender":"Male","academicRank":"Associate Professor","monthlySalary":"7200.00","hourlyRate":"45.00"}],"asstProjectLeader":[{"id":"11","name":"Olivia Garcia","gender":"Female","academicRank":"Lecturer","monthlySalary":"3500.00","hourlyRate":"35.00"}],"projectStaff":[{"id":"8","name":"Michael Davis","gender":"Male","academicRank":"Lecturer","monthlySalary":"2100.00","hourlyRate":"35.00"}],"otherParticipants":[{"id":"13","name":"Sophia Lee","gender":"Female","academicRank":"Lecturer","monthlySalary":"3150.00","hourlyRate":"35.00"}]}}
+[21-Feb-2025 05:49:08 UTC] Inserted PPAS form with ID: 15
+[21-Feb-2025 05:49:08 UTC] Inserting personnel: 10 as Project Leader
+[21-Feb-2025 05:49:08 UTC] Inserting personnel: 11 as Assistant Project Leader
+[21-Feb-2025 05:49:08 UTC] Inserting personnel: 8 as Project Staff
+[21-Feb-2025 05:49:08 UTC] Inserting personnel: 13 as Other Participants
+[21-Feb-2025 05:49:08 UTC] Inserted beneficiaries data
+[21-Feb-2025 05:49:08 UTC] Transaction committed successfully
+[25-Feb-2025 00:28:33 UTC] Received JSON input: {"year":"2022","quarter":"Q1","title":"elysia","location":"ww","date":"2025-02-25","startTime":"08:27","endTime":"20:27","hasLunchBreak":1,"totalDuration":"11.00","approvedBudget":"200","sourceOfBudget":"Grants","beneficiaries":{"internalMaleStudents":2,"internalFemaleStudents":2,"internalMaleFaculty":1,"internalFemaleFaculty":1,"externalType":"Student","externalMale":2,"externalFemale":2},"personnel":{"projectLeader":[{"id":"38","name":"Charlie White","gender":"female","academicRank":"Instructor II","monthlySalary":"25843.20","hourlyRate":"161.52"}],"asstProjectLeader":[{"id":"11","name":"Olivia Garcia","gender":"Female","academicRank":"Lecturer","monthlySalary":"3500.00","hourlyRate":"35.00"}],"projectStaff":[{"id":"8","name":"Michael Davis","gender":"Male","academicRank":"Lecturer","monthlySalary":"2100.00","hourlyRate":"35.00"}],"otherParticipants":[{"id":"12","name":"Liam Thomas","gender":"female","academicRank":"Instructor I","monthlySalary":"8000.00","hourlyRate":"50.00"}]}}
+[25-Feb-2025 00:28:33 UTC] Inserted PPAS form with ID: 16
+[25-Feb-2025 00:28:33 UTC] Inserting personnel: 38 as Project Leader
+[25-Feb-2025 00:28:33 UTC] Inserting personnel: 11 as Assistant Project Leader
+[25-Feb-2025 00:28:33 UTC] Inserting personnel: 8 as Project Staff
+[25-Feb-2025 00:28:33 UTC] Inserting personnel: 12 as Other Participants
+[25-Feb-2025 00:28:33 UTC] Inserted beneficiaries data
+[25-Feb-2025 00:28:33 UTC] Transaction committed successfully
+[11-Mar-2025 06:20:01 UTC] Received JSON input: {"year":"2022","quarter":"Q3","title":"df","location":"kkk","date":"2025-03-11","startTime":"02:18","endTime":"15:18","hasLunchBreak":true,"totalDuration":"13.00 (Net: 11.75)","personnel":{"projectLeader":[{"id":"2","name":"Jane Smith","gender":"female","academicRank":"Associate Professor","monthlySalary":"45000.00","hourlyRate":"281.25"},{"id":"1","name":"John Doe","gender":"male","academicRank":"Professor","monthlySalary":"50000.00","hourlyRate":"312.50"}],"asstProjectLeader":[],"projectStaff":[],"otherParticipants":[]},"beneficiaries":{"internalMaleStudents":"8","internalFemaleStudents":"7","internalMaleFaculty":"1","internalFemaleFaculty":"1","externalType":"g","externalMale":"1","externalFemale":"1"},"approvedBudget":"2","sourceOfBudget":"Income","sdgs":["4"]}
+[11-Mar-2025 06:20:01 UTC] Error in database operations: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gad_db.ppas_forms' doesn't exist
+[11-Mar-2025 06:20:01 UTC] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gad_db.ppas_forms' doesn't exist
+[11-Mar-2025 06:23:30 UTC] Received JSON input: {"year":"2022","quarter":"Q3","title":"df","location":"kkk","date":"2025-03-11","startTime":"02:18","endTime":"15:18","hasLunchBreak":true,"totalDuration":"13.00 (Net: 11.75)","personnel":{"projectLeader":[{"id":"2","name":"Jane Smith","gender":"female","academicRank":"Associate Professor","monthlySalary":"45000.00","hourlyRate":"281.25"},{"id":"1","name":"John Doe","gender":"male","academicRank":"Professor","monthlySalary":"50000.00","hourlyRate":"312.50"}],"asstProjectLeader":[],"projectStaff":[],"otherParticipants":[]},"beneficiaries":{"internalMaleStudents":"8","internalFemaleStudents":"7","internalMaleFaculty":"1","internalFemaleFaculty":"1","externalType":"g","externalMale":"1","externalFemale":"1"},"approvedBudget":"2","sourceOfBudget":"Income","sdgs":["4"]}
+[11-Mar-2025 06:23:30 UTC] Error in database operations: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'event_date' in 'field list'
+[11-Mar-2025 06:23:30 UTC] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'event_date' in 'field list'
+[11-Mar-2025 06:26:13 UTC] Received JSON input: {"year":"2021","quarter":"Q2","title":"dwww","location":"h","date":"2025-03-19","startTime":"05:24","endTime":"13:24","hasLunchBreak":true,"totalDuration":"8.00 (Net: 7.00)","personnel":{"projectLeader":[{"id":"2","name":"Jane Smith","gender":"female","academicRank":"Associate Professor","monthlySalary":"45000.00","hourlyRate":"281.25"}],"asstProjectLeader":[{"id":"1","name":"John Doe","gender":"male","academicRank":"Professor","monthlySalary":"50000.00","hourlyRate":"312.50"}],"projectStaff":[{"id":"1","name":"John Doe","gender":"male","academicRank":"Professor","monthlySalary":"50000.00","hourlyRate":"312.50"}],"otherParticipants":[{"id":"2","name":"Jane Smith","gender":"female","academicRank":"Associate Professor","monthlySalary":"45000.00","hourlyRate":"281.25"},{"id":"1","name":"John Doe","gender":"male","academicRank":"Professor","monthlySalary":"50000.00","hourlyRate":"312.50"}]},"beneficiaries":{"internalMaleStudents":"23","internalFemaleStudents":"3","internalMaleFaculty":"3","internalFemaleFaculty":"2","externalType":"2","externalMale":"2","externalFemale":"2"},"approvedBudget":"2","sourceOfBudget":"Income","sdgs":["4"]}
+[11-Mar-2025 06:26:13 UTC] Error in database operations: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'event_date' in 'field list'
+[11-Mar-2025 06:26:13 UTC] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'event_date' in 'field list'
+[11-Mar-2025 06:28:45 UTC] Received JSON input: {"year":"2021","quarter":"Q2","title":"dwww","location":"h","date":"2025-03-19","startTime":"05:24","endTime":"13:24","hasLunchBreak":true,"totalDuration":"8.00 (Net: 7.00)","personnel":{"projectLeader":[{"id":"2","name":"Jane Smith","gender":"female","academicRank":"Associate Professor","monthlySalary":"45000.00","hourlyRate":"281.25"}],"asstProjectLeader":[{"id":"1","name":"John Doe","gender":"male","academicRank":"Professor","monthlySalary":"50000.00","hourlyRate":"312.50"}],"projectStaff":[{"id":"1","name":"John Doe","gender":"male","academicRank":"Professor","monthlySalary":"50000.00","hourlyRate":"312.50"}],"otherParticipants":[{"id":"2","name":"Jane Smith","gender":"female","academicRank":"Associate Professor","monthlySalary":"45000.00","hourlyRate":"281.25"},{"id":"1","name":"John Doe","gender":"male","academicRank":"Professor","monthlySalary":"50000.00","hourlyRate":"312.50"}]},"beneficiaries":{"internalMaleStudents":"23","internalFemaleStudents":"3","internalMaleFaculty":"3","internalFemaleFaculty":"2","externalType":"2","externalMale":"2","externalFemale":"2"},"approvedBudget":"2","sourceOfBudget":"Income","sdgs":["4"]}
+[11-Mar-2025 06:28:45 UTC] Inserted PPAS form with ID: 1
+[11-Mar-2025 06:28:45 UTC] Transaction committed successfully
+[11-Mar-2025 07:16:14 UTC] Received JSON input: {"year":"2023","quarter":"Q1","title":"n","location":"n","date":"2025-03-13","startTime":"03:12","endTime":"15:13","hasLunchBreak":false,"totalDuration":"12.02","personnel":{"projectLeader":[{"id":2,"name":"Jane Smith","gender":"female","academic_rank":"Associate Professor","monthly_salary":"45000.00","hourly_rate":"281.25"},{"id":1,"name":"John Doe","gender":"male","academic_rank":"Professor","monthly_salary":"50000.00","hourly_rate":"312.50"}],"asstProjectLeader":[{"id":5,"name":"Michael Johnson","gender":"male","academic_rank":"Assistant Professor","monthly_salary":"60000.00","hourly_rate":"300.00"}],"projectStaff":[{"id":8,"name":"Sophia Wilson","gender":"female","academic_rank":"Assistant Professor","monthly_salary":"62000.00","hourly_rate":"310.00"}],"otherParticipants":[{"id":7,"name":"Daniel Brown","gender":"male","academic_rank":"Associate Professor","monthly_salary":"58000.00","hourly_rate":"290.00"}]},"beneficiaries":{"internalMaleStudents":"9","internalFemaleStudents":"8","internalMaleFaculty":"3","internalFemaleFaculty":"2","externalType":"j","externalMale":"2","externalFemale":"2"},"approvedBudget":"22222","sourceOfBudget":"Grants","sdgs":["4"]}
+[11-Mar-2025 07:16:14 UTC] Inserted PPAS form with ID: 2
+[11-Mar-2025 07:16:14 UTC] Transaction committed successfully
+[17-Mar-2025 01:37:07 UTC] Received JSON input: {"year":"2021","quarter":"Q2","title":"w","location":"w","date":"2025-02-27","startTime":"09:35","endTime":"21:35","hasLunchBreak":true,"totalDuration":"12.00 (Net: 11.00)","personnel":{"projectLeader":[{"id":6,"name":"Emily Davis","gender":"lesbian","academic_rank":"1","monthly_salary":"52000.00","hourly_rate":"260.00"}],"asstProjectLeader":[{"id":7,"name":"Daniel Brown","gender":"gay","academic_rank":"2","monthly_salary":"58000.00","hourly_rate":"290.00"}],"projectStaff":[{"id":2,"name":"Jane Smith","gender":"female","academic_rank":"2","monthly_salary":"45000.00","hourly_rate":"281.25"},{"id":1,"name":"John Doe","gender":"male","academic_rank":"1","monthly_salary":"50000.00","hourly_rate":"312.50"}],"otherParticipants":[{"id":12,"name":"Ava Taylor","gender":"female","academic_rank":"1","monthly_salary":"53000.00","hourly_rate":"265.00"},{"id":6,"name":"Emily Davis","gender":"lesbian","academic_rank":"1","monthly_salary":"52000.00","hourly_rate":"260.00"}]},"beneficiaries":{"internalMaleStudents":"12","internalFemaleStudents":"22","internalMaleFaculty":"1","internalFemaleFaculty":"2","externalType":"2","externalMale":"2","externalFemale":"2"},"approvedBudget":"2","sourceOfBudget":"Income","sdgs":["2"]}
+[17-Mar-2025 01:37:07 UTC] Inserted PPAS form with ID: 3
+[17-Mar-2025 01:37:07 UTC] Transaction committed successfully
+[17-Mar-2025 02:23:27 UTC] Received JSON input: {"year":"2021","quarter":"Q1","title":"dwwww","location":"w","date":"2025-03-17","startTime":"10:21","endTime":"22:21","hasLunchBreak":true,"totalDuration":"12.00 (Net: 11.00)","personnel":{"projectLeader":[],"asstProjectLeader":[],"projectStaff":[],"otherParticipants":[]},"beneficiaries":{"internalMaleStudents":"2","internalFemaleStudents":"2","internalMaleFaculty":"0","internalFemaleFaculty":"3","externalType":"fw","externalMale":"2","externalFemale":"2"},"approvedBudget":"3","sourceOfBudget":"GAA","sdgs":["2"]}
+[17-Mar-2025 02:23:27 UTC] Inserted PPAS form with ID: 4
+[17-Mar-2025 02:23:27 UTC] Transaction committed successfully
+[17-Mar-2025 02:47:54 UTC] Received JSON input: {"year":"2021","quarter":"Q2","title":"g","location":"g","date":"2025-03-21","startTime":"10:47","endTime":"22:47","hasLunchBreak":false,"totalDuration":"12.00","personnel":{"projectLeader":[],"asstProjectLeader":[],"projectStaff":[],"otherParticipants":[]},"beneficiaries":{"internalMaleStudents":"2","internalFemaleStudents":"2","internalMaleFaculty":"1","internalFemaleFaculty":"2","externalType":"2","externalMale":"2","externalFemale":"2"},"approvedBudget":"2222222","sourceOfBudget":"Income","sdgs":["3"]}
+[17-Mar-2025 02:47:54 UTC] Inserted PPAS form with ID: 5
+[17-Mar-2025 02:47:54 UTC] Transaction committed successfully
+[17-Mar-2025 02:57:06 UTC] Received JSON input: {"year":"2021","quarter":"Q1","title":"ed","location":"e","date":"2025-03-27","startTime":"10:55","endTime":"22:55","hasLunchBreak":true,"totalDuration":"12.00 (Net: 11.00)","personnel":{"projectLeader":[],"asstProjectLeader":[],"projectStaff":[],"otherParticipants":[]},"beneficiaries":{"internalMaleStudents":"2","internalFemaleStudents":"2","internalMaleFaculty":"1","internalFemaleFaculty":"3","externalType":"2","externalMale":"2","externalFemale":"2"},"approvedBudget":"3","sourceOfBudget":"GAA","sdgs":["2"]}
+[17-Mar-2025 02:57:06 UTC] Inserted PPAS form with ID: 6
+[17-Mar-2025 02:57:06 UTC] Transaction committed successfully
+[18-Mar-2025 05:49:38 UTC] Received JSON input: {"year":"2021","quarter":"Q3","title":"e","location":"e","date":"2025-03-18","startTime":"01:48","endTime":"13:48","hasLunchBreak":true,"totalDuration":"12.00 (Net: 11.00)","personnel":{"projectLeader":[],"asstProjectLeader":[],"projectStaff":[],"otherParticipants":[]},"beneficiaries":{"internalMaleStudents":"","internalFemaleStudents":"","internalMaleFaculty":"1","internalFemaleFaculty":"1","externalType":"","externalMale":"","externalFemale":""},"approvedBudget":"2","sourceOfBudget":"GAA","sdgs":["2"]}
+[18-Mar-2025 05:49:38 UTC] Inserted PPAS form with ID: 7
+[18-Mar-2025 05:49:38 UTC] Transaction committed successfully
+[19-Mar-2025 02:42:24 UTC] Received JSON input: {"year":"2020","quarter":"Q1","title":"e","location":"e","startDate":"2025-03-19","endDate":"2025-03-20","startTime":"10:41","endTime":"22:41","hasLunchBreak":true,"totalDuration":"22.00 (2 days × 11.00 hrs/day) | Lunch breaks: 2 hrs","rawTotalDuration":"22.00","personnel":{"projectLeader":[],"asstProjectLeader":[],"projectStaff":[],"otherParticipants":[]},"beneficiaries":{"internalMaleStudents":"3","internalFemaleStudents":"3","internalMaleFaculty":"0","internalFemaleFaculty":"2","externalType":"3","externalMale":"3","externalFemale":"3"},"approvedBudget":"3","sourceOfBudget":"GAA","sdgs":["3"]}
+[19-Mar-2025 02:42:24 UTC] Error in database operations: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'start_date' in 'field list'
+[19-Mar-2025 02:42:24 UTC] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'start_date' in 'field list'
+[19-Mar-2025 02:46:17 UTC] Received JSON input: {"year":"2020","quarter":"Q1","title":"e","location":"e","startDate":"2025-03-19","endDate":"2025-03-20","startTime":"10:41","endTime":"22:41","hasLunchBreak":true,"totalDuration":"22.00 (2 days × 11.00 hrs/day) | Lunch breaks: 2 hrs","rawTotalDuration":"22.00","personnel":{"projectLeader":[],"asstProjectLeader":[],"projectStaff":[],"otherParticipants":[]},"beneficiaries":{"internalMaleStudents":"3","internalFemaleStudents":"3","internalMaleFaculty":"0","internalFemaleFaculty":"2","externalType":"3","externalMale":"3","externalFemale":"3"},"approvedBudget":"3","sourceOfBudget":"GAA","sdgs":["3"]}
+[19-Mar-2025 02:46:17 UTC] Inserted PPAS form with ID: 8
+[19-Mar-2025 02:46:17 UTC] Transaction committed successfully
+[19-Mar-2025 02:52:09 UTC] Received JSON input: {"year":"2020","quarter":"Q3","title":"ed","location":"e","startDate":"2025-03-19","endDate":"2025-03-20","startTime":"10:51","endTime":"22:51","hasLunchBreak":true,"hasAMBreak":false,"hasPMBreak":false,"totalDuration":"22.00 (2 days × 11.00 hrs/day) | Lunch breaks: 2 hrs","rawTotalDuration":"22.00","personnel":{"projectLeader":[],"asstProjectLeader":[],"projectStaff":[],"otherParticipants":[]},"beneficiaries":{"internalMaleStudents":"","internalFemaleStudents":"","internalMaleFaculty":"2","internalFemaleFaculty":"2","externalType":"","externalMale":"","externalFemale":""},"approvedBudget":"333","sourceOfBudget":"GAA","sdgs":["2"]}
+[19-Mar-2025 02:52:09 UTC] Inserted PPAS form with ID: 9
+[19-Mar-2025 02:52:09 UTC] Transaction committed successfully
+[19-Mar-2025 02:59:04 UTC] Received JSON input: {"year":"2021","quarter":"Q4","title":"j","location":"j","startDate":"2025-03-19","endDate":"2025-03-22","startTime":"10:58","endTime":"22:58","hasLunchBreak":true,"hasAMBreak":false,"hasPMBreak":false,"totalDuration":"44.00 (4 days × 11.00 hrs/day) | Lunch breaks: 4 hrs","rawTotalDuration":"44.00","personnel":{"projectLeader":[],"asstProjectLeader":[],"projectStaff":[],"otherParticipants":[]},"beneficiaries":{"internalMaleStudents":"3","internalFemaleStudents":"3","internalMaleFaculty":"1","internalFemaleFaculty":"2","externalType":"fw","externalMale":"3","externalFemale":"3"},"approvedBudget":"3","sourceOfBudget":"Income","sdgs":["1","3"]}
+[19-Mar-2025 02:59:04 UTC] Inserted PPAS form with ID: 10
+[19-Mar-2025 02:59:04 UTC] Transaction committed successfully
+[19-Mar-2025 03:09:27 UTC] Received JSON input: {"year":"2022","quarter":"Q1","title":"df","location":"f","startDate":"2025-03-19","endDate":"2025-03-22","startTime":"11:08","endTime":"23:08","hasLunchBreak":true,"hasAMBreak":false,"hasPMBreak":false,"totalDuration":"44.00 (4 days × 11.00 hrs/day) | Lunch breaks: 4 hrs","rawTotalDuration":"44.00","personnel":{"projectLeader":[{"id":2,"name":"Jane Smith","gender":"female","academic_rank":"2","monthly_salary":"45000.00","hourly_rate":"281.25"}],"asstProjectLeader":[{"id":4,"name":"Jane Smith","gender":"female","academic_rank":"2","monthly_salary":"55000.00","hourly_rate":"275.00"}],"projectStaff":[{"id":1,"name":"John Doe","gender":"male","academic_rank":"1","monthly_salary":"50000.00","hourly_rate":"312.50"}],"otherParticipants":[{"id":5,"name":"Michael Johnson","gender":"gay","academic_rank":"3","monthly_salary":"60000.00","hourly_rate":"300.00"}]},"beneficiaries":{"internalMaleStudents":"2","internalFemaleStudents":"2","internalMaleFaculty":"1","internalFemaleFaculty":"2","externalType":"2","externalMale":"2","externalFemale":"2"},"approvedBudget":"2","sourceOfBudget":"GAA","sdgs":["3"]}
+[19-Mar-2025 03:09:27 UTC] Personnel data received: Array
+(
+    [projectLeader] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 2
+                    [name] => Jane Smith
+                    [gender] => female
+                    [academic_rank] => 2
+                    [monthly_salary] => 45000.00
+                    [hourly_rate] => 281.25
+                )
+
+        )
+
+    [asstProjectLeader] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 4
+                    [name] => Jane Smith
+                    [gender] => female
+                    [academic_rank] => 2
+                    [monthly_salary] => 55000.00
+                    [hourly_rate] => 275.00
+                )
+
+        )
+
+    [projectStaff] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [gender] => male
+                    [academic_rank] => 1
+                    [monthly_salary] => 50000.00
+                    [hourly_rate] => 312.50
+                )
+
+        )
+
+    [otherParticipants] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 5
+                    [name] => Michael Johnson
+                    [gender] => gay
+                    [academic_rank] => 3
+                    [monthly_salary] => 60000.00
+                    [hourly_rate] => 300.00
+                )
+
+        )
+
+)
+
+[19-Mar-2025 03:09:27 UTC] Inserted PPAS form with ID: 11
+[19-Mar-2025 03:09:27 UTC] Preparing to insert personnel data
+[19-Mar-2025 03:09:27 UTC] Processing role: projectLeader with 1 personnel
+[19-Mar-2025 03:09:27 UTC] Inserting person: ID=2, Name=Jane Smith, Role=project_leader
+[19-Mar-2025 03:09:27 UTC] Successfully inserted personnel with ID 2
+[19-Mar-2025 03:09:27 UTC] Processing role: asstProjectLeader with 1 personnel
+[19-Mar-2025 03:09:27 UTC] Inserting person: ID=4, Name=Jane Smith, Role=asst_project_leader
+[19-Mar-2025 03:09:27 UTC] Successfully inserted personnel with ID 4
+[19-Mar-2025 03:09:27 UTC] Processing role: projectStaff with 1 personnel
+[19-Mar-2025 03:09:27 UTC] Inserting person: ID=1, Name=John Doe, Role=project_staff
+[19-Mar-2025 03:09:27 UTC] Successfully inserted personnel with ID 1
+[19-Mar-2025 03:09:27 UTC] Processing role: otherParticipants with 1 personnel
+[19-Mar-2025 03:09:27 UTC] Inserting person: ID=5, Name=Michael Johnson, Role=other_participant
+[19-Mar-2025 03:09:27 UTC] Successfully inserted personnel with ID 5
+[19-Mar-2025 03:09:27 UTC] Transaction committed successfully
