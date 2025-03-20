@@ -945,8 +945,9 @@ html {
 
                             <div class="col-md-12">
                                 <label for="projectLeaders" class="form-label">Project Leaders</label>
-                                <input type="text" class="form-control personnel-autocomplete" id="projectLeaders" name="projectLeaders" placeholder="Search for personnel...">
+                                <input type="text" class="form-control" id="projectLeaders" name="projectLeaders" placeholder="Populated from PPAS data" readonly>
                                 <div id="projectLeadersList" class="mt-2"></div>
+                                <small class="text-muted personnel-note" style="display: none;">Project Leaders are populated from PPAS data and cannot be modified</small>
                             </div>
 
                             <div class="col-md-12">
@@ -956,8 +957,9 @@ html {
 
                             <div class="col-md-12">
                                 <label for="assistantProjectLeaders" class="form-label">Assistant Project Leaders</label>
-                                <input type="text" class="form-control personnel-autocomplete" id="assistantProjectLeaders" name="assistantProjectLeaders" placeholder="Search for personnel...">
+                                <input type="text" class="form-control" id="assistantProjectLeaders" name="assistantProjectLeaders" placeholder="Populated from PPAS data" readonly>
                                 <div id="assistantProjectLeadersList" class="mt-2"></div>
+                                <small class="text-muted personnel-note" style="display: none;">Assistant Project Leaders are populated from PPAS data and cannot be modified</small>
                             </div>
 
                             <div class="col-md-12">
@@ -967,8 +969,9 @@ html {
 
                             <div class="col-md-12">
                                 <label for="projectStaff" class="form-label">Project Staff</label>
-                                <input type="text" class="form-control personnel-autocomplete" id="projectStaff" name="projectStaff" placeholder="Search for personnel...">
+                                <input type="text" class="form-control" id="projectStaff" name="projectStaff" placeholder="Populated from PPAS data" readonly>
                                 <div id="projectStaffList" class="mt-2"></div>
+                                <small class="text-muted personnel-note" style="display: none;">Project Staff are populated from PPAS data and cannot be modified</small>
                             </div>
 
                             <div class="col-md-12">
@@ -1181,6 +1184,9 @@ html {
                             <button type="button" class="btn btn-secondary" onclick="printProposal()" id="printBtn" style="display: none;">
                                 <i class="fas fa-print"></i> Print Proposal
                             </button>
+                            <button type="button" class="btn btn-info ms-2" onclick="printHtmlVersion()" id="printHtmlBtn" style="display: none;">
+                                <i class="fas fa-file-alt"></i> HTML Print
+                            </button>
                         </div>
                     </div>
 
@@ -1360,6 +1366,7 @@ html {
                         
                         // Show print button
                         document.getElementById('printBtn').style.display = 'inline-block';
+                        document.getElementById('printHtmlBtn').style.display = 'inline-block';
                         
                         Swal.fire({
                             title: 'Success!',
@@ -1610,14 +1617,27 @@ html {
             const badge = document.createElement('span');
             badge.className = 'badge bg-primary me-2 mb-2 personnel-badge';
             badge.dataset.id = person.id;
-            badge.innerHTML = `${person.name} <i class="fas fa-times ms-1 remove-personnel"></i>`;
-
-            // Add click handler to remove badge
-            badge.querySelector('.remove-personnel').addEventListener('click', function() {
-                badge.remove();
-                selectedPersonnel[role] = selectedPersonnel[role].filter(p => p.id !== person.id);
-                updateHiddenField(role);
-            });
+            
+            // Determine if the badge should be read-only (PPAS data)
+            // If the data is coming from PPAS fetch, make it read-only
+            const isPpasData = document.getElementById('ppasId') && document.getElementById('ppasId').value;
+            
+            if (isPpasData) {
+                // Read-only badge without remove button
+                badge.innerHTML = `${person.name}`;
+                badge.className = 'badge bg-secondary me-2 mb-2 personnel-badge';
+                badge.title = "Personnel from PPAS data cannot be modified";
+            } else {
+                // Regular badge with remove button
+                badge.innerHTML = `${person.name} <i class="fas fa-times ms-1 remove-personnel"></i>`;
+                
+                // Add click handler to remove badge
+                badge.querySelector('.remove-personnel').addEventListener('click', function() {
+                    badge.remove();
+                    selectedPersonnel[role] = selectedPersonnel[role].filter(p => p.id !== person.id);
+                    updateHiddenField(role);
+                });
+            }
 
             // Add badge to the list container
             const listContainer = document.getElementById(`${role}List`);
@@ -1829,8 +1849,26 @@ html {
                 return;
             }
             
-            // Open print view in new window
-            window.open(`print_proposal.php?id=${proposalId}`, '_blank');
+            // Ask which version to print
+            Swal.fire({
+                title: 'Choose Print Format',
+                text: 'Select the format you want to use for printing',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'PDF Format',
+                cancelButtonText: 'HTML Format',
+                showCloseButton: true,
+                confirmButtonColor: '#6a1b9a',
+                cancelButtonColor: '#3085d6'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // PDF option selected
+                    window.open(`print_proposal.php?id=${proposalId}`, '_blank');
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    // HTML option selected
+                    window.open(`print_html.php?id=${proposalId}`, '_blank');
+                }
+            });
         }
 
         // Function to fetch PPAS data
@@ -1886,6 +1924,12 @@ html {
                         document.getElementById('projectLeadersList').innerHTML = '';
                         document.getElementById('assistantProjectLeadersList').innerHTML = '';
                         document.getElementById('projectStaffList').innerHTML = '';
+                        
+                        // Add note about personnel being read-only
+                        const personnelNotes = document.querySelectorAll('.personnel-note');
+                        personnelNotes.forEach(note => {
+                            note.style.display = 'block';
+                        });
 
                         // Populate personnel data
                         if (data.data.personnel && Array.isArray(data.data.personnel)) {
@@ -2041,90 +2085,13 @@ html {
                 
                 // Initialize autocomplete for personnel fields if jQuery and jQuery UI are available
                 if (typeof $ !== 'undefined' && $.fn.autocomplete) {
-                    $('.personnel-autocomplete').each(function() {
-                        const inputField = $(this);
-                        const role = inputField.attr('id');
-                        
-                        inputField.autocomplete({
-                            source: function(request, response) {
-                                if (request.term.length < 2) {
-                                    response([]);
-                                    return;
-                                }
-                                
-                                $.ajax({
-                                    url: '../personnel_list/search_personnel.php',
-                                    type: 'GET',
-                                    dataType: 'json',
-                                    data: {
-                                        term: request.term
-                                    },
-                                    success: function(data) {
-                                        response(data);
-                                    },
-                                    error: function(xhr, status, error) {
-                                        console.error('Error searching personnel:', error);
-                                        console.error('Response:', xhr.responseText);
-                                        response([]);
-                                    }
-                                });
-                            },
-                            minLength: 2,
-                            select: function(event, ui) {
-                                addPersonnelToList(role, ui.item);
-                                inputField.val('');
-                                return false;
-                            },
-                            focus: function() {
-                                return false;
-                            }
-                        }).autocomplete("instance")._renderItem = function(ul, item) {
-                            return $("<li>")
-                                .append("<div class='autocomplete-item'>" + 
-                                       "<strong>" + item.name + "</strong><br>" +
-                                       "<small>" + (item.academic_rank || 'No Rank') + " • " + item.gender + "</small>" +
-                                       "</div>")
-                                .appendTo(ul);
-                        };
-                    });
+                    // We no longer need autocomplete for these fields as they're read-only
+                    // The personnel comes from PPAS data and cannot be edited
                     
-                    // Add CSS for autocomplete items
+                    // Add CSS for personnel badges
                     $("<style>")
                         .prop("type", "text/css")
                         .html(`
-                            .autocomplete-item {
-                                padding: 5px;
-                            }
-                            .autocomplete-item strong {
-                                color: #6a1b9a;
-                            }
-                            .autocomplete-item small {
-                                color: #666;
-                            }
-                            .ui-autocomplete {
-                                max-height: 200px;
-                                overflow-y: auto;
-                                overflow-x: hidden;
-                                border-radius: 8px;
-                                border: 1px solid #ddd;
-                                background: #fff;
-                                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                                z-index: 9999;
-                            }
-                            .ui-autocomplete .ui-menu-item {
-                                border-bottom: 1px solid #eee;
-                            }
-                            .ui-autocomplete .ui-menu-item:last-child {
-                                border-bottom: none;
-                            }
-                            .ui-autocomplete .ui-menu-item-wrapper {
-                                padding: 8px 12px;
-                            }
-                            .ui-autocomplete .ui-menu-item-wrapper.ui-state-active {
-                                background: #f0f0f0;
-                                border: none;
-                                margin: 0;
-                            }
                             .personnel-badge {
                                 font-size: 0.9rem;
                                 padding: 0.5rem 0.75rem;
@@ -2171,6 +2138,63 @@ html {
                 });
             }
         });
+
+        function loadProposal(id) {
+            showSpinner();
+            fetch(`get_gad_proposal.php?id=${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        fillForm(data.proposal);
+                        if (data.activities) {
+                            clearExistingActivities(); // Clear any existing activities
+                            data.activities.forEach(activity => {
+                                addActivity(activity);
+                            });
+                        }
+                        loadPersonnel(id);
+                        document.getElementById('currentProposalId').value = id;
+                        
+                        // Show the print and navigation buttons
+                        document.getElementById('printBtn').style.display = 'inline-block';
+                        document.getElementById('printHtmlBtn').style.display = 'inline-block';
+                    } else {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Failed to load proposal: ' + data.message,
+                            icon: 'error',
+                            confirmButtonColor: '#6a1b9a'
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading proposal:', error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Failed to load proposal. Please try again.',
+                        icon: 'error',
+                        confirmButtonColor: '#6a1b9a'
+                    });
+                });
+        }
+
+        // Function to print HTML version
+        function printHtmlVersion() {
+            const proposalId = document.getElementById('currentProposalId')?.value;
+            
+            if (!proposalId) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Please save the proposal first before printing',
+                    icon: 'warning',
+                    confirmButtonColor: '#6a1b9a'
+                });
+                return;
+            }
+            
+            // Open HTML print view in new window
+            window.open(`print_html.php?id=${proposalId}`, '_blank');
+        }
     </script>
 </body>
 </html>

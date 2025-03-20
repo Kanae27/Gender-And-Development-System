@@ -39,6 +39,71 @@ $isCentral = isset($_SESSION['username']) && $_SESSION['username'] === 'Central'
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Add date/time and theme script -->
+    <script>
+        // Function to update time and date
+        function updateDateTime() {
+            const dateElement = document.getElementById('current-date');
+            const timeElement = document.getElementById('current-time');
+            
+            if (dateElement && timeElement) {
+                const now = new Date();
+                
+                // Format date as: Day, Month Date, Year
+                const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = now.toLocaleDateString('en-US', dateOptions);
+                
+                // Format time as: HH:MM:SS AM/PM
+                const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+                const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
+                
+                dateElement.textContent = formattedDate;
+                timeElement.textContent = formattedTime;
+            }
+        }
+        
+        // Function to toggle theme
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update theme icon
+            const themeIcon = document.getElementById('theme-icon');
+            if (themeIcon) {
+                themeIcon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            }
+            
+            // Update charts if they exist
+            setTimeout(() => {
+                if (typeof updateChartsTheme === 'function') {
+                    updateChartsTheme(newTheme);
+                }
+            }, 100);
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize time and date
+            updateDateTime();
+            
+            // Update time every second
+            setInterval(updateDateTime, 1000);
+            
+            // Initialize theme based on local storage
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-bs-theme', savedTheme);
+            
+            // Update theme icon based on current theme
+            const themeIcon = document.getElementById('theme-icon');
+            if (themeIcon) {
+                themeIcon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            }
+        });
+    </script>
     <style>
         :root {
             --sidebar-width: 280px;
@@ -2737,7 +2802,7 @@ function handleLogout(event) {
             
             setTimeout(() => {
                 window.location.href = '../loading_screen.php?redirect=index.php';
-            }, 10); // Changed from 50 to 10 - make it super fast
+            }, 50);
         }
     });
 }
@@ -2762,15 +2827,15 @@ function handleLogout(event) {
             document.documentElement.setAttribute('data-bs-theme', savedTheme);
             updateThemeIcon(savedTheme);
             const currentUser = '<?php echo $_SESSION["username"]; ?>';
-    console.log('DOM loaded, current user:', currentUser);
+            console.log('DOM loaded, current user:', currentUser);
 
-    // Make sure the table header includes campus column for Central user
-    if (currentUser === 'Central') {
-        const headerRow = document.querySelector('#viewPersonnelModal table thead tr');
-        if (headerRow && !headerRow.querySelector('th:last-child')?.textContent.includes('Campus')) {
-            headerRow.innerHTML += '<th>Campus</th>';
-        }
-    }
+            // Make sure the table header includes campus column for Central user
+            if (currentUser === 'Central') {
+                const headerRow = document.querySelector('#viewPersonnelModal table thead tr');
+                if (headerRow && !headerRow.querySelector('th:last-child')?.textContent.includes('Campus')) {
+                    headerRow.innerHTML += '<th>Campus</th>';
+                }
+            }
             
         });
 
@@ -2788,6 +2853,17 @@ function handleLogout(event) {
         setInterval(updateDateTime, 1000);
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Make sure the table header includes campus column for Central user
+            const currentUser = '<?php echo $_SESSION["username"]; ?>';
+            console.log('DOM loaded, current user:', currentUser);
+
+            if (currentUser === 'Central') {
+                const headerRow = document.querySelector('#viewPersonnelModal table thead tr');
+                if (headerRow && !headerRow.querySelector('th:last-child')?.textContent.includes('Campus')) {
+                    headerRow.innerHTML += '<th>Campus</th>';
+                }
+            }
+            
             // Load academic ranks from database
             loadAcademicRanks();
 
@@ -4491,6 +4567,38 @@ function updateOtherGenderVisibility() {
         // Call loadPersonnelData when the page loads
         document.addEventListener('DOMContentLoaded', function() {
             loadPersonnelData();
+        });
+    </script>
+
+    <!-- Mobile Navigation Toggle Script -->
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const backdrop = document.querySelector('.sidebar-backdrop');
+            const body = document.body;
+
+            if (mobileNavToggle && sidebar && backdrop) {
+                function toggleSidebar() {
+                    sidebar.classList.toggle('show');
+                    backdrop.classList.toggle('show');
+                    body.classList.toggle('sidebar-open');
+                }
+
+                mobileNavToggle.addEventListener('click', toggleSidebar);
+                backdrop.addEventListener('click', toggleSidebar);
+                
+                // Close sidebar when clicking a link on mobile
+                const mobileNavLinks = document.querySelectorAll('.sidebar .nav-link');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth < 992) {
+                            toggleSidebar();
+                        }
+                    });
+                });
+            }
         });
     </script>
 </body>

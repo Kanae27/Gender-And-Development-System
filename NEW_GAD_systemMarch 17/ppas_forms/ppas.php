@@ -46,6 +46,71 @@ $isCentral = isset($_SESSION['username']) && $_SESSION['username'] === 'Central'
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <!-- Select2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <!-- Add date/time and theme script -->
+    <script>
+        // Function to update time and date
+        function updateDateTime() {
+            const dateElement = document.getElementById('current-date');
+            const timeElement = document.getElementById('current-time');
+            
+            if (dateElement && timeElement) {
+                const now = new Date();
+                
+                // Format date as: Day, Month Date, Year
+                const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = now.toLocaleDateString('en-US', dateOptions);
+                
+                // Format time as: HH:MM:SS AM/PM
+                const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+                const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
+                
+                dateElement.textContent = formattedDate;
+                timeElement.textContent = formattedTime;
+            }
+        }
+        
+        // Function to toggle theme
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update theme icon
+            const themeIcon = document.getElementById('theme-icon');
+            if (themeIcon) {
+                themeIcon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            }
+            
+            // Update charts if they exist
+            setTimeout(() => {
+                if (typeof updateChartsTheme === 'function') {
+                    updateChartsTheme(newTheme);
+                }
+            }, 100);
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize time and date
+            updateDateTime();
+            
+            // Update time every second
+            setInterval(updateDateTime, 1000);
+            
+            // Initialize theme based on local storage
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-bs-theme', savedTheme);
+            
+            // Update theme icon based on current theme
+            const themeIcon = document.getElementById('theme-icon');
+            if (themeIcon) {
+                themeIcon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            }
+        });
+    </script>
     <style>
         :root {
             --sidebar-width: 280px;
@@ -3431,6 +3496,70 @@ html {
             totalDurationInput.setAttribute('data-bs-placement', 'top');
             new bootstrap.Tooltip(totalDurationInput);
         }
+    </script>
+
+    <script>
+        function handleLogout(event) {
+            event.preventDefault();
+            
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You will be logged out of the system",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#6c757d',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, logout',
+                cancelButtonText: 'Cancel',
+                backdrop: `
+                    rgba(0,0,0,0.7)
+                `,
+                allowOutsideClick: true,
+                customClass: {
+                    container: 'swal-blur-container'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.body.classList.add('fade-out');
+                    
+                    setTimeout(() => {
+                        window.location.href = '../loading_screen.php?redirect=index.php';
+                    }, 50);
+                }
+            });
+        }
+    </script>
+
+    <!-- Mobile Navigation Toggle Script -->
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const backdrop = document.querySelector('.sidebar-backdrop');
+            const body = document.body;
+
+            if (mobileNavToggle && sidebar && backdrop) {
+                function toggleSidebar() {
+                    sidebar.classList.toggle('show');
+                    backdrop.classList.toggle('show');
+                    body.classList.toggle('sidebar-open');
+                }
+
+                mobileNavToggle.addEventListener('click', toggleSidebar);
+                backdrop.addEventListener('click', toggleSidebar);
+                
+                // Close sidebar when clicking a link on mobile
+                const mobileNavLinks = document.querySelectorAll('.sidebar .nav-link');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth < 992) {
+                            toggleSidebar();
+                        }
+                    });
+                });
+            }
+        });
     </script>
 </body>
 </html>

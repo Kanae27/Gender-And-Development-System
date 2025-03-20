@@ -1079,8 +1079,9 @@ session_start();
                                 PPAs Form
                             </a>
                             <ul class="dropdown-menu dropdown-submenu" aria-labelledby="ppasDropdown">
-                                <li><a class="dropdown-item" href="ppas_forms/ppas.php">Main PPAs Form</a></li>
-                                <li><a class="dropdown-item" href="ppas_proposal/gad_proposal.php">Proposal</a></li>
+                                <li><a class="dropdown-item" href="ppas_form/ppas.php">Main PPAs Form</a></li>
+                                <li><a class="dropdown-item" href="ppas_proposal/gad_proposal.php">Create Proposal</a></li>
+                                <li><a class="dropdown-item" href="ppas_proposal/proposal_list.php">View All Proposals</a></li>
                                 <li><a class="dropdown-item" href="narrative/narrative.php">Narrative Report</a></li>
                             </ul>
                         </li>

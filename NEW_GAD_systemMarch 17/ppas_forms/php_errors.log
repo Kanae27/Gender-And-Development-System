@@ -138,3 +138,79 @@
 [19-Mar-2025 03:09:27 UTC] Inserting person: ID=5, Name=Michael Johnson, Role=other_participant
 [19-Mar-2025 03:09:27 UTC] Successfully inserted personnel with ID 5
 [19-Mar-2025 03:09:27 UTC] Transaction committed successfully
+[20-Mar-2025 00:12:32 UTC] Received JSON input: {"year":"2024","quarter":"Q1","title":"dwww","location":"w","startDate":"2025-03-19","endDate":"2025-03-21","startTime":"08:11","endTime":"20:11","hasLunchBreak":true,"hasAMBreak":false,"hasPMBreak":false,"totalDuration":"33.00 (3 days × 11.00 hrs/day) | Lunch breaks: 3 hrs","rawTotalDuration":"33.00","personnel":{"projectLeader":[{"id":8,"name":"Sophia Wilson","gender":"lesbian","academic_rank":"3","monthly_salary":"62000.00","hourly_rate":"310.00"}],"asstProjectLeader":[{"id":1,"name":"John Doe","gender":"male","academic_rank":"1","monthly_salary":"50000.00","hourly_rate":"312.50"}],"projectStaff":[{"id":3,"name":"John Doe","gender":"male","academic_rank":"1","monthly_salary":"50000.00","hourly_rate":"250.00"}],"otherParticipants":[{"id":2,"name":"Jane Smith","gender":"female","academic_rank":"2","monthly_salary":"45000.00","hourly_rate":"281.25"}]},"beneficiaries":{"internalMaleStudents":"2","internalFemaleStudents":"2","internalMaleFaculty":"2","internalFemaleFaculty":"1","externalType":"student","externalMale":"2","externalFemale":"2"},"approvedBudget":"2","sourceOfBudget":"Income","sdgs":["3"]}
+[20-Mar-2025 00:12:32 UTC] Personnel data received: Array
+(
+    [projectLeader] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 8
+                    [name] => Sophia Wilson
+                    [gender] => lesbian
+                    [academic_rank] => 3
+                    [monthly_salary] => 62000.00
+                    [hourly_rate] => 310.00
+                )
+
+        )
+
+    [asstProjectLeader] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [gender] => male
+                    [academic_rank] => 1
+                    [monthly_salary] => 50000.00
+                    [hourly_rate] => 312.50
+                )
+
+        )
+
+    [projectStaff] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 3
+                    [name] => John Doe
+                    [gender] => male
+                    [academic_rank] => 1
+                    [monthly_salary] => 50000.00
+                    [hourly_rate] => 250.00
+                )
+
+        )
+
+    [otherParticipants] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 2
+                    [name] => Jane Smith
+                    [gender] => female
+                    [academic_rank] => 2
+                    [monthly_salary] => 45000.00
+                    [hourly_rate] => 281.25
+                )
+
+        )
+
+)
+
+[20-Mar-2025 00:12:32 UTC] Inserted PPAS form with ID: 12
+[20-Mar-2025 00:12:32 UTC] Preparing to insert personnel data
+[20-Mar-2025 00:12:32 UTC] Processing role: projectLeader with 1 personnel
+[20-Mar-2025 00:12:32 UTC] Inserting person: ID=8, Name=Sophia Wilson, Role=project_leader
+[20-Mar-2025 00:12:32 UTC] Successfully inserted personnel with ID 8
+[20-Mar-2025 00:12:32 UTC] Processing role: asstProjectLeader with 1 personnel
+[20-Mar-2025 00:12:32 UTC] Inserting person: ID=1, Name=John Doe, Role=asst_project_leader
+[20-Mar-2025 00:12:32 UTC] Successfully inserted personnel with ID 1
+[20-Mar-2025 00:12:32 UTC] Processing role: projectStaff with 1 personnel
+[20-Mar-2025 00:12:32 UTC] Inserting person: ID=3, Name=John Doe, Role=project_staff
+[20-Mar-2025 00:12:32 UTC] Successfully inserted personnel with ID 3
+[20-Mar-2025 00:12:32 UTC] Processing role: otherParticipants with 1 personnel
+[20-Mar-2025 00:12:32 UTC] Inserting person: ID=2, Name=Jane Smith, Role=other_participant
+[20-Mar-2025 00:12:32 UTC] Successfully inserted personnel with ID 2
+[20-Mar-2025 00:12:32 UTC] Transaction committed successfully
