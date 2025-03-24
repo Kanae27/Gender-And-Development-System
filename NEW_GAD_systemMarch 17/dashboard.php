@@ -1073,15 +1073,13 @@ session_start();
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="target_forms/target.php">Target Form</a></li>
                         <li><a class="dropdown-item" href="gbp_forms/gpb.php">GPB Form</a></li>
-                        <li><a class="dropdown-item" href="ps_atrib/ps.php">Ps Attributions</a></li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#" id="ppasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 PPAs Form
                             </a>
                             <ul class="dropdown-menu dropdown-submenu" aria-labelledby="ppasDropdown">
                                 <li><a class="dropdown-item" href="ppas_form/ppas.php">Main PPAs Form</a></li>
-                                <li><a class="dropdown-item" href="ppas_proposal/gad_proposal.php">Create Proposal</a></li>
-                                <li><a class="dropdown-item" href="ppas_proposal/proposal_list.php">View All Proposals</a></li>
+                                <li><a class="dropdown-item" href="ppas_proposal/gad_proposal.php">PPAS Proposal</a></li>
                                 <li><a class="dropdown-item" href="narrative/narrative.php">Narrative Report</a></li>
                             </ul>
                         </li>
@@ -1092,10 +1090,10 @@ session_start();
                         <i class="fas fa-chart-bar me-2"></i> Reports
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">GPB Reports</a></li>
-                        <li><a class="dropdown-item" href="#">PPAs Reports</a></li>
-                        <li><a class="dropdown-item" href="#">PSA Reports</a></li>
-                        <li><a class="dropdown-item" href="#">Quarterly Reports</a></li>
+                        <li><a class="dropdown-item" href="gpb_reports/gbp_reports.php">GPB Reports</a></li>
+                        <li><a class="dropdown-item" href="ppas_report/ppas_report.php">PPAs Reports</a></li>
+                        <li><a class="dropdown-item" href="ps_atrib/ps.php">PSA Reports</a></li>
+                        <li><a class="dropdown-item" href="ppas_report/ppas_report.php">Quarterly Reports</a></li>
                     </ul>
                 </div>
             </nav>

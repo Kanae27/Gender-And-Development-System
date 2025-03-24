@@ -1,59 +1,41 @@
 <?php
 require_once('../config.php');
 
-// Enable error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
+// Set header to return JSON
 header('Content-Type: application/json');
-$response = array('success' => false, 'message' => '', 'debug' => array());
+
+// Get project name from POST data
+$project_name = isset($_POST['project_name']) ? trim($_POST['project_name']) : '';
+
+// Validate input
+if (empty($project_name)) {
+    echo json_encode(['success' => false, 'message' => 'Project name is required']);
+    exit;
+}
 
 try {
-    // Log POST data
-    $response['debug']['post'] = $_POST;
+    // Check if project already exists
+    $check_stmt = $conn->prepare("SELECT id FROM projects WHERE project_name = ?");
+    $check_stmt->bind_param('s', $project_name);
+    $check_stmt->execute();
+    $result = $check_stmt->get_result();
     
-    if(!isset($_POST['project_name'])) {
-        throw new Exception('Project name not provided in POST data');
-    }
-
-    $project_name = trim($_POST['project_name']);
-    $response['debug']['project_name'] = $project_name;
-    
-    if(empty($project_name)) {
-        throw new Exception('Project name cannot be empty');
-    }
-
-    // Test database connection
-    if ($conn->connect_error) {
-        throw new Exception("Database connection failed: " . $conn->connect_error);
+    if ($result->num_rows > 0) {
+        echo json_encode(['success' => false, 'message' => 'Project already exists']);
+        exit;
     }
     
     // Insert new project
-    $query = "INSERT INTO projects (project_name) VALUES (?)";
-    $stmt = $conn->prepare($query);
+    $insert_stmt = $conn->prepare("INSERT INTO projects (project_name) VALUES (?)");
+    $insert_stmt->bind_param('s', $project_name);
     
-    if (!$stmt) {
-        throw new Exception("Prepare failed: " . $conn->error);
-    }
-    
-    $stmt->bind_param('s', $project_name);
-    
-    if (!$stmt->execute()) {
-        throw new Exception("Execute failed: " . $stmt->error);
-    }
-    
-    if ($stmt->affected_rows > 0) {
-        $response['success'] = true;
-        $response['message'] = "Project '$project_name' added successfully";
+    if ($insert_stmt->execute()) {
+        echo json_encode(['success' => true, 'message' => 'Project added successfully']);
     } else {
-        throw new Exception("No rows were inserted");
+        throw new Exception("Failed to add project");
     }
-
+    
 } catch (Exception $e) {
-    $response['success'] = false;
-    $response['message'] = $e->getMessage();
-    $response['debug']['error'] = $e->getMessage();
     error_log("Error in add_project.php: " . $e->getMessage());
-}
-
-echo json_encode($response); 
+    echo json_encode(['success' => false, 'message' => 'Failed to add project: ' . $e->getMessage()]);
+} 

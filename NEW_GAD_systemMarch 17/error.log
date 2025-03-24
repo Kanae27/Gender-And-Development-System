@@ -1,0 +1,14 @@
+[22-Mar-2025 07:09:31 UTC] PHP Warning:  require_once(../config/database.php): Failed to open stream: No such file or directory in C:\wamp64\www\Lipa-20250218T021016Z-001\NEW_GAD_systemMarch 17\ppas_proposal\get_ppas_titles.php on line 28
+[22-Mar-2025 07:09:31 UTC] PHP Stack trace:
+[22-Mar-2025 07:09:31 UTC] PHP   1. {main}() C:\wamp64\www\Lipa-20250218T021016Z-001\NEW_GAD_systemMarch 17\ppas_proposal\get_ppas_titles.php:0
+[22-Mar-2025 07:09:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config/database.php' (include_path='.;C:\php\pear') in C:\wamp64\www\Lipa-20250218T021016Z-001\NEW_GAD_systemMarch 17\ppas_proposal\get_ppas_titles.php:28
+Stack trace:
+#0 {main}
+  thrown in C:\wamp64\www\Lipa-20250218T021016Z-001\NEW_GAD_systemMarch 17\ppas_proposal\get_ppas_titles.php on line 28
+[22-Mar-2025 07:09:31 UTC] PHP Warning:  require_once(../config/database.php): Failed to open stream: No such file or directory in C:\wamp64\www\Lipa-20250218T021016Z-001\NEW_GAD_systemMarch 17\ppas_proposal\get_ppas_titles.php on line 28
+[22-Mar-2025 07:09:31 UTC] PHP Stack trace:
+[22-Mar-2025 07:09:31 UTC] PHP   1. {main}() C:\wamp64\www\Lipa-20250218T021016Z-001\NEW_GAD_systemMarch 17\ppas_proposal\get_ppas_titles.php:0
+[22-Mar-2025 07:09:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config/database.php' (include_path='.;C:\php\pear') in C:\wamp64\www\Lipa-20250218T021016Z-001\NEW_GAD_systemMarch 17\ppas_proposal\get_ppas_titles.php:28
+Stack trace:
+#0 {main}
+  thrown in C:\wamp64\www\Lipa-20250218T021016Z-001\NEW_GAD_systemMarch 17\ppas_proposal\get_ppas_titles.php on line 28

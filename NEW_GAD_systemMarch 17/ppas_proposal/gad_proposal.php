@@ -905,6 +905,13 @@ html {
                             </div>
 
                             <div class="col-md-12">
+                                <label for="titleSelector" class="form-label">Available Activities</label>
+                                <select class="form-select" id="titleSelector" name="titleSelector" required disabled>
+                                    <option value="">Select Activity</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-12">
                                 <label for="activityTitle" class="form-label">I. Title</label>
                                 <input type="text" class="form-control" id="activityTitle" name="activityTitle" required>
                             </div>
@@ -2006,7 +2013,173 @@ html {
             const quarter = this.value;
             
             if (year && quarter) {
-                fetchPPASData(year, quarter);
+                fetchTitlesForYearQuarter(year, quarter);
+            }
+        });
+
+        // Function to fetch titles for a specific year and quarter
+        function fetchTitlesForYearQuarter(year, quarter) {
+            const titleSelector = document.getElementById('titleSelector');
+            titleSelector.disabled = true;
+            titleSelector.innerHTML = '<option value="">Select Activity</option>';
+            
+            fetch(`get_titles.php?year=${year}&quarter=${quarter}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.titles && data.titles.length > 0) {
+                        data.titles.forEach(title => {
+                            const option = document.createElement('option');
+                            option.value = title.id; // Assuming each title has an ID
+                            option.textContent = title.title;
+                            titleSelector.appendChild(option);
+                        });
+                        titleSelector.disabled = false;
+                        
+                        // Show message if multiple titles available
+                        if (data.titles.length > 1) {
+                            Swal.fire({
+                                title: 'Multiple Activities Available',
+                                text: `${data.titles.length} activities found for ${quarter} ${year}. Please select one.`,
+                                icon: 'info',
+                                confirmButtonColor: '#6a1b9a',
+                                timer: 3000,
+                                timerProgressBar: true
+                            });
+                        }
+                    } else {
+                        Swal.fire({
+                            title: 'No Activities Found',
+                            text: data.message || 'No activities found for the selected year and quarter',
+                            icon: 'info',
+                            confirmButtonColor: '#6a1b9a'
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching titles:', error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Failed to fetch activities. Please try again.',
+                        icon: 'error',
+                        confirmButtonColor: '#6a1b9a'
+                    });
+                });
+        }
+
+        // Add event listener for title selection
+        document.getElementById('titleSelector').addEventListener('change', function() {
+            const ppasId = this.value;
+            
+            if (ppasId) {
+                // Fetch PPAS data for the selected title
+                fetch(`get_ppas_data.php?id=${ppasId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success && data.data) {
+                            // Store PPAS ID in hidden field
+                            const ppasIdInput = document.getElementById('ppasId') || document.createElement('input');
+                            ppasIdInput.type = 'hidden';
+                            ppasIdInput.id = 'ppasId';
+                            ppasIdInput.name = 'ppasId';
+                            ppasIdInput.value = data.data.ppas.id;
+                            
+                            // Add to form if it doesn't exist
+                            const form = document.getElementById('gadProposalForm');
+                            if (!document.getElementById('ppasId') && form) {
+                                form.appendChild(ppasIdInput);
+                            }
+                            
+                            // Populate title from PPAS data
+                            document.getElementById('activityTitle').value = data.data.ppas.title || '';
+                            
+                            // Populate start and end dates if available 
+                            if (data.data.ppas.start_date) {
+                                document.getElementById('startDate').value = data.data.ppas.start_date;
+                            }
+                            
+                            if (data.data.ppas.end_date) {
+                                document.getElementById('endDate').value = data.data.ppas.end_date;
+                            } else if (data.data.ppas.start_date) {
+                                // If no end date is available, use start date as fallback
+                                document.getElementById('endDate').value = data.data.ppas.start_date;
+                            }
+                            
+                            // Generate work plan dates based on the new date values
+                            generateWorkPlanDates();
+                            
+                            // Populate venue/location if available
+                            if (data.data.ppas.location) {
+                                document.getElementById('venue').value = data.data.ppas.location;
+                            }
+
+                            // Clear existing personnel
+                            selectedPersonnel = {
+                                projectLeaders: [],
+                                assistantProjectLeaders: [],
+                                projectStaff: []
+                            };
+
+                            // Clear personnel lists
+                            document.getElementById('projectLeadersList').innerHTML = '';
+                            document.getElementById('assistantProjectLeadersList').innerHTML = '';
+                            document.getElementById('projectStaffList').innerHTML = '';
+                            
+                            // Add note about personnel being read-only
+                            const personnelNotes = document.querySelectorAll('.personnel-note');
+                            personnelNotes.forEach(note => {
+                                note.style.display = 'block';
+                            });
+
+                            // Populate personnel data
+                            if (data.data.personnel && Array.isArray(data.data.personnel)) {
+                                data.data.personnel.forEach(person => {
+                                    // Map the role from database to our frontend role names
+                                    let role;
+                                    switch (person.role) {
+                                        case 'project_leader':
+                                        case 'projectLeader':
+                                            role = 'projectLeaders';
+                                            break;
+                                        case 'assistant_project_leader':
+                                        case 'assistantProjectLeader':
+                                        case 'asst_project_leader':
+                                            role = 'assistantProjectLeaders';
+                                            break;
+                                        case 'project_staff':
+                                        case 'projectStaff':
+                                            role = 'projectStaff';
+                                            break;
+                                    }
+
+                                    if (role) {
+                                        addPersonnelToList(role, {
+                                            id: person.personnel_id,
+                                            name: person.personnel_name,
+                                            gender: '', // Not provided in this data structure
+                                            academic_rank: '' // Not provided in this data structure
+                                        });
+                                    }
+                                });
+                            }
+                        } else if (data.error) {
+                            console.error('Server error:', data.message);
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'Failed to fetch PPAS data: ' + data.message,
+                                icon: 'error',
+                                confirmButtonColor: '#6a1b9a'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching PPAS data:', error);
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Failed to fetch PPAS data. Please try again.',
+                            icon: 'error',
+                            confirmButtonColor: '#6a1b9a'
+                        });
+                    });
             }
         });
 
@@ -2044,9 +2217,17 @@ html {
                     yearSelect.addEventListener('change', function() {
                         const year = this.value;
                         const quarterSelect = document.getElementById('quarter');
+                        const titleSelector = document.getElementById('titleSelector');
+                        
                         if (quarterSelect) {
                             quarterSelect.value = '';
                             loadQuarters(year);
+                        }
+                        
+                        // Reset the title selector
+                        if (titleSelector) {
+                            titleSelector.innerHTML = '<option value="">Select Activity</option>';
+                            titleSelector.disabled = true;
                         }
                         
                         // Clear project team fields

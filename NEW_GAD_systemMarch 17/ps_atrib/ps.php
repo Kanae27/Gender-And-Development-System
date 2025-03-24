@@ -218,6 +218,51 @@ html {
             max-height: none;
         }
 
+        /* Dropdown submenu styles */
+        .dropdown-submenu {
+            position: relative;
+        }
+        
+        .dropdown-submenu > .dropdown-menu {
+            position: static !important;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: 0;
+            border-radius: 0.25rem;
+            display: none;
+            padding-left: 10px;
+        }
+        
+        .dropdown-submenu:hover > .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-submenu .dropdown-item {
+            padding-left: 30px;
+        }
+        
+        .dropdown-submenu > a:after {
+            display: block;
+            content: "\f105";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            float: right;
+            width: 10px;
+            margin-top: 5px;
+        }
+        
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+        
+        .dropdown-submenu.pull-left > .dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            border-radius: 0.25rem;
+        }
+        
+        /* End of dropdown submenu styles */
+
         .nav-item .dropdown-menu.show {
             display: block;
         }
@@ -889,24 +934,33 @@ html {
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="formsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="formsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-file-alt me-2"></i> Forms
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../target_forms/target.php">Target Form</a></li>
                         <li><a class="dropdown-item" href="../gbp_forms/gpb.php">GPB Form</a></li>
-                        <li><a class="dropdown-item" href="#">PPAs Form</a></li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="ppasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                PPAs Form
+                            </a>
+                            <ul class="dropdown-menu dropdown-submenu" aria-labelledby="ppasDropdown">
+                                <li><a class="dropdown-item" href="../ppas_form/ppas.php">Main PPAs Form</a></li>
+                                <li><a class="dropdown-item" href="../ppas_proposal/gad_proposal.php">PPAS Proposal</a></li>
+                                <li><a class="dropdown-item" href="../narrative/narrative.php">Narrative Report</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="reportsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle active" href="#" id="reportsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-chart-bar me-2"></i> Reports
                     </a>
                     <ul class="dropdown-menu">                       
-                        <li><a class="dropdown-item" href="#">GPB Reports</a></li>
-                        <li><a class="dropdown-item" href="#">PPAs Reports</a></li>
+                        <li><a class="dropdown-item" href="../gpb_reports/gbp_reports.php">GPB Reports</a></li>
+                        <li><a class="dropdown-item" href="../ppas_report/ppas_report.php">PPAs Reports</a></li>
                         <li><a class="dropdown-item" href="#">PSA Reports</a></li>
-                        <li><a class="dropdown-item" href="#">Quarterly Reports</a></li>
+                        <li><a class="dropdown-item" href="../ppas_report/ppas_report.php">Quarterly Reports</a></li>
                     </ul>
                 </div>
             </nav>
@@ -927,12 +981,12 @@ html {
     <div class="main-content">
         <div class="page-title">
             <i class="fas fa-users-gear"></i>
-            <h2>PPAS Management</h2>
+            <h2>PS Attributions</h2>
         </div>
 
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">PPAS Form</h5>
+                <h5 class="card-title">PS Attributions</h5>
             </div>
             <div class="card-body">
                 <div class="nav nav-tabs mb-3" id="quarterTabs" role="tablist">
@@ -968,12 +1022,6 @@ html {
                         <div class="action-buttons mb-3">
                             <button type="button" class="btn btn-success" id="saveBtn1" disabled>
                                 <i class="fas fa-save"></i> Save PS Attribution
-                            </button>
-                            <button type="button" class="btn btn-primary" id="refreshRanksBtn1">
-                                <i class="fas fa-sync-alt"></i> Refresh Academic Ranks
-                            </button>
-                            <button type="button" class="btn btn-dark" id="initTablesBtn1">
-                                <i class="fas fa-database"></i> Initialize All Tables
                             </button>
                             <button type="button" class="btn btn-secondary" id="viewPersonnelBtn1" disabled>
                                 <i class="fas fa-users"></i> View PPAS Personnel
@@ -1242,6 +1290,24 @@ html {
                 });
             });
             
+            // Handle dropdown submenu
+            document.querySelectorAll('.dropdown-submenu > a').forEach(function(element) {
+                element.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    
+                    // Toggle the submenu
+                    const submenu = this.nextElementSibling;
+                    if (submenu && submenu.classList.contains('dropdown-menu')) {
+                        if (submenu.style.display === 'block') {
+                            submenu.style.display = 'none';
+                        } else {
+                            submenu.style.display = 'block';
+                        }
+                    }
+                });
+            });
+            
             // Add change listeners for PPA selects
             [1, 2, 3, 4].forEach(quarter => {
                 const select = document.getElementById(`ppasTitle${quarter}`);
@@ -1255,6 +1321,21 @@ html {
                         }
                     });
                 }
+            });
+            
+            // Add event listeners for buttons
+            [1, 2, 3, 4].forEach(quarter => {
+                document.getElementById(`saveBtn${quarter}`).addEventListener('click', function() {
+                    savePSAttribution(quarter);
+                });
+                
+                document.getElementById(`viewPersonnelBtn${quarter}`).addEventListener('click', function() {
+                    viewPpasPersonnel(quarter);
+                });
+                
+                document.getElementById(`printBtn${quarter}`).addEventListener('click', function() {
+                    printPSAttribution(quarter);
+                });
             });
         });
 
@@ -1458,81 +1539,6 @@ html {
             }
         }
 
-        function refreshAcademicRanks() {
-            Swal.fire({
-                title: 'Refreshing Academic Ranks',
-                text: 'Initializing academic ranks data...',
-                icon: 'info',
-                showConfirmButton: false,
-                allowOutsideClick: false
-            });
-            
-            // First create/initialize the academic ranks table
-            fetch('create_academic_ranks.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Now refresh the current PS attribution display if a PPA is selected
-                        const selectedPpa = document.getElementById('ppasTitle1').value;
-                        if (selectedPpa) {
-                            updatePSAttribution(1, selectedPpa);
-                        }
-                        
-                        Swal.fire({
-                            title: 'Success',
-                            text: 'Academic ranks refreshed successfully!',
-                            icon: 'success'
-                        });
-                    } else {
-                        throw new Error(data.message || 'Failed to refresh academic ranks');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error refreshing academic ranks:', error);
-                    Swal.fire({
-                        title: 'Error',
-                        text: error.message || 'Failed to refresh academic ranks. Please try again.',
-                        icon: 'error'
-                    });
-                });
-        }
-
-        function initializeTables() {
-            Swal.fire({
-                title: 'Initializing Tables',
-                text: 'Setting up all necessary tables for PS Attribution...',
-                icon: 'info',
-                showConfirmButton: false,
-                allowOutsideClick: false
-            });
-            
-            // Initialize all tables
-            fetch('initialize_tables.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            title: 'Success',
-                            html: `Tables initialization completed.<br><br>Details: ${data.message}`,
-                            icon: 'success'
-                        }).then(() => {
-                            // Refresh the page to show updated data
-                            location.reload();
-                        });
-                    } else {
-                        throw new Error(data.message || 'Failed to initialize tables');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error initializing tables:', error);
-                    Swal.fire({
-                        title: 'Error',
-                        text: error.message || 'Failed to initialize tables. Please try again.',
-                        icon: 'error'
-                    });
-                });
-        }
-
         function viewPpasPersonnel(quarter) {
             const ppaDetails = selectedPPAs[quarter];
             if (!ppaDetails || !ppaDetails.id) {
@@ -1559,77 +1565,96 @@ html {
                 return;
             }
 
-            // Store the current body content
-            const originalContent = document.body.innerHTML;
-
-            // Get quarter title based on the tab, not the data
-            const quarterTitles = {
-                1: "Q1",
-                2: "Q2",
-                3: "Q3",
-                4: "Q4"
-            };
-            const quarterTitle = quarterTitles[quarter];
-
-            // Create print content
+            // Create a new window for printing
+            const printWindow = window.open('', '_blank');
+            
+            // Get the table content
+            const table = document.querySelector(`#psTable${quarter}`).closest('.table-responsive');
+            
+            // Create the print content with proper styling
             const printContent = `
-                <div class="print-section">
-                    <div style="text-align: center; margin-bottom: 30px;">
-                        <h2 style="margin-bottom: 10px;">PS Attribution Report</h2>
-                        <h3 style="margin-bottom: 10px;">${ppaDetails.title}</h3>
-                        <p>Date: ${document.getElementById(`ppasDate${quarter}`).value}</p>
-                        <p>${quarterTitle}</p>
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>PS Attribution Report</title>
+                    <style>
+                        @media print {
+                            body {
+                                padding: 20px;
+                                font-family: Arial, sans-serif;
+                            }
+                            .print-header {
+                                margin-bottom: 30px;
+                            }
+                            .header-row {
+                                display: flex;
+                                align-items: flex-start;
+                                margin-bottom: 10px;
+                                font-size: 16px;
+                            }
+                            .header-label {
+                                width: 120px;
+                                text-align: left;
+                                font-weight: normal;
+                            }
+                            .header-content {
+                                flex: 1;
+                                text-align: left;
+                                font-weight: normal;
+                            }
+                            table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin-top: 20px;
+                            }
+                            th, td {
+                                border: 1px solid #000;
+                                padding: 8px;
+                                text-align: left;
+                            }
+                            th {
+                                background-color: #f2f2f2;
+                            }
+                            .text-end {
+                                text-align: right;
+                            }
+                            .text-center {
+                                text-align: center;
+                            }
+                            .table-active {
+                                background-color: #f8f9fa;
+                            }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="header-row">
+                            <div class="header-label">Activity Title:</div>
+                            <div class="header-content">${ppaDetails.title}</div>
+                        </div>
+                        <div class="header-row">
+                            <div class="header-label">Date</div>
+                            <div class="header-content">${document.getElementById(`ppasDate${quarter}`).value}</div>
+                        </div>
                     </div>
-                    ${document.querySelector(`#psTable${quarter}`).closest('.table-responsive').outerHTML}
-                </div>
+                    ${table.outerHTML}
+                </body>
+                </html>
             `;
 
-            // Replace body content with print content
-            document.body.innerHTML = printContent;
+            // Write the content to the new window
+            printWindow.document.write(printContent);
+            printWindow.document.close();
 
-            // Print
-            window.print();
-
-            // Restore original content
-            document.body.innerHTML = originalContent;
-
-            // Reinitialize event listeners
-            document.addEventListener('DOMContentLoaded', function() {
-                // Initialize all quarters
-                [1, 2, 3, 4].forEach(q => {
-                    initializeQuarter(q);
-                });
-                
-                // Add event listeners for save buttons
-                [1, 2, 3, 4].forEach(q => {
-                    document.getElementById(`saveBtn${q}`).addEventListener('click', function() {
-                        savePSAttribution(q);
-                    });
-                    
-                    document.getElementById(`viewPersonnelBtn${q}`).addEventListener('click', function() {
-                        viewPpasPersonnel(q);
-                    });
-                    
-                    document.getElementById(`printBtn${q}`).addEventListener('click', function() {
-                        printPSAttribution(q);
-                    });
-                });
-                
-                // Add refresh academic ranks button event listener
-                document.getElementById('refreshRanksBtn1').addEventListener('click', function() {
-                    refreshAcademicRanks();
-                });
-                
-                // Add init tables button event listener
-                document.getElementById('initTablesBtn1').addEventListener('click', function() {
-                    initializeTables();
-                });
-            });
-
-            // Restore the current quarter's data
-            if (ppaDetails.id) {
-                updatePSAttribution(quarter, ppaDetails.id);
-            }
+            // Add print trigger after a short delay to ensure content is loaded
+            setTimeout(() => {
+                printWindow.print();
+                // Close the window after printing
+                printWindow.onafterprint = function() {
+                    printWindow.close();
+                };
+            }, 250);
         }
     </script>
 </body>

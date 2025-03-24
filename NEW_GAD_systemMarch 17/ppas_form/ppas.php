@@ -1343,25 +1343,26 @@ html {
                                 <input type="text" class="form-control" id="gender_issue" name="gender_issue" placeholder="Search for gender issues..." required>
                             </div>
 
-                            <div class="col-md-12">
-                                <label class="form-label">Type</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="type" id="typeProgram" value="Program" checked>
-                                    <label class="form-check-label" for="typeProgram">
-                                        Program
-                                    </label>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="program" class="form-label">Program</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="program" name="program" placeholder="Search from GAD proposals..." required>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="addNewProgram()">
+                                            <i class="fas fa-plus"></i> New
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="type" id="typeProject" value="Project">
-                                    <label class="form-check-label" for="typeProject">
-                                        Project
-                                    </label>
-                                </div>
-                            </div>
 
-                            <div class="col-md-12">
-                                <label for="title" class="form-label">Title of Implemented PPAs</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter the title..." required autocomplete="off">
+                                <div class="col-md-6">
+                                    <label for="project" class="form-label">Project</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="project" name="project" placeholder="Search from GAD proposals..." required>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="addNewProject()">
+                                            <i class="fas fa-plus"></i> New
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-md-12">
@@ -2662,37 +2663,180 @@ html {
             $('#program').autocomplete({
                 source: function(request, response) {
                     $.ajax({
-                        url: 'search_programs.php',
+                        url: 'search_gad_activities.php',
                         dataType: 'json',
-                        data: { term: request.term },
+                        data: { 
+                            term: request.term,
+                            year: $('#year').val(),
+                            quarter: $('#quarter').val(),
+                            type: 'program'
+                        },
                         success: function(data) {
                             response(data);
                         }
                     });
                 },
-                minLength: 2
+                minLength: 2,
+                select: function(event, ui) {
+                    $(this).val(ui.item.value);
+                    return false;
+                }
             });
 
             // Initialize project autocomplete
             $('#project').autocomplete({
                 source: function(request, response) {
                     $.ajax({
-                        url: 'search_projects.php',
+                        url: 'search_gad_activities.php',
                         dataType: 'json',
-                        data: { term: request.term },
+                        data: { 
+                            term: request.term,
+                            year: $('#year').val(),
+                            quarter: $('#quarter').val(),
+                            type: 'project'
+                        },
                         success: function(data) {
                             response(data);
                         }
                     });
                 },
-                minLength: 2
+                minLength: 2,
+                select: function(event, ui) {
+                    $(this).val(ui.item.value);
+                    return false;
+                }
+            });
+
+            // Update search when year or quarter changes
+            $('#year, #quarter').change(function() {
+                if ($('#program').val()) {
+                    $('#program').autocomplete('search', $('#program').val());
+                }
+                if ($('#project').val()) {
+                    $('#project').autocomplete('search', $('#project').val());
+                }
             });
         });
 
-        // These functions have been removed as they're no longer needed
-        // Program and Project are now selected via radio buttons
-        // function addNewProgram() { ... }
-        // function addNewProject() { ... }
+        // Function to add new program
+        function addNewProgram() {
+            Swal.fire({
+                title: 'Add New Program',
+                input: 'text',
+                inputLabel: 'Program Name',
+                showCancelButton: true,
+                confirmButtonColor: '#6a1b9a',
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'You need to write something!';
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: 'add_program.php',
+                        method: 'POST',
+                        data: { program_name: result.value },
+                        success: function(response) {
+                            try {
+                                const data = JSON.parse(response);
+                                if (data.success) {
+                                    $('#program').val(result.value);
+                                    Swal.fire({
+                                        title: 'Success',
+                                        text: 'Program added successfully',
+                                        icon: 'success',
+                                        confirmButtonColor: '#6a1b9a'
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error',
+                                        text: data.message || 'Failed to add program',
+                                        icon: 'error',
+                                        confirmButtonColor: '#6a1b9a'
+                                    });
+                                }
+                            } catch (e) {
+                                Swal.fire({
+                                    title: 'Error',
+                                    text: 'Invalid server response',
+                                    icon: 'error',
+                                    confirmButtonColor: '#6a1b9a'
+                                });
+                            }
+                        },
+                        error: function() {
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'Failed to add program',
+                                icon: 'error',
+                                confirmButtonColor: '#6a1b9a'
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        // Function to add new project
+        function addNewProject() {
+            Swal.fire({
+                title: 'Add New Project',
+                input: 'text',
+                inputLabel: 'Project Name',
+                showCancelButton: true,
+                confirmButtonColor: '#6a1b9a',
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'You need to write something!';
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: 'add_project.php',
+                        method: 'POST',
+                        data: { project_name: result.value },
+                        success: function(response) {
+                            try {
+                                const data = JSON.parse(response);
+                                if (data.success) {
+                                    $('#project').val(result.value);
+                                    Swal.fire({
+                                        title: 'Success',
+                                        text: 'Project added successfully',
+                                        icon: 'success',
+                                        confirmButtonColor: '#6a1b9a'
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error',
+                                        text: data.message || 'Failed to add project',
+                                        icon: 'error',
+                                        confirmButtonColor: '#6a1b9a'
+                                    });
+                                }
+                            } catch (e) {
+                                Swal.fire({
+                                    title: 'Error',
+                                    text: 'Invalid server response',
+                                    icon: 'error',
+                                    confirmButtonColor: '#6a1b9a'
+                                });
+                            }
+                        },
+                        error: function() {
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'Failed to add project',
+                                icon: 'error',
+                                confirmButtonColor: '#6a1b9a'
+                            });
+                        }
+                    });
+                }
+            });
+        }
 
         // Make sure jQuery UI is properly loaded
         $(document).ready(function() {

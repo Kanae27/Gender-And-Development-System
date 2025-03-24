@@ -5,6 +5,7 @@ header('Content-Type: application/json');
 // Get parameters from request
 $year = isset($_GET['year']) ? $_GET['year'] : null;
 $quarter = isset($_GET['quarter']) ? $_GET['quarter'] : null;
+$id = isset($_GET['id']) ? $_GET['id'] : null;
 
 // Prepare response array
 $response = [
@@ -14,20 +15,28 @@ $response = [
 ];
 
 try {
-    if (!$year || !$quarter) {
-        throw new Exception('Year and quarter are required');
+    if ($id) {
+        // Get PPAS form data by ID
+        $sql = "SELECT pf.id, pf.year, pf.quarter, pf.title, pf.location, pf.start_date, pf.end_date 
+                FROM ppas_forms pf 
+                WHERE pf.id = :id";
+        
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([':id' => $id]);
+    } else if ($year && $quarter) {
+        // Get PPAS form data by year and quarter
+        $sql = "SELECT pf.id, pf.year, pf.quarter, pf.title, pf.location, pf.start_date, pf.end_date 
+                FROM ppas_forms pf 
+                WHERE pf.year = :year AND pf.quarter = :quarter";
+        
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            ':year' => $year,
+            ':quarter' => $quarter
+        ]);
+    } else {
+        throw new Exception('Either ID or Year and Quarter are required');
     }
-
-    // Get PPAS form data
-    $sql = "SELECT pf.id, pf.year, pf.quarter, pf.title, pf.location, pf.start_date, pf.end_date 
-            FROM ppas_forms pf 
-            WHERE pf.year = :year AND pf.quarter = :quarter";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([
-        ':year' => $year,
-        ':quarter' => $quarter
-    ]);
 
     $ppasData = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -47,12 +56,15 @@ try {
             'personnel' => $personnelData
         ];
     } else {
-        $response['message'] = 'No data found for the specified year and quarter';
+        if ($id) {
+            $response['message'] = 'No data found for the specified ID';
+        } else {
+            $response['message'] = 'No data found for the specified year and quarter';
+        }
     }
 
 } catch (Exception $e) {
-    $response['message'] = $e->getMessage();
-    $response['error'] = true;
+    $response['message'] = 'Error: ' . $e->getMessage();
 }
 
 echo json_encode($response); 
