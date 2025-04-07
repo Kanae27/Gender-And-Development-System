@@ -31,7 +31,7 @@ A web-based Gender and Development (GAD) management system for tracking, process
 ## Login
 
 Default administrator credentials:
-- Username: admin
-- Password: admin
+- Campus : campus
+- Password: lower letter campus
 
 *Change default credentials immediately after first login* 
