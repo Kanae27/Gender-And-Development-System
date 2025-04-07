@@ -1,0 +1,178 @@
+[31-Mar-2025 00:35:24 UTC] Config file not found at: 
+[31-Mar-2025 00:43:25 UTC] Config file not found at: 
+[31-Mar-2025 00:46:39 UTC] Config file not found at: 
+[31-Mar-2025 00:46:42 UTC] Config file not found at: 
+[31-Mar-2025 00:46:49 UTC] Config file not found at: 
+[31-Mar-2025 00:51:16 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 00:51:16 UTC] Connected to database successfully
+[31-Mar-2025 00:51:16 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 00:51:16 UTC] Query returned 1 years
+[31-Mar-2025 00:51:18 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 00:51:18 UTC] Connected to database successfully
+[31-Mar-2025 00:51:18 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 00:51:18 UTC] Query returned 1 years
+[31-Mar-2025 00:56:34 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 00:56:34 UTC] Connected to database successfully
+[31-Mar-2025 00:56:34 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 00:56:34 UTC] Query returned 1 years
+[31-Mar-2025 00:57:33 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 00:57:33 UTC] Connected to database successfully
+[31-Mar-2025 00:57:33 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 00:57:33 UTC] Query returned 1 years
+[31-Mar-2025 00:58:49 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 00:58:49 UTC] Connected to database successfully
+[31-Mar-2025 00:58:49 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 00:58:49 UTC] Query returned 1 years
+[31-Mar-2025 00:59:11 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 00:59:11 UTC] Connected to database successfully
+[31-Mar-2025 00:59:11 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 00:59:11 UTC] Query returned 1 years
+[31-Mar-2025 00:59:14 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 00:59:14 UTC] Connected to database successfully
+[31-Mar-2025 00:59:14 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 00:59:14 UTC] Query returned 1 years
+[31-Mar-2025 01:00:44 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:00:44 UTC] Connected to database successfully
+[31-Mar-2025 01:00:44 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:00:44 UTC] Query returned 1 years
+[31-Mar-2025 01:01:57 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:01:57 UTC] Connected to database successfully
+[31-Mar-2025 01:01:57 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:01:57 UTC] Query returned 1 years
+[31-Mar-2025 01:02:25 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:02:25 UTC] Connected to database successfully
+[31-Mar-2025 01:02:25 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:02:25 UTC] Query returned 1 years
+[31-Mar-2025 01:03:35 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:03:35 UTC] Connected to database successfully
+[31-Mar-2025 01:03:35 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:03:35 UTC] Query returned 1 years
+[31-Mar-2025 01:03:39 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:03:39 UTC] Connected to database successfully
+[31-Mar-2025 01:03:39 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:03:39 UTC] Query returned 1 years
+[31-Mar-2025 01:03:40 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:03:40 UTC] Connected to database successfully
+[31-Mar-2025 01:03:40 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:03:40 UTC] Query returned 1 years
+[31-Mar-2025 01:03:44 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:03:44 UTC] Connected to database successfully
+[31-Mar-2025 01:03:44 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:03:44 UTC] Query returned 1 years
+[31-Mar-2025 01:04:06 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:04:06 UTC] Connected to database successfully
+[31-Mar-2025 01:04:06 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:04:06 UTC] Query returned 1 years
+[31-Mar-2025 01:05:10 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:05:10 UTC] Connected to database successfully
+[31-Mar-2025 01:05:10 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:05:10 UTC] Query returned 1 years
+[31-Mar-2025 01:07:16 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:07:16 UTC] Connected to database successfully
+[31-Mar-2025 01:07:16 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:07:16 UTC] Query returned 1 years
+[31-Mar-2025 01:07:21 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:07:21 UTC] Connected to database successfully
+[31-Mar-2025 01:07:21 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:07:21 UTC] Query returned 1 years
+[31-Mar-2025 01:08:32 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:08:32 UTC] Connected to database successfully
+[31-Mar-2025 01:08:32 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:08:32 UTC] Query returned 1 years
+[31-Mar-2025 01:13:09 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:13:09 UTC] Connected to database successfully
+[31-Mar-2025 01:13:09 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:13:09 UTC] Query returned 1 years
+[31-Mar-2025 01:13:28 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:13:28 UTC] Connected to database successfully
+[31-Mar-2025 01:13:28 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:13:28 UTC] Query returned 1 years
+[31-Mar-2025 01:14:58 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:14:58 UTC] Connected to database successfully
+[31-Mar-2025 01:14:58 UTC] Executing query: SELECT DISTINCT created_by as name FROM gad_proposals ORDER BY created_by
+[31-Mar-2025 01:14:58 UTC] Query returned 1 campuses
+[31-Mar-2025 01:15:29 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:15:29 UTC] Connected to database successfully
+[31-Mar-2025 01:15:29 UTC] Executing query: SELECT DISTINCT created_by as name FROM gad_proposals ORDER BY created_by
+[31-Mar-2025 01:15:29 UTC] Query returned 1 campuses
+[31-Mar-2025 01:15:30 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:15:30 UTC] Connected to database successfully
+[31-Mar-2025 01:15:30 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:15:30 UTC] Query returned 1 years
+[31-Mar-2025 01:28:41 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[31-Mar-2025 01:28:41 UTC] Connected to database successfully
+[31-Mar-2025 01:28:41 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[31-Mar-2025 01:28:41 UTC] Query returned 0 years
+[31-Mar-2025 01:28:41 UTC] No years found for campus: Lipa
+[01-Apr-2025 10:12:29 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[01-Apr-2025 10:12:29 UTC] Connected to database successfully
+[01-Apr-2025 10:12:29 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[01-Apr-2025 10:12:29 UTC] Query returned 1 years
+[02-Apr-2025 05:10:05 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[02-Apr-2025 05:10:05 UTC] Connected to database successfully
+[02-Apr-2025 05:10:05 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[02-Apr-2025 05:10:05 UTC] Query returned 1 years
+[02-Apr-2025 05:10:55 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[02-Apr-2025 05:10:55 UTC] Connected to database successfully
+[02-Apr-2025 05:10:55 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[02-Apr-2025 05:10:55 UTC] Query returned 1 years
+[02-Apr-2025 05:14:09 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[02-Apr-2025 05:14:09 UTC] Connected to database successfully
+[02-Apr-2025 05:14:09 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[02-Apr-2025 05:14:09 UTC] Query returned 1 years
+[02-Apr-2025 07:01:58 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[02-Apr-2025 07:01:58 UTC] Connected to database successfully
+[02-Apr-2025 07:01:58 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[02-Apr-2025 07:01:58 UTC] Query returned 1 years
+[02-Apr-2025 07:07:28 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[02-Apr-2025 07:07:28 UTC] Connected to database successfully
+[02-Apr-2025 07:07:28 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[02-Apr-2025 07:07:28 UTC] Query returned 1 years
+[03-Apr-2025 00:12:11 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[03-Apr-2025 00:12:11 UTC] Connected to database successfully
+[03-Apr-2025 00:12:11 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[03-Apr-2025 00:12:11 UTC] Query returned 1 years
+[03-Apr-2025 00:25:29 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[03-Apr-2025 00:25:29 UTC] Connected to database successfully
+[03-Apr-2025 00:25:29 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[03-Apr-2025 00:25:29 UTC] Query returned 1 years
+[03-Apr-2025 00:25:41 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[03-Apr-2025 00:25:41 UTC] Connected to database successfully
+[03-Apr-2025 00:25:41 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[03-Apr-2025 00:25:41 UTC] Query returned 1 years
+[03-Apr-2025 00:29:45 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[03-Apr-2025 00:29:45 UTC] Connected to database successfully
+[03-Apr-2025 00:29:45 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[03-Apr-2025 00:29:45 UTC] Query returned 1 years
+[03-Apr-2025 00:55:05 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[03-Apr-2025 00:55:05 UTC] Connected to database successfully
+[03-Apr-2025 00:55:05 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[03-Apr-2025 00:55:05 UTC] Query returned 1 years
+[07-Apr-2025 01:05:36 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[07-Apr-2025 01:05:36 UTC] Connected to database successfully
+[07-Apr-2025 01:05:36 UTC] Executing query: SELECT DISTINCT created_by as name FROM gad_proposals ORDER BY created_by
+[07-Apr-2025 01:05:36 UTC] Query returned 1 campuses
+[07-Apr-2025 01:06:00 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[07-Apr-2025 01:06:00 UTC] Connected to database successfully
+[07-Apr-2025 01:06:00 UTC] Executing query: SELECT DISTINCT created_by as name FROM gad_proposals ORDER BY created_by
+[07-Apr-2025 01:06:00 UTC] Query returned 1 campuses
+[07-Apr-2025 01:06:17 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[07-Apr-2025 01:06:17 UTC] Connected to database successfully
+[07-Apr-2025 01:06:17 UTC] Executing query: SELECT DISTINCT created_by as name FROM gad_proposals ORDER BY created_by
+[07-Apr-2025 01:06:17 UTC] Query returned 1 campuses
+[07-Apr-2025 01:06:38 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[07-Apr-2025 01:06:38 UTC] Connected to database successfully
+[07-Apr-2025 01:06:38 UTC] Executing query: SELECT DISTINCT created_by as name FROM gad_proposals ORDER BY created_by
+[07-Apr-2025 01:06:38 UTC] Query returned 1 campuses
+[07-Apr-2025 01:06:40 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[07-Apr-2025 01:06:40 UTC] Connected to database successfully
+[07-Apr-2025 01:06:40 UTC] Executing query: SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC with campus: Lipa
+[07-Apr-2025 01:06:40 UTC] Query returned 1 years
+[07-Apr-2025 01:07:23 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[07-Apr-2025 01:07:23 UTC] Connected to database successfully
+[07-Apr-2025 01:07:23 UTC] Executing query: SELECT DISTINCT created_by as name FROM gad_proposals ORDER BY created_by
+[07-Apr-2025 01:07:23 UTC] Query returned 1 campuses
+[07-Apr-2025 01:07:27 UTC] Database config - Server: localhost, DB: gad_db, User: root
+[07-Apr-2025 01:07:27 UTC] Connected to database successfully
+[07-Apr-2025 01:07:27 UTC] Executing query: SELECT DISTINCT created_by as name FROM gad_proposals ORDER BY created_by
+[07-Apr-2025 01:07:27 UTC] Query returned 1 campuses
