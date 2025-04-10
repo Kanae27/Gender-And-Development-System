@@ -19,43 +19,6 @@ $userCampus = $isCentral ? '' : $_SESSION['username'];
 
 // Store campus in session for consistency
 $_SESSION['campus'] = $userCampus;
-
-// Add this function before the HTML section
-function getSignatories($campus) {
-    try {
-        $conn = getConnection();
-        $sql = "SELECT * FROM signatories WHERE campus = :campus";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':campus', $campus);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    } catch (Exception $e) {
-        error_log('Error fetching signatories: ' . $e->getMessage());
-        return null;
-    }
-}
-
-// Get signatories for the current campus
-$signatories = getSignatories($_SESSION['username']);
-
-// Add this function at the top of the file, after any existing includes
-function getConnection() {
-    try {
-        $conn = new PDO(
-            "mysql:host=localhost;dbname=gad_db;charset=utf8mb4",
-            "root",
-            "",
-            [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-            ]
-        );
-        return $conn;
-    } catch (PDOException $e) {
-        error_log("Database connection error: " . $e->getMessage());
-        throw new Exception("Database connection failed");
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
@@ -233,22 +196,19 @@ function getConnection() {
             line-height: 1.2;
             color: black;
             background: white;
-            /* Set margins according to the specifications */
-            margin-top: 1.52cm;
-            margin-bottom: 2cm;
-            margin-left: 1.78cm;
-            margin-right: 2.03cm;
+            margin: 0;
             padding: 0;
             /* Remove border */
             border: none;
             box-sizing: border-box;
-            min-height: calc(100% - 0.82cm); /* Adjusted for footer margin */
+            min-height: calc(100% - .8cm); /* Adjusted for smaller bottom margin */
             background-clip: padding-box;
             box-shadow: none;
             background-color: var(--bg-primary);
             color: var(--text-primary);
+            padding: 20px;
             opacity: 1;
-            transition: opacity 0.05s ease-in-out;
+            transition: opacity 0.05s ease-in-out; /* Changed from 0.05s to 0.01s - make it super fast */
         }
 
         body.fade-out {
@@ -1036,7 +996,7 @@ html {
             right: 2.03cm;
         }
         @bottom-left {
-            content: ""; /* Removed "Tracking Number" text */
+            content: "Tracking Number___________________";
             font-family: 'Times New Roman', Times, serif;
             font-size: 12pt;
             font-weight: bold;
@@ -1047,7 +1007,7 @@ html {
             left: 1.78cm;
         }
         @bottom-right {
-            content: ""; /* Removed page number text */
+            content: "Page 1 of " counter(pages);
             font-family: 'Times New Roman', Times, serif;
             font-size: 12pt;
             font-weight: bold; 
@@ -1088,7 +1048,7 @@ html {
             right: 2.03cm;
         }
         @bottom-right {
-            content: ""; /* Removed page number text */
+            content: "Page " counter(page) " of " counter(pages);
             font-family: 'Times New Roman', Times, serif;
             font-size: 12pt;
             position: fixed;
@@ -1302,13 +1262,12 @@ html {
 .checkbox-container {
     text-align: center;
     padding: 10px 0;
-    border-bottom: 0.5pt solid black !important;
 }
 
 .checkbox-option {
     display: inline-block;
     margin: 0 20px;
-    font-size: 12pt;
+    font-size: 16px;
 }
 
 /* Title styles */
@@ -1337,79 +1296,18 @@ html {
 }
 
 /* Signature section styles */
-.signatures-table {
-    width: 100%;
-    border-collapse: collapse !important;
-    border-spacing: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    page-break-inside: avoid !important;
-    page-break-after: avoid !important;
-}
-
 .signatures-table td {
-    text-align: center !important;
-    vertical-align: bottom !important;
-    height: 2.5cm !important; /* Increased height for signature space */
-    padding: 8pt !important;
+    text-align: center;
+    padding: 20px 15px !important;
 }
 
 .signature-name {
-    font-weight: bold !important;
-    margin: 6pt 0 3pt 0 !important;
-    font-size: 11pt !important;
+    font-weight: bold;
+    margin-top: 50px;
 }
 
 .signature-position {
-    font-style: italic !important;
-    margin: 0 !important;
-    font-size: 10pt !important;
-}
-
-.signature-line {
-    border-bottom: solid 1pt black !important;
-    width: 80% !important;
-    margin: 25pt auto 8pt !important; /* Increased spacing */
-    mso-border-bottom-alt: solid black 1pt;
-}
-
-/* Print-specific signature styles */
-@media print {
-    .signatures-table {
-        margin: 0 !important;
-        padding: 0 !important;
-        page-break-inside: avoid !important;
-        page-break-after: avoid !important;
-    }
-
-    .signatures-table td {
-        padding: 10px !important;
-    }
-
-    .signature-name,
-    .signature-position {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-}
-
-/* Word-specific signature styles */
-.WordSection1 .signatures-table,
-[data-doc-type="word"] .signatures-table {
-    margin: 0 !important;
-    padding: 0 !important;
-    border-spacing: 0 !important;
-}
-
-/* Remove footer spacing in Word */
-div[style*="mso-element:footer"] {
-    display: none !important;
-}
-
-/* Remove any space after the last table */
-table:last-of-type {
-    margin-bottom: 0 !important;
-    border-bottom: 1px solid black !important;
+    font-style: italic;
 }
 
 /* Remove duplicate borders */
@@ -1702,883 +1600,6 @@ input[list] {
                 box-shadow: none !important;
                 background: transparent !important;
             }
-        }
-    </style>
-    <style>
-        /* Specific styles for dark mode proposal preview */
-        [data-bs-theme="dark"] #reportPreview .proposal-container {
-            background-color: #333 !important;
-            color: #fff !important;
-            border: 1px solid #555 !important;
-        }
-
-        [data-bs-theme="dark"] .dark-mode-proposal {
-            background-color: #333 !important;
-            color: #fff !important;
-            border: 1px solid #555 !important;
-        }
-
-        [data-bs-theme="dark"] #reportPreview .proposal-container p,
-        [data-bs-theme="dark"] #reportPreview .proposal-container li,
-        [data-bs-theme="dark"] #reportPreview .proposal-container div,
-        [data-bs-theme="dark"] #reportPreview .proposal-container strong,
-        [data-bs-theme="dark"] #reportPreview .proposal-container ol,
-        [data-bs-theme="dark"] #reportPreview .proposal-container ul,
-        [data-bs-theme="dark"] .dark-mode-proposal p,
-        [data-bs-theme="dark"] .dark-mode-proposal li,
-        [data-bs-theme="dark"] .dark-mode-proposal div,
-        [data-bs-theme="dark"] .dark-mode-proposal strong,
-        [data-bs-theme="dark"] .dark-mode-proposal ol,
-        [data-bs-theme="dark"] .dark-mode-proposal ul {
-            color: #fff !important;
-        }
-
-        [data-bs-theme="dark"] #reportPreview table,
-        [data-bs-theme="dark"] #reportPreview td,
-        [data-bs-theme="dark"] #reportPreview th,
-        [data-bs-theme="dark"] .dark-mode-proposal table,
-        [data-bs-theme="dark"] .dark-mode-proposal td,
-        [data-bs-theme="dark"] .dark-mode-proposal th {
-            border-color: #777 !important;
-        }
-
-        [data-bs-theme="dark"] #reportPreview td,
-        [data-bs-theme="dark"] #reportPreview th,
-        [data-bs-theme="dark"] .dark-mode-proposal td,
-        [data-bs-theme="dark"] .dark-mode-proposal th {
-            background-color: #444 !important;
-            color: #fff !important;
-        }
-
-        [data-bs-theme="dark"] #reportPreview th,
-        [data-bs-theme="dark"] .dark-mode-proposal th {
-            background-color: #555 !important;
-        }
-
-        [data-bs-theme="dark"] #reportPreview strong,
-        [data-bs-theme="dark"] .dark-mode-proposal strong {
-            color: #e1e1e1 !important;
-        }
-
-        /* Maintaining high contrast for the generated proposal */
-        [data-bs-theme="dark"] #reportPreview {
-            background-color: #252525 !important;
-        }
-        
-        /* Ensure visibility for workplan chart */
-        [data-bs-theme="dark"] #reportPreview table td[style*="background-color: black"],
-        [data-bs-theme="dark"] .dark-mode-proposal table td[style*="background-color: black"] {
-            background-color: #9c27b0 !important; /* Use accent color for better visibility */
-        }
-    </style>
-    <style>
-        /* Direct targeting of the proposal container for maximum visibility in dark mode */
-        [data-bs-theme="dark"] .card-body #reportPreview {
-            background-color: #252525 !important;
-            padding: 20px !important;
-            border-radius: 10px !important;
-        }
-
-        /* Increase default font color brightness for better readability */
-        [data-bs-theme="dark"] .proposal-container,
-        [data-bs-theme="dark"] .dark-mode-proposal {
-            background-color: #333 !important;
-            color: #fff !important;
-            border: 1px solid #555 !important;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) !important;
-        }
-
-        /* Make borders more visible */
-        [data-bs-theme="dark"] .proposal-container table,
-        [data-bs-theme="dark"] .dark-mode-proposal table {
-            border: 2px solid #777 !important;
-        }
-        
-        /* Make headings more visible */
-        [data-bs-theme="dark"] .proposal-container strong,
-        [data-bs-theme="dark"] .dark-mode-proposal strong {
-            color: #bb86fc !important; /* Purple accent color for headings */
-            font-weight: bold !important;
-        }
-        
-        /* Increase contrast for table cells */
-        [data-bs-theme="dark"] .proposal-container td,
-        [data-bs-theme="dark"] .proposal-container th,
-        [data-bs-theme="dark"] .dark-mode-proposal td,
-        [data-bs-theme="dark"] .dark-mode-proposal th {
-            background-color: #3a3a3a !important;
-            color: #fff !important;
-            border: 1px solid #777 !important;
-        }
-
-        /* Table header background */
-        [data-bs-theme="dark"] .proposal-container th,
-        [data-bs-theme="dark"] .dark-mode-proposal th {
-            background-color: #424242 !important;
-            color: #bb86fc !important;
-        }
-        
-        /* Ensure print preview maintains style in dark mode */
-        @media screen and (prefers-color-scheme: dark) {
-            .proposal-container {
-                background-color: #333 !important;
-                color: #fff !important;
-            }
-        }
-    </style>
-    <style>
-        /* Light mode specific styles - override any dark styles that might be leaking */
-        [data-bs-theme="light"] .proposal-container,
-        [data-bs-theme="light"] .dark-mode-proposal,
-        .proposal-container,
-        .dark-mode-proposal {
-            background-color: white !important;
-            color: black !important;
-            border: 1px solid #dee2e6 !important;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
-        }
-
-        /* Light mode table styles */
-        [data-bs-theme="light"] .proposal-container table,
-        [data-bs-theme="light"] .dark-mode-proposal table,
-        .proposal-container table,
-        .dark-mode-proposal table {
-            border: 1px solid black !important;
-        }
-
-        [data-bs-theme="light"] .proposal-container td,
-        [data-bs-theme="light"] .proposal-container th,
-        [data-bs-theme="light"] .dark-mode-proposal td,
-        [data-bs-theme="light"] .dark-mode-proposal th,
-        .proposal-container td,
-        .proposal-container th,
-        .dark-mode-proposal td,
-        .dark-mode-proposal th {
-            background-color: white !important;
-            color: black !important;
-            border: 1px solid black !important;
-        }
-
-        [data-bs-theme="light"] .proposal-container strong,
-        [data-bs-theme="light"] .dark-mode-proposal strong,
-        .proposal-container strong,
-        .dark-mode-proposal strong {
-            color: black !important;
-        }
-
-        /* Fix for paragraph and list text in light mode */
-        [data-bs-theme="light"] .proposal-container p,
-        [data-bs-theme="light"] .proposal-container li,
-        [data-bs-theme="light"] .proposal-container div,
-        [data-bs-theme="light"] .proposal-container ol,
-        [data-bs-theme="light"] .proposal-container ul,
-        [data-bs-theme="light"] .dark-mode-proposal p,
-        [data-bs-theme="light"] .dark-mode-proposal li,
-        [data-bs-theme="light"] .dark-mode-proposal div,
-        [data-bs-theme="light"] .dark-mode-proposal ol,
-        [data-bs-theme="light"] .dark-mode-proposal ul,
-        .proposal-container p,
-        .proposal-container li,
-        .proposal-container div,
-        .proposal-container ol,
-        .proposal-container ul,
-        .dark-mode-proposal p,
-        .dark-mode-proposal li,
-        .dark-mode-proposal div,
-        .dark-mode-proposal ol,
-        .dark-mode-proposal ul {
-            color: black !important;
-        }
-    </style>
-    <style>
-        /* Specific light-mode-proposal class styles */
-        .light-mode-proposal {
-            background-color: white !important;
-            color: black !important;
-            border: 1px solid #dee2e6 !important;
-        }
-
-        .light-mode-proposal table {
-            border: 1px solid black !important;
-        }
-
-        .light-mode-proposal td,
-        .light-mode-proposal th {
-            background-color: white !important;
-            color: black !important;
-            border: 1px solid black !important;
-        }
-
-        .light-mode-proposal p,
-        .light-mode-proposal li,
-        .light-mode-proposal div,
-        .light-mode-proposal strong,
-        .light-mode-proposal ol,
-        .light-mode-proposal ul {
-            color: black !important;
-        }
-
-        /* Style Gantt chart cells in light mode */
-        .light-mode-proposal table td[style*="background-color: black"] {
-            background-color: black !important;
-        }
-    </style>
-    <style>
-        /* Apply Bootstrap system font stack to form elements only */
-        .form-control, .form-select, .input-group, .btn, .form-label, label, select, input, textarea, .select2-selection, .form-check-label {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-        }
-
-        /* Keep the original font for print elements */
-        .print-content, .print-view, .print-only, .printable {
-            font-family: 'Times New Roman', Times, serif !important;
-        }
-    </style>
-    <style>
-        /* Apply system font to sidebar and title elements */
-        .sidebar, .sidebar *, h1, h2, h3, h4, h5, h6, .nav-link, .card-title, 
-        .logo-title, .nav-item, .navbar, .navbar *, .page-title, .title, 
-        .main-heading, #main-heading, .nav, .nav * {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-        }
-    </style>
-    <style>
-        /* Preserve Font Awesome icons */
-        .fas, .fab, .far, .fa, .fa-solid, .fa-regular, .fa-brands,
-        [class^="fa-"], [class*=" fa-"] {
-            font-family: "Font Awesome 5 Free" !important;
-        }
-        
-        .fab, .fa-brands {
-            font-family: "Font Awesome 5 Brands" !important;
-        }
-        
-        .fa-regular, .far {
-            font-family: "Font Awesome 5 Regular" !important;
-        }
-    </style>
-    <!-- Replace with just a single font change for interface elements -->
-    <style>
-        /* Form interface elements use system font */
-        .form-control, .btn, label, select, input, textarea, .nav-link, 
-        .sidebar, .card-title, .page-title, h1, h2, h3, h4, h5, h6 {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-        
-        /* Font Awesome icons need their specific font */
-        .fas, .fab, .far, .fa, [class^="fa-"], [class*=" fa-"] {
-            font-family: "Font Awesome 5 Free";
-        }
-        
-        .fab, .fa-brands {
-            font-family: "Font Awesome 5 Brands";
-        }
-        
-        /* Print content uses serif font */
-        #reportPreview, .printable, .print-content {
-            font-family: 'Times New Roman', Times, serif;
-        }
-    </style>
-    <!-- Add just before closing head tag -->
-    <style>
-        /* Interface elements - System font */
-        .form-control, .btn, label, input, select, textarea, .sidebar,
-        .nav-link, .card-title, h1, h2, h3, h4, h5, h6 {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-        
-        /* Font Awesome icons */
-        .fas, .fab, .far, .fa {
-            font-family: "Font Awesome 5 Free";
-        }
-        
-        .fab {
-            font-family: "Font Awesome 5 Brands";
-        }
-        
-        /* Fix for dark mode */
-        [data-bs-theme="dark"] body {
-            background-color: var(--bg-primary) !important;
-            color: var(--text-primary) !important;
-        }
-        
-        [data-bs-theme="dark"] .sidebar {
-            background-color: var(--sidebar-bg) !important;
-            color: var(--text-primary) !important;
-        }
-        
-        [data-bs-theme="dark"] .card {
-            background-color: var(--card-bg) !important;
-            color: var(--text-primary) !important;
-        }
-        
-        /* Fix for consistent border styles */
-        .proposal-container table {
-            border-collapse: collapse !important;
-        }
-        
-        .proposal-container table td,
-        .proposal-container table th {
-            border-width: 0.1px !important;
-            border-style: solid !important;
-            border-color: black !important;
-        }
-        
-        /* Print-specific fixes */
-        @media print {
-            .proposal-container table {
-                border-collapse: collapse !important;
-            }
-            
-            .proposal-container table td,
-            .proposal-container table th {
-                border-width: 0.1px !important;
-                border-style: solid !important;
-                border-color: black !important;
-            }
-            
-            /* Fix for borders that might be inconsistent */
-            [style*="border-top:"], [style*="border-bottom:"],
-            [style*="border-left:"], [style*="border-right:"] {
-                border-width: 0.1px !important;
-                border-style: solid !important;
-                border-color: black !important;
-            }
-            
-            /* Make sure program/project/activity line shows up correctly */
-            div[style*="display: flex"] {
-                border-top: 0.1px solid black !important;
-                border-bottom: 0.1px solid black !important;
-            }
-        }
-    </style>
-    <style>
-        /* Fix for dark mode */
-        [data-bs-theme="dark"] body {
-            background-color: var(--bg-primary) !important;
-            color: var(--text-primary) !important;
-        }
-        
-        [data-bs-theme="dark"] .sidebar {
-            background-color: var(--sidebar-bg) !important;
-            color: var(--text-primary) !important;
-        }
-        
-        [data-bs-theme="dark"] .card {
-            background-color: var(--card-bg) !important;
-            color: var(--text-primary) !important;
-        }
-
-        /* Fix for proposal preview */
-        /* Light mode - force white background with black text */
-        [data-bs-theme="light"] .light-mode-proposal,
-        [data-bs-theme="light"] .proposal-container {
-            background-color: white !important;
-            color: black !important;
-        }
-        
-        [data-bs-theme="light"] .light-mode-proposal p,
-        [data-bs-theme="light"] .light-mode-proposal div,
-        [data-bs-theme="light"] .light-mode-proposal td,
-        [data-bs-theme="light"] .light-mode-proposal th,
-        [data-bs-theme="light"] .light-mode-proposal li,
-        [data-bs-theme="light"] .light-mode-proposal strong,
-        [data-bs-theme="light"] .proposal-container p,
-        [data-bs-theme="light"] .proposal-container div,
-        [data-bs-theme="light"] .proposal-container td,
-        [data-bs-theme="light"] .proposal-container th,
-        [data-bs-theme="light"] .proposal-container li,
-        [data-bs-theme="light"] .proposal-container strong {
-            background-color: white !important;
-            color: black !important;
-            border-color: black !important;
-        }
-    </style>
-    <style>
-        [data-bs-theme="light"] .light-mode-proposal td,
-        [data-bs-theme="light"] .light-mode-proposal th,
-        [data-bs-theme="light"] .proposal-container td,
-        [data-bs-theme="light"] .proposal-container th,
-        [data-bs-theme="light"] .proposal-container li,
-        [data-bs-theme="light"] .proposal-container strong {
-            background-color: white !important;
-            color: black !important;
-            border-color: black !important;
-        }
-        
-        /* Fix for Gantt chart cells in light mode */
-        [data-bs-theme="light"] .light-mode-proposal table td[bgcolor="black"],
-        [data-bs-theme="light"] .proposal-container table td[bgcolor="black"],
-        [data-bs-theme="light"] td[style*="background-color: black"],
-        [data-bs-theme="light"] td[style*="background-color:black"] {
-            background-color: #6a1b9a !important; /* Use purple like in dark mode */
-        }
-    </style>
-    <style>
-        /* Print and Word export specific styles */
-        @media print {
-            .signatures-table {
-                margin-bottom: 0 !important;
-                page-break-after: avoid !important;
-            }
-            
-            .signatures-table td {
-                padding: 10px 15px !important;
-                border-bottom: none !important;
-            }
-            
-            .signature-name {
-                margin-top: 30px !important;
-                margin-bottom: 0 !important;
-            }
-            
-            .signature-position {
-                margin-bottom: 0 !important;
-                padding-bottom: 0 !important;
-            }
-            
-            /* Remove any forced page breaks or spacing after signatures */
-            .signatures-table::after {
-                display: none !important;
-                content: none !important;
-            }
-        }
-
-        /* Word export specific styles */
-        div[style*="mso-element:footer"] {
-            border-top: none !important;
-            padding-top: 0 !important;
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-        }
-
-        /* Remove any extra space in Word */
-        .WordSection1 .signatures-table,
-        [data-doc-type="word"] .signatures-table {
-            margin-bottom: 0 !important;
-            border-bottom: none !important;
-        }
-
-        /* Ensure no page breaks or spacing after signatures in Word */
-        .WordSection1 .signatures-table::after,
-        [data-doc-type="word"] .signatures-table::after {
-            display: none !important;
-            content: none !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-    </style>
-    <style>
-        /* Header and title styles */
-        .header-section table,
-        .title-section table {
-            border: 0.5pt solid black !important;
-            margin-bottom: 0 !important;
-        }
-
-        .header-section table td,
-        .title-section table td {
-            border: 0.5pt solid black !important;
-        }
-
-        /* Title specific styles */
-        .title-section {
-            border-top: 0.5pt solid black !important;
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-        }
-
-        .title-row {
-            border-top: 0.5pt solid black !important;
-            border-bottom: 0.5pt solid black !important;
-        }
-
-        .title-row td {
-            font-size: 12pt;
-            font-weight: bold;
-            text-align: center;
-            padding: 8px !important;
-            border: 0.5pt solid black !important;
-        }
-
-        /* Adjust all table borders to be thinner */
-        table, th, td {
-            border: 0.5pt solid black !important;
-        }
-
-        .main-section table {
-            border: 0.5pt solid black !important;
-        }
-
-        /* Print-specific styles */
-        @media print {
-            table, th, td {
-                border: 0.5pt solid black !important;
-            }
-            
-            .header-section table,
-            .title-section table {
-                border: 0.5pt solid black !important;
-            }
-        }
-
-        /* Logo cell adjustments */
-        .logo-cell {
-            width: 15%;
-            text-align: center;
-            padding: 8px !important;
-            border: 0.5pt solid black !important;
-        }
-
-        .logo-cell img {
-            max-width: 60px;
-            height: auto;
-        }
-    </style>
-    <style>
-        @page {
-            margin: 1.52cm 2.03cm 2cm 1.78cm;
-            size: folio;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12pt;
-            line-height: 1.3;
-            margin: 0;
-            padding: 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 0.5pt solid black;
-        }
-
-        td, th {
-            border: 0.5pt solid black;
-            padding: 8px;
-        }
-
-        /* Print-specific styles */
-        @media print {
-            body {
-                margin: 0;
-                padding: 0;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            table {
-                page-break-inside: auto;
-                border: 0.5pt solid black !important;
-            }
-
-            tr {
-                page-break-inside: avoid;
-                page-break-after: auto;
-            }
-
-            td, th {
-                border: 0.5pt solid black !important;
-            }
-
-            thead {
-                display: table-header-group;
-            }
-
-            tfoot {
-                display: table-footer-group;
-            }
-        }
-
-        /* Header section */
-        .header-table {
-            margin-bottom: 0;
-            border: 0.5pt solid black;
-        }
-
-        .header-table td {
-            border: 0.5pt solid black;
-            vertical-align: middle;
-        }
-
-        /* Title section */
-        .title-table {
-            margin-top: 0;
-            margin-bottom: 0;
-            border: 0.5pt solid black;
-        }
-
-        .title-table td {
-            text-align: center;
-            font-weight: bold;
-            border: 0.5pt solid black;
-        }
-
-        /* Logo styles */
-        .logo-cell {
-            width: 15%;
-            text-align: center;
-        }
-
-        .logo-cell img {
-            max-width: 60px;
-            height: auto;
-        }
-    </style>
-    <style>
-        /* Essential print styles */
-        @page {
-            margin: 1.52cm 2.03cm 2cm 1.78cm;
-            size: A4;
-        }
-
-        /* Base table styles */
-        .proposal-container table {
-            width: 100%;
-            border-collapse: collapse !important;
-            border: 0.5pt solid black !important;
-        }
-
-        .proposal-container td,
-        .proposal-container th {
-            border: 0.5pt solid black !important;
-            padding: 8px;
-        }
-
-        /* Force print borders */
-        @media print {
-            * {
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            .proposal-container {
-                border: none !important;
-                box-shadow: none !important;
-            }
-
-            .proposal-container table {
-                border: 0.5pt solid black !important;
-                -webkit-box-decoration-break: clone !important;
-                box-decoration-break: clone !important;
-            }
-
-            .proposal-container td,
-            .proposal-container th {
-                border: 0.5pt solid black !important;
-                -webkit-box-decoration-break: clone !important;
-                box-decoration-break: clone !important;
-            }
-
-            /* Header table specific */
-            .header-table,
-            .header-table td {
-                border: 0.5pt solid black !important;
-                -webkit-box-decoration-break: clone !important;
-                box-decoration-break: clone !important;
-            }
-
-            /* Title table specific */
-            .title-table,
-            .title-table td {
-                border: 0.5pt solid black !important;
-                -webkit-box-decoration-break: clone !important;
-                box-decoration-break: clone !important;
-            }
-        }
-
-        /* Header table styles */
-        .header-table {
-            margin: 0 !important;
-            border: 0.5pt solid black !important;
-        }
-
-        .header-table td {
-            border: 0.5pt solid black !important;
-            vertical-align: middle;
-        }
-
-        /* Title table styles */
-        .title-table {
-            margin: 0 !important;
-            border: 0.5pt solid black !important;
-        }
-
-        .title-table td {
-            border: 0.5pt solid black !important;
-            text-align: center;
-            font-weight: bold;
-        }
-    </style>
-    <style>
-        /* Checkbox table styles */
-        .checkbox-table {
-            width: 100%;
-            border-collapse: collapse;
-            border: none !important;
-            margin: 0 !important;
-        }
-
-        .checkbox-table td {
-            text-align: center !important;
-            border: none !important;
-            border-bottom: 0.5pt solid black !important;
-            padding: 8px;
-        }
-
-        .checkbox-option {
-            display: inline-block;
-            margin: 0 30px;
-            font-size: 12pt;
-            text-align: center;
-        }
-
-        /* Print styles for checkbox table */
-        @media print {
-            .checkbox-table {
-                width: 100% !important;
-                text-align: center !important;
-            }
-            
-            .checkbox-table td {
-                text-align: center !important;
-                border-bottom: 0.5pt solid black !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            .checkbox-option {
-                display: inline-block;
-                margin: 0 30px !important;
-                text-align: center !important;
-            }
-        }
-
-        /* Ensure centering in Word export */
-        .WordSection1 .checkbox-table,
-        [data-doc-type="word"] .checkbox-table {
-            text-align: center !important;
-        }
-
-        .WordSection1 .checkbox-option,
-        [data-doc-type="word"] .checkbox-option {
-            margin: 0 30px !important;
-            text-align: center !important;
-        }
-    </style>
-    <style>
-        /* Page setup */
-        @page {
-            size: 21.59cm 33.02cm; /* Folio paper size */
-            mso-page-orientation: portrait;
-            margin: 1.52cm 2.03cm 2cm 1.78cm; /* Top Right Bottom Left */
-            mso-header-margin: 1.27cm;
-            mso-footer-margin: 0.82cm;
-            mso-gutter-margin: 0cm;
-            mso-vertical-align: top;
-        }
-        
-        /* Different first page setting */
-        @page :first {
-            mso-header-margin: 1.27cm;
-            mso-footer-margin: 0.82cm;
-            margin: 1.52cm 2.03cm 2cm 1.78cm; /* Top Right Bottom Left */
-        }
-        
-        /* Word specific settings */
-        .WordSection1 {
-            page: Section1;
-        }
-        div.WordSection1 {page:WordSection1;}
-        
-        /* Set paper size explicitly */
-        @page WordSection1 {
-            size: 21.59cm 33.02cm;
-            margin: 1.52cm 2.03cm 2cm 1.78cm;
-            mso-header-margin: 1.27cm;
-            mso-footer-margin: 0.82cm;
-            mso-gutter-margin: 0cm;
-            mso-paper-source: 0;
-        }
-        
-        /* Basic styling */
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 12pt;
-            line-height: 1.15;
-            margin: 0;
-            padding: 0;
-        }
-        
-        /* Table styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid black;
-        }
-        
-        td, th {
-            border: 1px solid black;
-            padding: 4px;
-            vertical-align: top;
-        }
-        
-        /* Header table */
-        .header-table {
-            margin-bottom: 10px;
-        }
-        
-        /* Section headers (with Roman numerals) */
-        h3 {
-            margin-top: 10px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        /* Lists */
-        ul, ol {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        
-        /* Checkboxes */
-        input[type="checkbox"] {
-            border: 1px solid black;
-        }
-        
-        /* Footer */
-        .footer {
-            border-top: 1px solid black;
-            margin-top: 20px;
-            padding-top: 5px;
-        }
-        
-        /* Page and section breaks */
-        .page-break {
-            page-break-before: always;
-        }
-        
-        .section-break {
-            page-break-before: always;
-            mso-break-type: section-break;
-        }
-        
-        /* Content dividers to ensure proper page breaks */
-        .major-section {
-            page-break-inside: avoid;
-        }
-        
-        /* Control table break behavior */
-        tr { 
-            page-break-inside: avoid;
-        }
-        
-        /* Add minimum page height to ensure footer placement */
-        .WordSection1 {
-            min-height: 28cm; /* Ensure enough space for footer */
         }
     </style>
 </head>
@@ -3168,26 +2189,21 @@ input[list] {
             const timeOptions = { hour: 'numeric', minute: '2-digit', hour12: true };
             const currentTime = now.toLocaleTimeString('en-US', timeOptions);
             
-            // Dynamically check the current theme state
-            const isDarkMode = document.documentElement.getAttribute('data-bs-theme') === 'dark';
-            const themeClass = isDarkMode ? 'dark-mode-proposal' : 'light-mode-proposal';
-            
-            // Use theme class without inline styling to allow CSS to control colors
             let html = `
-            <div class="proposal-container ${themeClass}" style="margin-top: 0; padding-top: 0;">
+            <div class="proposal-container" style="margin-top: 0; padding-top: 0;">
                 <!-- Header Section -->
                 <table style="width: 100%; border-collapse: collapse; margin: 0; padding: 0;">
                     <tr>
-                        <td style="width: 15%; text-align: center; padding: 10px; border-top: 0.1px solid black; border-left: 0.1px solid black; border-bottom: 0.1px solid black;">
-                            <img src="../images/BatStateU-NEU-Logo.png" alt="BatStateU Logo" style="width: 60px;">
+                        <td style="width: 15%; text-align: center; padding: 10px; border: 0.1px solid black;">
+                            <img src="../images/Batangas_State_Logo.ico" alt="BatStateU Logo" style="width: 60px;">
                         </td>
-                        <td style="width: 30%; padding: 10px; border-top: 0.1px solid black; border-left: 0.1px solid black; border-bottom: 0.1px solid black;">
+                        <td style="width: 30%; padding: 10px; border: 0.1px solid black;">
                             Reference No.: BatStateU-FO-ESO-09
                         </td>
-                        <td style="width: 30%; padding: 10px; border-top: 0.1px solid black; border-left: 0.1px solid black; border-bottom: 0.1px solid black;">
+                        <td style="width: 30%; padding: 10px; border: 0.1px solid black;">
                             Effectivity Date: August 25, 2023
                         </td>
-                        <td style="width: 25%; padding: 10px; border-top: 0.1px solid black; border-left: 0.1px solid black; border-right: 0.1px solid black; border-bottom: 0.1px solid black;">
+                        <td style="width: 25%; padding: 10px; border: 0.1px solid black;">
                             Revision No.: 00
                         </td>
                     </tr>
@@ -3196,21 +2212,17 @@ input[list] {
                 <!-- Title Section -->
                 <table style="width: 100%; border-collapse: collapse; margin: 0;">
                     <tr>
-                        <td style="text-align: center; padding: 10px; border-left: 0.1px solid black; border-right: 0.1px solid black; border-bottom: 0.1px solid black;">
+                        <td style="text-align: center; padding: 10px; border: 0.1px solid black;">
                             <strong>GAD PROPOSAL (INTERNAL PROGRAM/PROJECT/ACTIVITY)</strong>
                         </td>
                     </tr>
                 </table>
 
-                <!-- Checkbox Section with fixed styling -->
-                <table style="width: 100%; border-collapse: collapse; margin: 0; padding: 0; border-left: 0.1px solid black; border-right: 0.1px solid black; border-top: 0.1px solid black;">
+                <!-- Checkbox Section -->
+                <table style="width: 100%; border-collapse: collapse; margin: 0;">
                     <tr>
-                        <td style="padding: 10px 0; border: none; border-bottom: none;">
-                            <div style="display: flex; width: 100%; border-bottom: 0.1px solid black; text-align: center;">
-                                <div style="flex: 1; padding: 5px 10px;">☐ Program</div>
-                                <div style="flex: 1; padding: 5px 10px;">☐ Project</div>
-                                <div style="flex: 1; padding: 5px 10px;">☒ Activity</div>
-                            </div>
+                        <td style="text-align: center; padding: 10px; border: 0.1px solid black;">
+                            ☐ Program&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☐ Project&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☒ Activity
                         </td>
                     </tr>
                 </table>
@@ -3459,45 +2471,57 @@ input[list] {
                 </div>
 
                 <!-- Signatures Section - Now outside the main content div -->
-                <table style="width: 100%; border-collapse: collapse; margin-top: 0;">
+                <table style="width: 100%; border-collapse: collapse;">
                     <tr>
-                        <td style="width: 50%; border-top: 0.1px solid black; border-left: 0.1px solid black; border-right: 0.1px solid black; border-bottom: 0.1px solid black; padding: 10px;">
+                        <td style="width: 50%; border: 0.1px solid black; padding: 10px;">
                             <p style="margin: 0;">Prepared by:</p>
                             <br><br><br>
-                            <p style="margin: 0; text-align: center;"><strong><?php echo htmlspecialchars($signatories['name1'] ?? 'RICHELLE M. SULIT'); ?></strong></p>
+                            <p style="margin: 0; text-align: center;"><strong>Ms. RICHELLE M. SULIT</strong></p>
                             <p style="margin: 0; text-align: center;">GAD Head Secretariat</p>
                             <p style="margin: 0; text-align: center; border: none;">Date Signed:_____________</p>
                         </td>
-                        <td style="width: 50%; border-top: 0.1px solid black; border-right: 0.1px solid black; border-bottom: 0.1px solid black; padding: 10px;">
+                        <td style="width: 50%; border: 0.1px solid black; padding: 10px;">
                             <p style="margin: 0;">Reviewed by:</p>
                             <br><br><br>
-                            <p style="margin: 0; text-align: center;"><strong><?php echo htmlspecialchars($signatories['name2'] ?? 'REXON S. HERNANDEZ'); ?></strong></p>
+                            <p style="margin: 0; text-align: center;"><strong>Mr. REXON S. HERNANDEZ</strong></p>
                             <p style="margin: 0; text-align: center;">Head, Extension Services</p>
                             <p style="margin: 0; text-align: center; border: none;">Date Signed:_____________</p>
                         </td>
                     </tr>
                     <tr>
-                        <td style="width: 50%; border-left: 0.1px solid black; border-right: 0.1px solid black; border-bottom: 0.1px solid black; padding: 10px;">
+                        <td style="width: 50%; border: 0.1px solid black; padding: 10px;">
                             <p style="margin: 0;">Recommending Approval:</p>
                             <br><br><br>
-                            <p style="margin: 0; text-align: center;"><strong><?php echo htmlspecialchars($signatories['name3'] ?? 'VICE CHANCELLOR FOR RDEXT'); ?></strong></p>
-                            <p style="margin: 0; text-align: center;">Vice Chancellor for Research, Development and Extension Services</p>
+                            <p style="margin: 0; text-align: center;"><strong>Dr. FRANCIS G. BALAZON</strong></p>
+                            <p style="margin: 0; text-align: center;">Vice Chancellor for Research, Development</p>
+                            <p style="margin: 0; text-align: center;">and Extension Services</p>
                             <p style="margin: 0; text-align: center; border: none;">Date Signed:_____________</p>
                         </td>
-                        <td style="width: 50%; border-right: 0.1px solid black; border-bottom: 0.1px solid black; padding: 10px;">
+                        <td style="width: 50%; border: 0.1px solid black; padding: 10px;">
                             <p style="margin: 0;">N/A</p>
+                            <br><br><br>
+                            <p style="margin: 0; text-align: center; border: none;">Date Signed:_____________</p>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center; border-left: 0.1px solid black; border-right: 0.1px solid black; border-bottom: 0.1px solid black; padding: 10px;">
+                        <td colspan="2" style="text-align: center; border: 0.1px solid black; padding: 10px;">
                             <p style="margin: 0;">Approved by:</p>
                             <br><br><br>
-                            <p style="margin: 0; text-align: center;"><strong><?php echo htmlspecialchars($signatories['name4'] ?? 'CHANCELLOR'); ?></strong></p>
+                            <p style="margin: 0; text-align: center;"><strong>Atty. ALVIN R. DE SILVA</strong></p>
                             <p style="margin: 0; text-align: center;">Chancellor</p>
                             <p style="margin: 0; text-align: center; border: none;">Date Signed:_____________</p>
                         </td>
                     </tr>
-                </table>`;
+                </table>
+                
+                <!-- Footer text completely outside tables with no container elements -->
+                Date Signed: _________________<br><br>
+                Cc: GAD Central<br>
+                Required Attachment: If Extension Service Program/Project/Activity is requested by clients, attach the letter of request with endorsement from the University President.<br>
+                Cc: (1) Office of the College Dean/Head, Academic Affairs for CC/EC
+                
+                <!-- Removing the page numbers that appear in the content area -->
+            </div>`;
 
             $('#reportPreview').html(html);
         }
@@ -3510,46 +2534,16 @@ input[list] {
             printWindow.document.open();
             printWindow.document.title = "GAD Proposal";
             
-            let reportContent = $('#reportPreview').html();
+            const reportContent = $('#reportPreview').html();
             
-            // SPECIAL FIX: Remove any empty divs or spaces that might cause empty boxes
-            reportContent = reportContent.replace(/<div[^>]*>\s*<\/div>/g, '');
-            reportContent = reportContent.replace(/<pre[\s\S]*?<\/pre>/g, '');
-            
-            // Always force print to be in light mode for consistent output
-            const printStyles = `
-                <style>
-                    body {
-                        background-color: white !important;
-                        color: black !important;
-                    }
-                    
-                    .proposal-container, .dark-mode-proposal, .light-mode-proposal {
-                        background-color: white !important;
-                        color: black !important;
-                        border: none !important;
-                    }
-                    
-                    .proposal-container p, .proposal-container div, .proposal-container td, 
-                    .proposal-container th, .proposal-container li, .proposal-container ol,
-                    .proposal-container ul, .proposal-container strong,
-                    .dark-mode-proposal p, .dark-mode-proposal div, .dark-mode-proposal td, 
-                    .dark-mode-proposal th, .dark-mode-proposal li, .dark-mode-proposal ol,
-                    .dark-mode-proposal ul, .dark-mode-proposal strong,
-                    .light-mode-proposal p, .light-mode-proposal div, .light-mode-proposal td, 
-                    .light-mode-proposal th, .light-mode-proposal li, .light-mode-proposal ol,
-                    .light-mode-proposal ul, .light-mode-proposal strong {
-                        background-color: white !important;
-                        color: black !important;
-                        border-color: black !important;
-                    }
-                    
-                    /* Ensure dark cells in workplan are visible in print */
-                    table td[style*="background-color: black"],
-                    table td[style*="background-color: #9c27b0"] {
-                        background-color: black !important;
-                    }
-                </style>
+            // Create fixed notes for the end
+            const footerNotes = `
+                <div style="margin-top: 30px; padding-top: 20px; border: none !important; text-decoration: none !important;">
+                    Date Signed: _________________<br><br>
+                    Cc: GAD Central<br>
+                    Required Attachment: If Extension Service Program/Project/Activity is requested by clients, attach the letter of request with endorsement from the University President.<br>
+                    Cc: (1) Office of the College Dean/Head, Academic Affairs for CC/EC
+                </div>
             `;
             
             printWindow.document.write(`
@@ -3558,7 +2552,6 @@ input[list] {
                 <head>
                     <title>GAD Proposal</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1">
-                    ${printStyles}
                     <style>
                         @page {
                             size: 8.5in 13in;
@@ -3615,16 +2608,6 @@ input[list] {
                             border: none;
                             background: white;
                             box-sizing: border-box;
-                        }
-                        
-                        /* Remove any empty boxes that might appear at the bottom */
-                        body::after {
-                            display: none !important;
-                            content: none !important;
-                        }
-                        
-                        div:empty {
-                            display: none !important;
                         }
                         
                         /* Table styles */
@@ -3867,26 +2850,8 @@ input[list] {
                     </style>
                 </head>
                 <body>
-                    <div class="WordSection1">
-                        ${reportContent}
-                    </div>
-                    
-                    <!-- Footer with tracking number and page numbers -->
-                    <div style="mso-element:footer; mso-first-footer:yes;" id="f1">
-                        <p style="border-top: solid black 5.0pt; width: 80%; margin-left: auto; margin-right: auto; padding-top: 0.5cm;">
-                            <span style="font-family:'Times New Roman'; font-size:12pt; float:left; margin-top: 0.5cm;">Tracking Number___________________</span>
-                            <span style="font-family:'Times New Roman'; font-size:12pt; float:right; margin-top: 0.5cm;">Page 1 of <span style="mso-field-code:' NUMPAGES '"></span></span>
-                            <br style="clear:both;"/>
-                        </p>
-                    </div>
-                    
-                    <!-- Footer for other pages -->
-                    <div style="mso-element:footer" id="f2">
-                        <p style="border-top: solid black 5.0pt; width: 80%; margin-left: auto; margin-right: auto; padding-top: 0.5cm;">
-                            <span style="font-family:'Times New Roman'; font-size:12pt; float:right; margin-top: 0.5cm;">Page <span style="mso-field-code:' PAGE '"></span> of <span style="mso-field-code:' NUMPAGES '"></span></span>
-                            <br style="clear:both;"/>
-                        </p>
-                    </div>
+                    ${reportContent}
+                    ${footerNotes}
                 </body>
                 </html>
             `);
@@ -3912,22 +2877,6 @@ input[list] {
             document.documentElement.setAttribute('data-bs-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeIcon(newTheme);
-            
-            // Update the proposal preview if it exists
-            if (document.getElementById('reportPreview').innerHTML.trim() !== '') {
-                // If there's a proposal selected, re-run the generation to apply the new theme
-                if ($('#proposal_id').val()) {
-                    loadSelectedProposal();
-                }
-            }
-        }
-
-        // Function to reload the current proposal with the current theme
-        function loadSelectedProposal() {
-            const proposalId = $('#proposal_id').val();
-            if (proposalId) {
-                fetchProposalDetails(proposalId);
-            }
         }
 
         // Apply saved theme on page load
@@ -3987,13 +2936,12 @@ input[list] {
             const isCentral = <?php echo $isCentral ? 'true' : 'false' ?>;
             const selectedCampus = isCentral ? $('#campus').val() : "<?php echo $userCampus ?>";
             const selectedYear = $('#year').val();
-            const selectedProposalId = $('#proposal_id').val();
 
-            if (!selectedCampus || !selectedYear || !selectedProposalId) {
+            if (!selectedCampus || !selectedYear) {
                 Swal.fire({
                     icon: 'warning',
                     title: 'Selection Required',
-                    text: 'Please select all required fields: campus, year, and proposal.'
+                    text: 'Please select' + (isCentral ? ' both a campus and' : '') + ' a year to generate the report.'
                 });
                 return;
             }
@@ -4009,195 +2957,138 @@ input[list] {
             });
 
             try {
-                // Get a direct copy of the printable HTML rather than clone and modify
-                // This ensures Word and print versions use the exact same source
+                const content = $('#reportPreview').clone();
                 
-                // Log parameters for debugging
-                console.log('Export parameters:', {
-                    campus: selectedCampus,
-                    year: selectedYear, 
-                    proposal_id: selectedProposalId,
-                    format: 'word'
-                });
-                
-                // Use exact HTML from print version without any modifications
-                const htmlContent = $('#reportPreview').html();
-                
-                // Process the HTML to ensure compatibility with Word
-                let processedContent = htmlContent
-                    .replace(/<div[^>]*>\s*<\/div>/g, '') // Remove empty divs
-                    .replace(/\s+/g, ' ') // Normalize whitespace
-                    .replace(/<(\/?)span[^>]*>/g, '<$1span>'); // Simplify span tags
-                
-                // Add section divisions for major content blocks to help with pagination
-                processedContent = processedContent
-                    // Add class to major section headers to avoid page breaks in the middle
-                    .replace(/<h3([^>]*)>(.*?)<\/h3>/g, '<h3$1 class="major-section">$2</h3>')
-                    // Add class to tables to avoid page breaks in the middle of tables where possible
-                    .replace(/<table([^>]*)>/g, '<table$1 class="major-section">');
-                
-                // Create Word document HTML with the formatted content
+                // Create Word document HTML with fixed footer positioning
                 const html = `
-                    <html xmlns:o='urn:schemas-microsoft-com:office:office' 
-                          xmlns:w='urn:schemas-microsoft-com:office:word' 
-                          xmlns='http://www.w3.org/TR/REC-html40'>
+                    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
                     <head>
                         <meta charset='utf-8'>
                         <title>GAD Proposal</title>
-                        <xml>
-                            <w:WordDocument>
-                                <w:View>Print</w:View>
-                                <w:Zoom>100</w:Zoom>
-                                <w:DoNotOptimizeForBrowser/>
-                                <w:DefaultTabStop>36pt</w:DefaultTabStop>
-                                <w:DrawingGridHorizontalSpacing>9pt</w:DrawingGridHorizontalSpacing>
-                                <w:DrawingGridVerticalSpacing>9pt</w:DrawingGridVerticalSpacing>
-                                <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
-                                <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
-                                <w:BreakWrappedTables/>
-                                <w:SnapToGridInCell/>
-                                <w:WrapTextWithPunct/>
-                                <w:UseAsianBreakRules/>
-                                <w:DontGrowAutofit/>
-                                <w:DontUseIndentAsNumberingTabStop/>
-                                <w:FELineBreak11/>
-                                <w:WW11IndentRules/>
-                                <w:UseFELayout/>
-                            </w:WordDocument>
-                        </xml>
                         <style>
-                            /* Page setup */
-                            @page {
-                                size: 21.59cm 33.02cm; /* Folio paper size */
-                                mso-page-orientation: portrait;
-                                margin: 1.52cm 2.03cm 2cm 1.78cm; /* Top Right Bottom Left */
-                                mso-header-margin: 1.27cm;
-                                mso-footer-margin: 0.82cm;
-                                mso-gutter-margin: 0cm;
-                                mso-vertical-align: top;
-                            }
-                            
-                            /* Different first page setting */
-                            @page :first {
-                                mso-header-margin: 1.27cm;
-                                mso-footer-margin: 0.82cm;
-                                margin: 1.52cm 2.03cm 2cm 1.78cm; /* Top Right Bottom Left */
-                            }
-                            
-                            /* Word specific settings */
-                            .WordSection1 {
-                                page: Section1;
-                            }
-                            div.WordSection1 {page:WordSection1;}
-                            
-                            /* Set paper size explicitly */
-                            @page WordSection1 {
-                                size: 21.59cm 33.02cm;
-                                margin: 1.52cm 2.03cm 2cm 1.78cm;
-                                mso-header-margin: 1.27cm;
-                                mso-footer-margin: 0.82cm;
-                                mso-gutter-margin: 0cm;
-                                mso-paper-source: 0;
-                            }
-                            
-                            /* Basic styling */
                             body {
-                                font-family: 'Times New Roman', Times, serif;
+                                font-family: Times New Roman, sans-serif;
                                 font-size: 12pt;
-                                line-height: 1.15;
-                                margin: 0;
-                                padding: 0;
                             }
-                            
-                            /* Table styles */
                             table {
-                                width: 100%;
                                 border-collapse: collapse;
+                                width: 100%;
                                 border: 1px solid black;
                             }
-                            
-                            td, th {
+                            th, td {
                                 border: 1px solid black;
-                                padding: 4px;
-                                vertical-align: top;
+                                padding: 8px;
+                                text-align: left;
+                                font-size: 12pt;
                             }
-                            
-                            /* Header table */
-                            .header-table {
-                                margin-bottom: 10px;
-                            }
-                            
-                            /* Section headers (with Roman numerals) */
-                            h3 {
-                                margin-top: 10px;
-                                margin-bottom: 5px;
+                            th {
+                                background-color: #e9ecef;
                                 font-weight: bold;
+                                font-size: 12pt;
                             }
                             
-                            /* Lists */
-                            ul, ol {
-                                margin-top: 5px;
-                                margin-bottom: 5px;
+                            /* Monitoring table styles */
+                            .monitoring-table th, .monitoring-table td {
+                                border: 0.1px solid black !important;
+                                padding: 5px !important;
+                                font-size: 11pt !important;
+                            }
+                            .monitoring-table th:last-child {
+                                padding: 4px !important;
                             }
                             
-                            /* Checkboxes */
-                            input[type="checkbox"] {
-                                border: 1px solid black;
+                            /* No borders for Cc: GAD Central */
+                            p[style*="Cc: GAD Central"], p:contains("Cc: GAD Central"), 
+                            span[style*="Cc: GAD Central"], span:contains("Cc: GAD Central") {
+                                border: none !important;
+                                border-bottom: none !important;
+                                border-top: none !important;
+                                border-left: none !important;
+                                border-right: none !important;
+                                text-decoration: none !important;
+                                font-style: italic !important;
+                                background: transparent !important;
+                                outline: none !important;
+                                text-decoration-line: none !important;
+                                text-decoration-style: none !important;
+                                box-shadow: none !important;
                             }
                             
-                            /* Footer */
-                            .footer {
-                                border-top: 1px solid black;
-                                margin-top: 20px;
-                                padding-top: 5px;
+                            tr:has(p:contains("Cc: GAD Central")), td:has(p:contains("Cc: GAD Central")) {
+                                border: none !important;
+                                border-bottom: none !important;
+                                border-top: none !important;
                             }
                             
-                            /* Page and section breaks */
-                            .page-break {
-                                page-break-before: always;
+                            @page {
+                                size: 8.5in 13in;
+                                mso-page-orientation: portrait;
+                                margin-top: 1.52cm;
+                                margin-bottom: 2cm;
+                                margin-left: 1.78cm;
+                                margin-right: 2.03cm;
+                                mso-header-margin: 1.27cm;
+                                mso-footer-margin: 0.82cm;
+                            }
+                            /* Footer styles for Word */
+                            div[style*="mso-element:footer"] {
+                                border-top: 3px solid black !important;
+                                padding-top: 15px !important;
+                                margin-top: 25px !important;
+                                margin-bottom: 0.82cm !important;
+                                margin-left: 1.78cm !important;
+                                margin-right: 2.03cm !important;
+                            }
+                            /* Style for cc. GAD Central text - no border */
+                            p.cc-gad, p[style*="Cc: GAD Central"], p[style*="cc: GAD Central"] {
+                                font-style: italic;
+                                margin-top: 10px;
+                                border: none !important;
+                                border-bottom: none !important;
+                                text-decoration: none !important;
+                            }
+                            /* No border for cells containing Cc: GAD Central */
+                            .no-border, tr:last-child td {
+                                border: none !important;
+                            }
+                            .no-border p {
+                                border: none !important;
                             }
                             
-                            .section-break {
-                                page-break-before: always;
-                                mso-break-type: section-break;
-                            }
-                            
-                            /* Content dividers to ensure proper page breaks */
-                            .major-section {
-                                page-break-inside: avoid;
-                            }
-                            
-                            /* Control table break behavior */
-                            tr { 
-                                page-break-inside: avoid;
-                            }
-                            
-                            /* Add minimum page height to ensure footer placement */
-                            .WordSection1 {
-                                min-height: 28cm; /* Ensure enough space for footer */
+                            /* Notes outside of tables */
+                            body > .notes {
+                                border: none !important;
+                                margin-top: 15px !important;
+                                padding: 0 !important;
+                                font-style: normal !important;
+                                background: transparent !important;
                             }
                         </style>
                     </head>
                     <body>
-                        <div class="WordSection1">
-                            ${processedContent}
+                        ${content.html()}
+                        
+                        <div style="padding-top: 30px;">
+                        Date Signed: _________________<br><br>
+                        Cc: GAD Central<br>
+                        Required Attachment: If Extension Service Program/Project/Activity is requested by clients, attach the letter of request with endorsement from the University President.<br>
+                        Cc: (1) Office of the College Dean/Head, Academic Affairs for CC/EC
                         </div>
                         
-                        <!-- Footer with tracking number and page numbers -->
-                        <div style="mso-element:footer; mso-first-footer:yes;" id="f1">
-                            <p style="border-top: solid black 5.0pt; width: 80%; margin-left: auto; margin-right: auto; padding-top: 0.5cm;">
-                                <span style="font-family:'Times New Roman'; font-size:12pt; float:left; margin-top: 0.5cm;">Tracking Number___________________</span>
-                                <span style="font-family:'Times New Roman'; font-size:12pt; float:right; margin-top: 0.5cm;">Page 1 of <span style="mso-field-code:' NUMPAGES '"></span></span>
-                                <br style="clear:both;"/>
-                            </p>
+                        <!-- First page footer -->
+                        <div style="mso-element:footer" id="f1">
+                            <div style="border-top: 3px solid black !important; padding-top: 15px; margin-bottom: 0.82cm; position: fixed; bottom: 0.82cm; width: 95%; height: 3px; margin-left: 1.78cm; margin-right: 2.03cm; left: 1.78cm; right: 2.03cm;">
+                                <div style="float: left; margin-top: 0.8cm; font-weight: bold;">Tracking Number___________________</div>
+                                <div style="float: right; margin-top: 0.8cm; font-weight: bold;">Page 1 of <span style="mso-field-code: NUMPAGES"></span></div>
+                                <div style="clear: both;"></div>
+                            </div>
                         </div>
                         
-                        <!-- Footer for other pages -->
+                        <!-- Other pages footer -->
                         <div style="mso-element:footer" id="f2">
-                            <p style="border-top: solid black 5.0pt; width: 80%; margin-left: auto; margin-right: auto; padding-top: 0.5cm;">
-                                <span style="font-family:'Times New Roman'; font-size:12pt; float:right; margin-top: 0.5cm;">Page <span style="mso-field-code:' PAGE '"></span> of <span style="mso-field-code:' NUMPAGES '"></span></span>
-                                <br style="clear:both;"/>
-                            </p>
+                            <div style="border-top: 3px solid black !important; padding-top: 15px; margin-bottom: 0.82cm; position: fixed; bottom: 0.82cm; width: 95%; height: 3px; margin-left: 1.78cm; margin-right: 2.03cm; left: 1.78cm; right: 2.03cm;">
+                                <div style="text-align: right; margin-top: 0.8cm; font-weight: bold;">Page <span style="mso-field-code: PAGE"></span> of <span style="mso-field-code: NUMPAGES"></span></div>
+                            </div>
                         </div>
                     </body>
                     </html>

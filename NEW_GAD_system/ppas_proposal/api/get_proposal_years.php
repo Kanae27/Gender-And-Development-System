@@ -54,7 +54,11 @@ try {
     error_log("Connected to database successfully");
 
     // Simplify the query to just get distinct years 
-    $query = "SELECT DISTINCT year FROM gad_proposals WHERE created_by = :campus ORDER BY year DESC";
+    $query = "SELECT DISTINCT pf.year 
+              FROM gad_proposals gp
+              JOIN ppas_forms pf ON gp.ppas_form_id = pf.id
+              WHERE pf.campus = :campus 
+              ORDER BY pf.year DESC";
     error_log("Executing query: $query with campus: $campus");
               
     $stmt = $db->prepare($query);

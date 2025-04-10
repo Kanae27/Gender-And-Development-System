@@ -1018,6 +1018,7 @@ html {
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../academic_rank/academic.php">Academic Rank</a></li>
                         <li><a class="dropdown-item" href="../personnel_list/personnel_list.php">Personnel List</a></li>
+                        <li><a class="dropdown-item" href="../signatory/sign.php">Signatory</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -1025,7 +1026,7 @@ html {
                         <i class="fas fa-file-alt me-2"></i> Forms
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../target/target.php">Target Form</a></li>
+                        <li><a class="dropdown-item" href="../target_forms/target.php">Target Form</a></li>
                         <li><a class="dropdown-item" href="../gbp_forms/gbp.php">GPB Form</a></li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#" id="ppasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1055,7 +1056,7 @@ html {
         </div>
         <!-- Bottom controls -->
         <div class="bottom-controls">
-            <a href="#" class="logout-button" onclick="handleLogout(event)">
+            <a href="../index.php" class="logout-button" onclick="handleLogout(event)">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
             </a>

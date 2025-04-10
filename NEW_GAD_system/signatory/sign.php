@@ -18,7 +18,7 @@ $isCentral = isset($_SESSION['username']) && $_SESSION['username'] === 'Central'
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signatory</title>
+    <title>Signatory - GAD System</title>
     <link rel="icon" type="image/x-icon" href="../images/Batangas_State_Logo.ico">
     <script src="../js/common.js"></script>
     <!-- Immediate theme loading to prevent flash -->
@@ -1218,6 +1218,7 @@ html {
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../academic_rank/academic.php">Academic Rank</a></li>
                         <li><a class="dropdown-item" href="../personnel_list/personnel_list.php">Personnel List</a></li>
+                        <li><a class="dropdown-item" href="#">Signatory</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -1226,7 +1227,7 @@ html {
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../target_forms/target.php">Target Form</a></li>
-                        <li><a class="dropdown-item" href="../gbp_forms/gbp.php">GBP Form</a></li>
+                        <li><a class="dropdown-item" href="../gbp_forms/gbp.php">GPB Form</a></li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#" id="ppasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 PPAs Form
@@ -1244,7 +1245,7 @@ html {
                         <i class="fas fa-chart-bar me-2"></i> Reports
                     </a>
                     <ul class="dropdown-menu">                       
-                        <li><a class="dropdown-item" href="../gpb_reports/gbp_reports.php">Annual GBP Reports</a></li>
+                        <li><a class="dropdown-item" href="../gpb_reports/gbp_reports.php">Annual GPB Reports</a></li>
                         <li><a class="dropdown-item" href="../ppas_report/ppas_report.php">Quarterly PPAs Reports</a></li>
                         <li><a class="dropdown-item" href="../ps_atrib/ps.php">PSA Reports</a></li>
                         <li><a class="dropdown-item" href="../ppas_proposal/print_proposal.php">GAD Proposal Reports</a></li>
@@ -1253,9 +1254,8 @@ html {
                 </div>
             </nav>
         </div>
-        <!-- Add inside the sidebar div, after the nav-content div (around line 1061) -->
         <div class="bottom-controls">
-            <a href="#" class="logout-button" onclick="handleLogout(event)">
+            <a href="../index.php" class="logout-button" onclick="handleLogout(event)">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
             </a>

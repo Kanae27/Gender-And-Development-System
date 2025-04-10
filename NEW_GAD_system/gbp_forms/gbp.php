@@ -1600,6 +1600,7 @@ html {
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../academic_rank/academic.php">Academic Rank</a></li>
                         <li><a class="dropdown-item" href="../personnel_list/personnel_list.php">Personnel List</a></li>
+                        <li><a class="dropdown-item" href="../signatory/sign.php">Signatory</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -1626,18 +1627,17 @@ html {
                         <i class="fas fa-chart-bar me-2"></i> Reports
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../gpb_reports/gbp_reports.php">GPB Reports</a></li>
-                        <li><a class="dropdown-item" href="../ppas_reports/ppas_repors.php">PPAs Reports</a></li>
-                        <li><a class="dropdown-item" href="../ps_atrib/psa.php">PSA Reports</a></li>
+                        <li><a class="dropdown-item" href="../gpb_reports/gbp_reports.php">Annual GPB Reports</a></li>
+                        <li><a class="dropdown-item" href="../ppas_report/ppas_report.php">Quarterly PPAs Reports</a></li>
+                        <li><a class="dropdown-item" href="../ps_atrib/ps.php">PSA Reports</a></li>
                         <li><a class="dropdown-item" href="../ppas_proposal/print_proposal.php">GAD Proposal Reports</a></li>
                         <li><a class="dropdown-item" href="../narrative/print_narrative.php">Narrative Reports</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
-        <!-- Add inside the sidebar div, after the nav-content div (around line 1061) -->
         <div class="bottom-controls">
-            <a href="#" class="logout-button" onclick="handleLogout(event)">
+            <a href="../index.php" class="logout-button" onclick="handleLogout(event)">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
             </a>

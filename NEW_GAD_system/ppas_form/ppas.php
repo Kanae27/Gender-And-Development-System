@@ -1908,6 +1908,7 @@ textarea.form-control {
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../academic_rank/academic.php">Academic Rank</a></li>
                         <li><a class="dropdown-item" href="../personnel_list/personnel_list.php">Personnel List</a></li>
+                        <li><a class="dropdown-item" href="../signatory/sign.php">Signatory</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -1943,9 +1944,8 @@ textarea.form-control {
                 </div>
             </nav>
         </div>
-        <!-- Add inside the sidebar div, after the nav-content div (around line 1061) -->
         <div class="bottom-controls">
-            <a href="#" class="logout-button" onclick="handleLogout(event)">
+            <a href="../index.php" class="logout-button" onclick="handleLogout(event)">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
             </a>

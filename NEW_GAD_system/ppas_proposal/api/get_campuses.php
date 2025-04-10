@@ -45,8 +45,8 @@ try {
     $db = new PDO($dsn, $username, $password, $options);
     error_log("Connected to database successfully");
 
-    // First try to get campuses from gad_proposals
-    $query = "SELECT DISTINCT created_by as name FROM gad_proposals ORDER BY created_by";
+    // First try to get campuses from ppas_forms
+    $query = "SELECT DISTINCT campus as name FROM ppas_forms WHERE campus IS NOT NULL ORDER BY campus";
     error_log("Executing query: $query");
               
     $stmt = $db->prepare($query);
@@ -61,8 +61,8 @@ try {
 
     // If no campuses found, try the target table as fallback
     if (empty($campuses)) {
-        $query = "SELECT DISTINCT campus as name FROM target ORDER BY campus";
-        error_log("No campuses found in gad_proposals, trying target table with query: $query");
+        $query = "SELECT DISTINCT campus as name FROM target WHERE campus IS NOT NULL ORDER BY campus";
+        error_log("No campuses found in ppas_forms, trying target table with query: $query");
                 
         $stmt = $db->prepare($query);
         $stmt->execute();

@@ -481,9 +481,9 @@ if (!empty($proposal['strategies'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4" style="padding: 15px 0 0 0; border: 1px solid black;">
+                    <td colspan="4" style="padding: 15px 0 0 0; border: none !important;">
                         <p>Date Signed: _________________</p>
-                        <p style="margin-top: 15px;">Cc: GAD Central</p>
+                        <p style="margin-top: 15px; border: none !important; border-bottom: none !important;">Cc: GAD Central</p>
                     </td>
                 </tr>
             </table>

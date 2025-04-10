@@ -25,7 +25,7 @@ $_SESSION['campus'] = $userCampus;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PPAS Report Generator</title>
+    <title> PPAS Quarterly Reports - GAD System</title>
     <link rel="icon" type="image/x-icon" href="../images/Batangas_State_Logo.ico">
     <script src="../js/common.js"></script>
     <!-- Immediate theme loading to prevent flash -->
@@ -76,6 +76,8 @@ $_SESSION['campus'] = $userCampus;
             --form-select-border: #dee2e6;
             --btn-outline-color: #0d6efd;
             --form-label-color: #333333;
+            --disabled-bg: #e9ecef;
+            --disabled-text: #6c757d;
         }
 
         /* Dark Theme Variables */
@@ -257,9 +259,10 @@ html {
             padding-left: 10px;
         }
         
-        .dropdown-submenu:hover > .dropdown-menu {
+        /* Remove hover-based display */
+        /* .dropdown-submenu:hover > .dropdown-menu {
             display: block;
-        }
+        } */
         
         .dropdown-submenu .dropdown-item {
             padding-left: 30px;
@@ -267,12 +270,20 @@ html {
         
         .dropdown-submenu > a:after {
             display: block;
-            content: "\f105";
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
+            content: ">";
             float: right;
-            width: 10px;
             margin-top: 5px;
+            margin-right: 5px;
+        }
+        
+        /* Add this to hide dropdown-toggle icon */
+        .dropdown-item.dropdown-toggle::after {
+            display: none !important;
+        }
+        
+        /* Add click-based display */
+        .dropdown-submenu.show > .dropdown-menu {
+            display: block;
         }
         
         .dropdown-submenu.pull-left {
@@ -1637,6 +1648,8 @@ html {
             --form-select-border: #dee2e6;
             --btn-outline-color: #0d6efd;
             --form-label-color: #333333;
+            --disabled-bg: #e9ecef;
+            --disabled-text: #6c757d;
         }
 
         [data-bs-theme="light"] .theme-form-select,
@@ -1744,6 +1757,19 @@ html {
             font-weight: 500 !important;
         }
 
+        /* Improve visibility of disabled elements in light mode */
+        [data-bs-theme="light"] .form-select:disabled,
+        [data-bs-theme="light"] .form-control:disabled,
+        [data-bs-theme="light"] .form-control[readonly],
+        [data-bs-theme="light"] select:disabled,
+        [data-bs-theme="light"] input:disabled,
+        [data-bs-theme="light"] textarea:disabled {
+            background-color: var(--disabled-bg) !important;
+            color: var(--disabled-text) !important;
+            border-color: var(--border-color) !important;
+            cursor: not-allowed;
+        }
+
     </style>
 </head>
 <body>
@@ -1780,6 +1806,7 @@ html {
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../academic_rank/academic.php">Academic Rank</a></li>
                         <li><a class="dropdown-item" href="../personnel_list/personnel_list.php">Personnel List</a></li>
+                        <li><a class="dropdown-item" href="../signatory/sign.php">Signatory</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -1788,10 +1815,10 @@ html {
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../target_forms/target.php">Target Form</a></li>
-                        <li><a class="dropdown-item" href="../gbp_forms/gpb.php">GPB Form</a></li>
+                        <li><a class="dropdown-item" href="../gbp_forms/gbp.php">GPB Form</a></li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#" id="ppasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                PPAs Form
+                                PPAs Form <span class="float-end">></span>
                             </a>
                             <ul class="dropdown-menu dropdown-submenu" aria-labelledby="ppasDropdown">
                                 <li><a class="dropdown-item" href="../ppas_form/ppas.php">Main PPAs Form</a></li>
@@ -1815,9 +1842,8 @@ html {
                 </div>
             </nav>
         </div>
-        <!-- Add inside the sidebar div, after the nav-content div (around line 1061) -->
         <div class="bottom-controls">
-            <a href="#" class="logout-button" onclick="handleLogout(event)">
+            <a href="../index.php" class="logout-button" onclick="handleLogout(event)">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
             </a>
@@ -2136,7 +2162,7 @@ html {
                         Swal.close();
                         
                         if (response.success) {
-                            displayReport(response.data, selectedYear, selectedQuarter, signatoriesData);
+                            displayReport(response.data, selectedYear, selectedQuarter, signatoriesData, selectedCampus);
                         } else {
                             Swal.fire({
                                 icon: 'error',
@@ -2165,7 +2191,7 @@ html {
             });
         }
 
-        function displayReport(data, year, quarter, signatories) {
+        function displayReport(data, year, quarter, signatories, selectedCampus) {
             const quarterText = {
                 'Q1': '1st Quarter',
                 'Q2': '2nd Quarter',
@@ -2302,7 +2328,7 @@ html {
                             </td>
                         </tr>
                         <tr class="no-repeat-header">
-                            <td colspan="11" style="padding: 10px; border: 1px solid #000;"> &nbsp; Campus: <?php echo $_SESSION['username']; ?></td>
+                            <td colspan="11" style="padding: 10px; border: 1px solid #000;"> &nbsp; Campus: ${selectedCampus}</td>
                         </tr>
                         <!-- This is the column headers row that can repeat on each page -->
                         <tr style="background-color: #f2f2f2; text-align: center;">
@@ -2481,25 +2507,25 @@ html {
             // Add signature rows - integrated with the main table, more compact
             html += `
                 <tr>
-                    <td colspan="3" style="padding: 2px; text-align: center; border: 1px solid #000; font-size: 7pt;">
+                    <td colspan="3" style="width: 25%; padding: 2px; text-align: center; border: 1px solid #000; font-size: 7pt;">
                         Prepared by:<br>
                         <strong>${preparedByName}</strong><br>
                         ${preparedByPosition}<br>
                         Date Signed: _______________
                     </td>
-                    <td colspan="3" style="padding: 2px; text-align: center; border: 1px solid #000; font-size: 7pt;">
+                    <td colspan="3" style="width: 25%; padding: 2px; text-align: center; border: 1px solid #000; font-size: 7pt;">
                         Checked by:<br>
                         <strong>${checkedByName}</strong><br>
                         ${checkedByPosition}<br>
                         Date Signed: _______________
                     </td>
-                    <td colspan="3" style="padding: 2px; text-align: center; border: 1px solid #000; font-size: 7pt;">
+                    <td colspan="3" style="width: 25%; padding: 2px; text-align: center; border: 1px solid #000; font-size: 7pt;">
                         Verified by:<br>
                         <strong>${verifiedByName}</strong><br>
                         ${verifiedByPosition}<br>
                         Date Signed: _______________
                     </td>
-                    <td colspan="2" style="padding: 2px; text-align: center; border: 1px solid #000; font-size: 7pt;">
+                    <td colspan="3" style="width: 25%; padding: 2px; text-align: center; border: 1px solid #000; font-size: 7pt;">
                         Verified by:<br>
                         <strong>${asstDirectorName}</strong><br>
                         ${asstDirectorPosition}<br>
@@ -2915,6 +2941,40 @@ html {
                     });
                 }
             }, 100);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle dropdown submenu click behavior
+            const dropdownSubmenus = document.querySelectorAll('.dropdown-submenu > a');
+            dropdownSubmenus.forEach(submenu => {
+                submenu.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Close other open submenus
+                    const otherSubmenus = document.querySelectorAll('.dropdown-submenu.show');
+                    otherSubmenus.forEach(menu => {
+                        if (menu !== this.parentElement) {
+                            menu.classList.remove('show');
+                        }
+                    });
+                    
+                    // Toggle current submenu
+                    this.parentElement.classList.toggle('show');
+                });
+            });
+
+            // Close submenus when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown-submenu')) {
+                    const openSubmenus = document.querySelectorAll('.dropdown-submenu.show');
+                    openSubmenus.forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                }
+            });
         });
     </script>
 </body>

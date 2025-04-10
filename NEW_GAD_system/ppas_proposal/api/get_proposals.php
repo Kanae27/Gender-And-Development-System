@@ -23,15 +23,17 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Base query
-    $query = "SELECT id, activity_title FROM gad_proposals 
-              WHERE created_by = :campus AND year = :year";
+    $query = "SELECT gp.proposal_id as id, pf.activity as activity_title 
+              FROM gad_proposals gp
+              JOIN ppas_forms pf ON gp.ppas_form_id = pf.id
+              WHERE pf.campus = :campus AND pf.year = :year";
     
     // Add search condition if search parameter is provided
     if ($search) {
-        $query .= " AND activity_title LIKE :search";
+        $query .= " AND pf.activity LIKE :search";
     }
     
-    $query .= " ORDER BY activity_title ASC";
+    $query .= " ORDER BY pf.activity ASC";
     
     $stmt = $db->prepare($query);
     

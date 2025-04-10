@@ -1745,6 +1745,7 @@ html {
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../academic_rank/academic.php">Academic Rank</a></li>
                         <li><a class="dropdown-item" href="#">Personnel List</a></li>
+                        <li><a class="dropdown-item" href="../signatory/sign.php">Signatory</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -1760,8 +1761,8 @@ html {
                             </a>
                             <ul class="dropdown-menu dropdown-submenu" aria-labelledby="ppasDropdown">
                                 <li><a class="dropdown-item" href="../ppas_form/ppas.php">Main PPAs Form</a></li>
-                                <li><a class="dropdown-item" href="../ppas_proposal/gad_proposal.php">PPAS Proposal</a></li>
-                                <li><a class="dropdown-item" href="../narrative/narrative.php">Narrative Report</a></li>
+                                <li><a class="dropdown-item" href="../ppas_proposal/gad_proposal.php">GAD Proposal Form</a></li>
+                                <li><a class="dropdown-item" href="../narrative/narrative.php">Narrative Form</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -1774,14 +1775,14 @@ html {
                         <li><a class="dropdown-item" href="../gpb_reports/gbp_reports.php">Annual GPB Reports</a></li>
                         <li><a class="dropdown-item" href="../ppas_report/ppas_report.php">Quarterly PPAs Reports</a></li>
                         <li><a class="dropdown-item" href="../ps_atrib/ps.php">PSA Reports</a></li>
-                        <li><a class="dropdown-item" href="#">Quarterly Reports</a></li>
+                        <li><a class="dropdown-item" href="../ppas_proposal/print_proposal.php">GAD Proposal Reports</a></li>
+                        <li><a class="dropdown-item" href="../narrative/print_narrative.php">Narrative Reports</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
-        <!-- Add inside the sidebar div, after the nav-content div (around line 1061) -->
         <div class="bottom-controls">
-            <a href="#" class="logout-button" onclick="handleLogout(event)">
+            <a href="../index.php" class="logout-button" onclick="handleLogout(event)">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
             </a>

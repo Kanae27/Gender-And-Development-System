@@ -25,7 +25,7 @@ $_SESSION['campus'] = $userCampus;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PPAS Forms - GAD System</title>
+    <title>GPB Reports - GAD System</title>
     <link rel="icon" type="image/x-icon" href="../images/Batangas_State_Logo.ico">
     <script src="../js/common.js"></script>
     <!-- Immediate theme loading to prevent flash -->
@@ -1166,6 +1166,7 @@ html {
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../academic_rank/academic.php">Academic Rank</a></li>
                         <li><a class="dropdown-item" href="../personnel_list/personnel_list.php">Personnel List</a></li>
+                        <li><a class="dropdown-item" href="../signatory/sign.php">Signatory</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -1201,9 +1202,8 @@ html {
                 </div>
             </nav>
         </div>
-        <!-- Bottom controls -->
         <div class="bottom-controls">
-            <a href="#" class="logout-button" onclick="handleLogout(event)">
+            <a href="../index.php" class="logout-button" onclick="handleLogout(event)">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
             </a>
