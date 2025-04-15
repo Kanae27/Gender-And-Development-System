@@ -29,15 +29,12 @@ try {
     error_log("Campus ID: " . $campus_id);
     
     // Query to get years for the specified campus
-    $query = "SELECT DISTINCT year FROM gpb_entries WHERE campus COLLATE utf8mb4_general_ci = ? ORDER BY year DESC";
+    $query = "SELECT DISTINCT year FROM gpb_entries WHERE campus = ? ORDER BY year DESC";
     
     $stmt = $pdo->prepare($query);
     $stmt->execute([$campus_id]);
     
     $years = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    // Debug log
-    error_log("Found years for campus '" . $campus_id . "': " . json_encode($years));
     
     echo json_encode([
         'status' => 'success',

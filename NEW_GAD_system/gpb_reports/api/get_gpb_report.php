@@ -70,7 +70,7 @@ try {
         t.total_gaa,
         t.total_gad_fund
     FROM gpb_entries g
-    LEFT JOIN target t ON g.campus COLLATE utf8mb4_general_ci = t.campus COLLATE utf8mb4_general_ci
+    LEFT JOIN target t ON BINARY g.campus = BINARY t.campus 
         AND g.year = t.year
     WHERE g.campus = :campus AND g.year = :year
     ORDER BY g.id";

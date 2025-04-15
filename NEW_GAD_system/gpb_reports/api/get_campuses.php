@@ -19,7 +19,7 @@ require_once '../config.php';
 
 try {
     // Use PDO connection from config.php
-    $query = "SELECT DISTINCT campus as name FROM gpb_entries ORDER BY campus COLLATE utf8mb4_general_ci";
+    $query = "SELECT DISTINCT campus as name FROM gpb_entries ORDER BY campus";
     
     // Debug log
     error_log("Query: " . $query);

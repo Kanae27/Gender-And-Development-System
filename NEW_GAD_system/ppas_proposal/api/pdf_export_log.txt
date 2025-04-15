@@ -1,0 +1,27 @@
+2025-04-14 06:15:47 - Session data: Array
+(
+    [username] => Lipa
+    [user_id] => 1
+    [campus] => Lipa
+)
+
+2025-04-14 06:15:47 - Fetching URL: http://ojt/NEW_GAD_system/ppas_proposal/api/get_proposal_report.php?campus=Lipa&year=2028&proposal_id=30
+2025-04-14 06:15:47 - Setting cookies: PHPSESSID=1hqejd0shr11veje2519pqcefj
+2025-04-14 06:21:08 - Session data: Array
+(
+    [username] => Lipa
+    [user_id] => 1
+    [campus] => Lipa
+)
+
+2025-04-14 06:21:08 - Fetching URL: http://ojt/NEW_GAD_system/ppas_proposal/api/get_proposal_report.php?campus=Lipa&year=2028&proposal_id=30
+2025-04-14 06:21:08 - Setting cookies: PHPSESSID=hfd9lg4l5d7nbr1ckjr0ebcnv7
+2025-04-14 06:25:11 - Session data: Array
+(
+    [username] => Lipa
+    [user_id] => 1
+    [campus] => Lipa
+)
+
+2025-04-14 06:25:11 - Fetching URL: http://ojt/NEW_GAD_system/ppas_proposal/api/get_proposal_report.php?campus=Lipa&year=2028&proposal_id=30
+2025-04-14 06:25:11 - Setting cookies: PHPSESSID=hfd9lg4l5d7nbr1ckjr0ebcnv7

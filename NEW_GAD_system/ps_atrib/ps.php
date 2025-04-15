@@ -243,15 +243,23 @@ html {
             padding-left: 30px;
         }
         
+        /* Replace CSS triangle with Font Awesome icon */
         .dropdown-submenu > a:after {
-            display: block;
-            content: ">";
-            float: right;
-            margin-top: 5px;
-            margin-right: 5px;
+            display: none !important; /* Hide the pseudo-element arrow since we're using an explicit icon */
         }
         
-        /* Hide dropdown-toggle icon */
+        /* Style for the submenu indicator icon */
+        .submenu-indicator {
+            font-size: 0.7rem;
+            color: var(--text-primary);
+            transition: transform 0.2s ease;
+        }
+        
+        .dropdown-submenu.show .submenu-indicator {
+            transform: rotate(90deg);
+            color: var(--accent-color);
+        }
+        
         .dropdown-item.dropdown-toggle::after {
             display: none !important;
         }
@@ -953,7 +961,7 @@ html {
                         <li><a class="dropdown-item" href="../gbp_forms/gbp.php">GPB Form</a></li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#" id="ppasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                PPAs Form <span class="float-end">></span>
+                                PPAs Form <i class="fas fa-chevron-right ms-2 submenu-indicator"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-submenu" aria-labelledby="ppasDropdown">
                                 <li><a class="dropdown-item" href="../ppas_form/ppas.php">Main PPAs Form</a></li>
@@ -1232,32 +1240,37 @@ html {
             document.documentElement.setAttribute('data-bs-theme', savedTheme);
             updateThemeIcon(savedTheme);
 
-            // Handle dropdown submenu click behavior
-            const dropdownSubmenus = document.querySelectorAll('.dropdown-submenu > a');
-            dropdownSubmenus.forEach(submenu => {
-                submenu.addEventListener('click', function(e) {
-                    e.preventDefault();
+            // Handle dropdown submenu
+            document.querySelectorAll('.dropdown-submenu > a').forEach(function(element) {
+                element.addEventListener('click', function(e) {
                     e.stopPropagation();
+                    e.preventDefault();
                     
-                    // Close other open submenus
-                    const otherSubmenus = document.querySelectorAll('.dropdown-submenu.show');
-                    otherSubmenus.forEach(menu => {
-                        if (menu !== this.parentElement) {
-                            menu.classList.remove('show');
+                    // Toggle the submenu
+                    const parentLi = this.parentElement;
+                    parentLi.classList.toggle('show');
+                    
+                    const submenu = this.nextElementSibling;
+                    if (submenu && submenu.classList.contains('dropdown-menu')) {
+                        if (submenu.style.display === 'block') {
+                            submenu.style.display = 'none';
+                        } else {
+                            submenu.style.display = 'block';
                         }
-                    });
-                    
-                    // Toggle current submenu
-                    this.parentElement.classList.toggle('show');
+                    }
                 });
             });
-
+            
             // Close submenus when clicking outside
             document.addEventListener('click', function(e) {
                 if (!e.target.closest('.dropdown-submenu')) {
                     const openSubmenus = document.querySelectorAll('.dropdown-submenu.show');
                     openSubmenus.forEach(menu => {
                         menu.classList.remove('show');
+                        const submenu = menu.querySelector('.dropdown-menu');
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                        }
                     });
                 }
             });
@@ -1322,24 +1335,6 @@ html {
                     console.log(`Tab changed to quarter ${quarter}`);
                     // Refresh data for the selected quarter
                     await initializeQuarter(quarter);
-                });
-            });
-            
-            // Handle dropdown submenu
-            document.querySelectorAll('.dropdown-submenu > a').forEach(function(element) {
-                element.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    
-                    // Toggle the submenu
-                    const submenu = this.nextElementSibling;
-                    if (submenu && submenu.classList.contains('dropdown-menu')) {
-                        if (submenu.style.display === 'block') {
-                            submenu.style.display = 'none';
-                        } else {
-                            submenu.style.display = 'block';
-                        }
-                    }
                 });
             });
             

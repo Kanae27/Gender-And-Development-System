@@ -313,3 +313,9 @@
 2025-04-03 00:05:01 - Table columns: id, campus, year, quarter, gender_issue_id, project, program, activity, location, start_date, end_date, start_time, end_time, total_duration_hours, lunch_break, students_male, students_female, faculty_male, faculty_female, total_internal_male, total_internal_female, external_type, external_male, external_female, total_male, total_female, total_beneficiaries, approved_budget, source_of_budget, ps_attribution, sdgs, created_at, updated_at
 2025-04-03 00:05:01 - Total records found: 12
 2025-04-03 00:05:01 - Found 12 forms
+2025-04-14 01:13:11 - User: Lipa accessed get_ppas_forms.php
+2025-04-14 01:13:11 - DB Connection successful
+2025-04-14 01:13:11 - Table ppas_forms exists
+2025-04-14 01:13:11 - Table columns: id, campus, year, quarter, gender_issue_id, project, program, activity, location, start_date, end_date, start_time, end_time, total_duration_hours, lunch_break, students_male, students_female, faculty_male, faculty_female, total_internal_male, total_internal_female, external_type, external_male, external_female, total_male, total_female, total_beneficiaries, approved_budget, source_of_budget, ps_attribution, sdgs, created_at, updated_at
+2025-04-14 01:13:11 - Total records found: 12
+2025-04-14 01:13:11 - Found 12 forms

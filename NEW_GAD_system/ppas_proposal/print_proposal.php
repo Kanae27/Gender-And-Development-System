@@ -93,6 +93,8 @@ function getConnection() {
             --sidebar-width: 280px;
             --accent-color: #6a1b9a;
             --accent-hover: #4a148c;
+            --scrollbar-thumb: #cccccc;
+            --scrollbar-thumb-hover: #aaaaaa;
         }
         
         /* Light Theme Variables */
@@ -228,27 +230,12 @@ function getConnection() {
         }
 
         body {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 12pt;
-            line-height: 1.2;
-            color: black;
-            background: white;
-            /* Set margins according to the specifications */
-            margin-top: 1.52cm;
-            margin-bottom: 2cm;
-            margin-left: 1.78cm;
-            margin-right: 2.03cm;
-            padding: 0;
-            /* Remove border */
-            border: none;
-            box-sizing: border-box;
-            min-height: calc(100% - 0.82cm); /* Adjusted for footer margin */
-            background-clip: padding-box;
-            box-shadow: none;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            opacity: 1;
-            transition: opacity 0.05s ease-in-out;
+            padding: 20px;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;     /* Firefox */
+            overflow: hidden;
         }
 
         body.fade-out {
@@ -609,6 +596,7 @@ html {
             align-items: center;
             gap: 15px;
             margin-bottom: 1.5rem;
+            margin-top: 10px; /* Add this to align with top of the sidebar */
         }
 
         .page-title i {
@@ -654,9 +642,8 @@ html {
 
             .main-content {
                 margin-left: 0;
-                padding: 70px 15px 15px 15px;
-                border-radius: 0;
-                box-shadow: none;
+                padding: 1.5rem;
+                max-height: calc(100vh - 60px);
             }
 
             .mobile-nav-toggle {
@@ -2555,30 +2542,101 @@ input[list] {
             margin-top: 20px;
             padding-top: 5px;
         }
-        
-        /* Page and section breaks */
-        .page-break {
-            page-break-before: always;
+    </style>
+    <style>
+        /* Dropdown submenu styles */
+        .dropdown-submenu {
+            position: relative;
         }
         
-        .section-break {
-            page-break-before: always;
-            mso-break-type: section-break;
+        .dropdown-submenu > .dropdown-menu {
+            position: static !important;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: 0;
+            border-radius: 0.25rem;
+            display: none;
+            padding-left: 10px;
         }
         
-        /* Content dividers to ensure proper page breaks */
-        .major-section {
-            page-break-inside: avoid;
+        .dropdown-submenu .dropdown-item {
+            padding-left: 30px;
         }
         
-        /* Control table break behavior */
-        tr { 
-            page-break-inside: avoid;
+        /* Hide the pseudo-element arrow since we're using an explicit icon */
+        .dropdown-submenu > a:after {
+            display: none !important;
         }
         
-        /* Add minimum page height to ensure footer placement */
-        .WordSection1 {
-            min-height: 28cm; /* Ensure enough space for footer */
+        /* Style for the submenu indicator icon */
+        .submenu-indicator {
+            font-size: 0.7rem;
+            color: var(--text-primary);
+            transition: transform 0.2s ease;
+        }
+        
+        .dropdown-submenu.show .submenu-indicator {
+            transform: rotate(90deg);
+            color: var(--accent-color);
+        }
+        
+        /* Add click-based display */
+        .dropdown-submenu.show > .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+        
+        .dropdown-submenu.pull-left > .dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            border-radius: 0.25rem;
+        }
+        /* End of dropdown submenu styles */
+    </style>
+    <!-- Add just before closing head tag -->
+    <style>
+        /* Interface elements - System font */
+        .form-control, .btn, label, input, select, textarea, .sidebar,
+        .nav-link, .card-title, h1, h2, h3, h4, h5, h6 {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        
+        /* Font Awesome icons */
+        .fas, .fab, .far, .fa {
+            font-family: "Font Awesome 5 Free";
+        }
+        
+        .fab {
+            font-family: "Font Awesome 5 Brands";
+        }
+        
+        /* Fix for dark mode */
+        [data-bs-theme="dark"] body {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+        }
+        
+        [data-bs-theme="dark"] .sidebar {
+            background-color: var(--sidebar-bg) !important;
+            color: var(--text-primary) !important;
+        }
+        
+        [data-bs-theme="dark"] .card {
+            background-color: var(--card-bg) !important;
+            color: var(--text-primary) !important;
+        }
+        
+        /* Fix overall body font to match dashboard.php */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+        }
+        
+        /* Keep Times New Roman only for print elements */
+        .print-content, .print-view, .print-only, .printable, #reportPreview, .proposal-container {
+            font-family: 'Times New Roman', Times, serif !important;
         }
     </style>
 </head>
@@ -2628,7 +2686,7 @@ input[list] {
                         <li><a class="dropdown-item" href="../gbp_forms/gbp.php">GPB Form</a></li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#" id="ppasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                PPAs Form
+                                PPAs Form <i class="fas fa-chevron-right ms-2 submenu-indicator"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-submenu" aria-labelledby="ppasDropdown">
                                 <li><a class="dropdown-item" href="../ppas_form/ppas.php">Main PPAs Form</a></li>
@@ -2728,14 +2786,12 @@ input[list] {
                         <button class="btn btn-outline-primary" onclick="printReport()">
                             <i class="fas fa-print"></i> Print
                         </button>
-                        <button class="btn btn-outline-info" onclick="exportToWord()">
-                            <i class="fas fa-file-word"></i> Word
-                        </button>
+                       
                     </div>
                 </div>
                 <div id="reportPreview" class="table-responsive">
                     <!-- Proposal content will be loaded here -->
-                    <div class="text-center text-muted py-5">
+                    <div class="text-center text-muted py-5" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;">
                         <i class="fas fa-file-alt fa-3x mb-3"></i>
                         <p>Select a campus, year, and proposal to generate the preview</p>
                     </div>
@@ -2929,16 +2985,57 @@ input[list] {
             });
 
             // Handle dropdown submenu on hover for desktop
+            /*
             if (window.matchMedia('(min-width: 992px)').matches) {
-                $('.dropdown-submenu').hover(
-                    function() {
-                        $(this).children('.dropdown-menu').stop(true, true).fadeIn(200);
-                    },
-                    function() {
-                        $(this).children('.dropdown-menu').stop(true, true).fadeOut(200);
+                $('.dropdown-submenu').on('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $(this).children('.dropdown-menu').stop(true, true).fadeToggle(200);
+                });
+                
+                // Close submenus when clicking outside
+                $(document).on('click', function(e) {
+                    if (!$(e.target).closest('.dropdown-submenu').length) {
+                        $('.dropdown-submenu .dropdown-menu').fadeOut(200);
                     }
-                );
+                });
             }
+            */
+            
+            // Handle dropdown submenu click behavior
+            document.querySelectorAll('.dropdown-submenu > a').forEach(function(element) {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Toggle the submenu
+                    const parentLi = this.parentElement;
+                    parentLi.classList.toggle('show');
+                    
+                    const submenu = this.nextElementSibling;
+                    if (submenu && submenu.classList.contains('dropdown-menu')) {
+                        if (submenu.style.display === 'block') {
+                            submenu.style.display = 'none';
+                        } else {
+                            submenu.style.display = 'block';
+                        }
+                    }
+                });
+            });
+            
+            // Close submenus when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown-submenu')) {
+                    const openSubmenus = document.querySelectorAll('.dropdown-submenu.show');
+                    openSubmenus.forEach(menu => {
+                        menu.classList.remove('show');
+                        const submenu = menu.querySelector('.dropdown-menu');
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                        }
+                    });
+                }
+            });
         });
 
         function loadCampusOptions() {
@@ -2954,8 +3051,9 @@ input[list] {
                     method: 'GET',
                     dataType: 'json',
                     success: function(response) {
-                            campusSelect.empty().append('<option value="">Select Campus</option>');
+                        campusSelect.empty().append('<option value="">Select Campus</option>');
                         if (response.status === 'success' && response.data) {
+                            console.log('Available campuses:', response.data);
                             response.data.forEach(function(campus) {
                                 if (campus.name && campus.name !== 'null' && campus.name !== 'Default Campus') {
                                     campusSelect.append(`<option value="${campus.name}">${campus.name}</option>`);
@@ -2963,6 +3061,14 @@ input[list] {
                             });
                         }
                         campusSelect.prop('disabled', false);
+                        
+                        // Add a change event listener to the campus dropdown
+                        campusSelect.off('change').on('change', function() {
+                            console.log("Campus changed to:", $(this).val());
+                            // Clear previous report when campus changes
+                            $('#reportPreview').empty();
+                            loadYearOptions();
+                        });
                     },
                     error: function(xhr, status, error) {
                         console.error('Error loading campuses:', error);
@@ -3083,7 +3189,89 @@ input[list] {
                     <p class="mt-2">Loading proposal...</p>
                 </div>
             `);
-
+            
+            // First, if central user, fetch the campus signatories
+            const isCentral = <?php echo $isCentral ? 'true' : 'false' ?>;
+            if (isCentral) {
+                console.log("Central user, fetching signatories for campus:", selectedCampus);
+                
+                // Reset window.campusSignatories
+                window.campusSignatories = null;
+                
+                // Don't block the whole process on the debugging API call
+                try {
+                    $.ajax({
+                        url: 'api/check_campus_names.php',
+                        method: 'GET',
+                        dataType: 'json',
+                        timeout: 5000, // 5 second timeout
+                        success: function(response) {
+                            console.log("Campus names in database:", response.data);
+                            if (response.all_signatories) {
+                                console.log("All signatories in database:", response.all_signatories);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error checking campus names:", error);
+                            console.error("Response:", xhr.responseText);
+                        }
+                    });
+                } catch (e) {
+                    console.error("Exception in check_campus_names call:", e);
+                }
+                
+                // First, fetch the signatories
+                $.ajax({
+                    url: 'api/get_campus_signatories.php',
+                    method: 'GET',
+                    data: { campus: selectedCampus },
+                    dataType: 'json',
+                    timeout: 10000, // 10 second timeout
+                    success: function(sigResponse) {
+                        console.log("Signatories response:", sigResponse);
+                        if (sigResponse.status === 'success') {
+                            // Store the signatories in the window object for use in the displayProposal function
+                            window.campusSignatories = sigResponse.data;
+                            console.log("Successfully set campusSignatories:", window.campusSignatories);
+                            
+                            // Verify the structure
+                            console.log("Signatory name1:", window.campusSignatories.name1);
+                            console.log("Signatory name2:", window.campusSignatories.name2);
+                            console.log("Signatory name3:", window.campusSignatories.name3);
+                            console.log("Signatory name4:", window.campusSignatories.name4);
+                        } else {
+                            console.error('Error loading signatories:', sigResponse.message);
+                            window.campusSignatories = null;
+                        }
+                        
+                        // After fetching signatories (success or failure), fetch the proposal
+                        fetchProposalDetails(selectedCampus, selectedYear, selectedProposalId);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error loading signatories:', error);
+                        console.error('Response:', xhr.responseText);
+                        
+                        // Create dummy signatories with "API Error" marker
+                        window.campusSignatories = {
+                            name1: 'API Error - Check Console',
+                            name2: 'API Error - Check Console',
+                            name3: 'API Error - Check Console',
+                            name4: 'API Error - Check Console',
+                            name5: 'API Error - Check Console',
+                            campus: selectedCampus
+                        };
+                        
+                        // Even if signatories fetch fails, continue with proposal
+                        fetchProposalDetails(selectedCampus, selectedYear, selectedProposalId);
+                    }
+                });
+            } else {
+                // Non-central users can directly fetch proposal
+                fetchProposalDetails(selectedCampus, selectedYear, selectedProposalId);
+            }
+        }
+        
+        function fetchProposalDetails(selectedCampus, selectedYear, selectedProposalId) {
             $.ajax({
                 url: 'api/get_proposal_details.php',
                 method: 'GET',
@@ -3171,6 +3359,17 @@ input[list] {
             // Dynamically check the current theme state
             const isDarkMode = document.documentElement.getAttribute('data-bs-theme') === 'dark';
             const themeClass = isDarkMode ? 'dark-mode-proposal' : 'light-mode-proposal';
+            
+            // Get the selected campus
+            const selectedCampus = $('#campus').val();
+            
+            // Fetch signatories for the selected campus when in central mode
+            const isCentral = <?php echo $isCentral ? 'true' : 'false' ?>;
+            
+            // Log whether we have campus signatories
+            if (isCentral) {
+                console.log("Central user in displayProposal, campusSignatories:", window.campusSignatories);
+            }
             
             // Use theme class without inline styling to allow CSS to control colors
             let html = `
@@ -3405,43 +3604,43 @@ input[list] {
                     </div>
 
                     <p><strong>XII. Monitoring and Evaluation Mechanics / Plan:</strong></p>
-                    <table style="width: 100%; border-collapse: collapse;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 10pt;">
                         <tr>
-                            <th style="border: 0.1px solid black; padding: 5px;">Objectives</th>
-                            <th style="border: 0.1px solid black; padding: 5px;">Performance Indicators</th>
-                            <th style="border: 0.1px solid black; padding: 5px;">Baseline Data</th>
-                            <th style="border: 0.1px solid black; padding: 5px;">Performance Target</th>
-                            <th style="border: 0.1px solid black; padding: 5px;">Data Source</th>
-                            <th style="border: 0.1px solid black; padding: 5px;">Collection Method</th>
-                            <th style="border: 0.1px solid black; padding: 5px;">Frequency</th>
-                            <th style="border: 0.1px solid black; padding: 4px;">Responsible</th>
+                            <th style="border: 0.1px solid black; padding: 3px; word-break: break-word; width: 13%;">Objectives</th>
+                            <th style="border: 0.1px solid black; padding: 3px; word-break: break-word; width: 13%;">Performance Indicators</th>
+                            <th style="border: 0.1px solid black; padding: 3px; word-break: break-word; width: 12%;">Baseline Data</th>
+                            <th style="border: 0.1px solid black; padding: 3px; word-break: break-word; width: 13%;">Performance Target</th>
+                            <th style="border: 0.1px solid black; padding: 3px; word-break: break-word; width: 12%;">Data Source</th>
+                            <th style="border: 0.1px solid black; padding: 3px; word-break: break-word; width: 13%;">Collection Method</th>
+                            <th style="border: 0.1px solid black; padding: 3px; word-break: break-word; width: 10%;">Frequency</th>
+                            <th style="border: 0.1px solid black; padding: 3px; word-break: break-word; width: 14%;">Responsible</th>
                         </tr>
                         ${(Array.isArray(sections.monitoring_evaluation)) 
                             ? sections.monitoring_evaluation.map(item => {
                                 if (Array.isArray(item) && item.length >= 8) {
                                     return `
                                         <tr>
-                                            <td style="border: 0.1px solid black; padding: 5px;">${item[0] || 'N/A'}</td>
-                                            <td style="border: 0.1px solid black; padding: 5px;">${item[1] || 'N/A'}</td>
-                                            <td style="border: 0.1px solid black; padding: 5px;">${item[2] || 'N/A'}</td>
-                                            <td style="border: 0.1px solid black; padding: 5px;">${item[3] || 'N/A'}</td>
-                                            <td style="border: 0.1px solid black; padding: 5px;">${item[4] || 'N/A'}</td>
-                                            <td style="border: 0.1px solid black; padding: 5px;">${item[5] || 'N/A'}</td>
-                                            <td style="border: 0.1px solid black; padding: 5px;">${item[6] || 'N/A'}</td>
-                                            <td style="border: 0.1px solid black; padding: 5px;">${item[7] || 'N/A'}</td>
+                                            <td style="border: 0.1px solid black; padding: 3px; vertical-align: top; word-break: break-word;">${item[0] || 'N/A'}</td>
+                                            <td style="border: 0.1px solid black; padding: 3px; vertical-align: top; word-break: break-word;">${item[1] || 'N/A'}</td>
+                                            <td style="border: 0.1px solid black; padding: 3px; vertical-align: top; word-break: break-word;">${item[2] || 'N/A'}</td>
+                                            <td style="border: 0.1px solid black; padding: 3px; vertical-align: top; word-break: break-word;">${item[3] || 'N/A'}</td>
+                                            <td style="border: 0.1px solid black; padding: 3px; vertical-align: top; word-break: break-word;">${item[4] || 'N/A'}</td>
+                                            <td style="border: 0.1px solid black; padding: 3px; vertical-align: top; word-break: break-word;">${item[5] || 'N/A'}</td>
+                                            <td style="border: 0.1px solid black; padding: 3px; vertical-align: top; word-break: break-word;">${item[6] || 'N/A'}</td>
+                                            <td style="border: 0.1px solid black; padding: 3px; vertical-align: top; word-break: break-word;">${item[7] || 'N/A'}</td>
                                         </tr>
                                     `;
                                 } else {
                                     return `
                                         <tr>
-                                            <td style="border: 0.1px solid black; padding: 5px;" colspan="8">Invalid monitoring item</td>
+                                            <td style="border: 0.1px solid black; padding: 3px; word-break: break-word;" colspan="8">Invalid monitoring item</td>
                                         </tr>
                                     `;
                                 }
                             }).join('')
                             : `
                                 <tr>
-                                    <td style="border: 0.1px solid black; padding: 5px;" colspan="8">No monitoring data available</td>
+                                    <td style="border: 0.1px solid black; padding: 3px; word-break: break-word;" colspan="8">No monitoring data available</td>
                                 </tr>
                             `
                         }
@@ -3464,14 +3663,30 @@ input[list] {
                         <td style="width: 50%; border-top: 0.1px solid black; border-left: 0.1px solid black; border-right: 0.1px solid black; border-bottom: 0.1px solid black; padding: 10px;">
                             <p style="margin: 0;">Prepared by:</p>
                             <br><br><br>
-                            <p style="margin: 0; text-align: center;"><strong><?php echo htmlspecialchars($signatories['name1'] ?? 'RICHELLE M. SULIT'); ?></strong></p>
+                            <p style="margin: 0; text-align: center;"><strong>${(() => {
+                                if (isCentral && window.campusSignatories) {
+                                    console.log('Using campus signatory name1:', window.campusSignatories.name1);
+                                    return window.campusSignatories.name1 || 'N/A';
+                                } else {
+                                    console.log('Using PHP signatory name1: <?php echo json_encode($signatories['name1'] ?? 'N/A'); ?>');
+                                    return `<?php echo htmlspecialchars($signatories['name1'] ?? 'N/A'); ?>`;
+                                }
+                            })()}</strong></p>
                             <p style="margin: 0; text-align: center;">GAD Head Secretariat</p>
                             <p style="margin: 0; text-align: center; border: none;">Date Signed:_____________</p>
                         </td>
                         <td style="width: 50%; border-top: 0.1px solid black; border-right: 0.1px solid black; border-bottom: 0.1px solid black; padding: 10px;">
                             <p style="margin: 0;">Reviewed by:</p>
                             <br><br><br>
-                            <p style="margin: 0; text-align: center;"><strong><?php echo htmlspecialchars($signatories['name2'] ?? 'REXON S. HERNANDEZ'); ?></strong></p>
+                            <p style="margin: 0; text-align: center;"><strong>${(() => {
+                                if (isCentral && window.campusSignatories) {
+                                    console.log('Using campus signatory name2:', window.campusSignatories.name2);
+                                    return window.campusSignatories.name2 || 'N/A';
+                                } else {
+                                    console.log('Using PHP signatory name2: <?php echo json_encode($signatories['name2'] ?? 'N/A'); ?>');
+                                    return `<?php echo htmlspecialchars($signatories['name2'] ?? 'N/A'); ?>`;
+                                }
+                            })()}</strong></p>
                             <p style="margin: 0; text-align: center;">Head, Extension Services</p>
                             <p style="margin: 0; text-align: center; border: none;">Date Signed:_____________</p>
                         </td>
@@ -3480,7 +3695,15 @@ input[list] {
                         <td style="width: 50%; border-left: 0.1px solid black; border-right: 0.1px solid black; border-bottom: 0.1px solid black; padding: 10px;">
                             <p style="margin: 0;">Recommending Approval:</p>
                             <br><br><br>
-                            <p style="margin: 0; text-align: center;"><strong><?php echo htmlspecialchars($signatories['name3'] ?? 'VICE CHANCELLOR FOR RDEXT'); ?></strong></p>
+                            <p style="margin: 0; text-align: center;"><strong>${(() => {
+                                if (isCentral && window.campusSignatories) {
+                                    console.log('Using campus signatory name3:', window.campusSignatories.name3);
+                                    return window.campusSignatories.name3 || 'N/A';
+                                } else {
+                                    console.log('Using PHP signatory name3: <?php echo json_encode($signatories['name3'] ?? 'N/A'); ?>');
+                                    return `<?php echo htmlspecialchars($signatories['name3'] ?? 'N/A'); ?>`;
+                                }
+                            })()}</strong></p>
                             <p style="margin: 0; text-align: center;">Vice Chancellor for Research, Development and Extension Services</p>
                             <p style="margin: 0; text-align: center; border: none;">Date Signed:_____________</p>
                         </td>
@@ -3492,7 +3715,15 @@ input[list] {
                         <td colspan="2" style="text-align: center; border-left: 0.1px solid black; border-right: 0.1px solid black; border-bottom: 0.1px solid black; padding: 10px;">
                             <p style="margin: 0;">Approved by:</p>
                             <br><br><br>
-                            <p style="margin: 0; text-align: center;"><strong><?php echo htmlspecialchars($signatories['name4'] ?? 'CHANCELLOR'); ?></strong></p>
+                            <p style="margin: 0; text-align: center;"><strong>${(() => {
+                                if (isCentral && window.campusSignatories) {
+                                    console.log('Using campus signatory name4:', window.campusSignatories.name4);
+                                    return window.campusSignatories.name4 || 'N/A';
+                                } else {
+                                    console.log('Using PHP signatory name4: <?php echo json_encode($signatories['name4'] ?? 'N/A'); ?>');
+                                    return `<?php echo htmlspecialchars($signatories['name4'] ?? 'N/A'); ?>`;
+                                }
+                            })()}</strong></p>
                             <p style="margin: 0; text-align: center;">Chancellor</p>
                             <p style="margin: 0; text-align: center; border: none;">Date Signed:_____________</p>
                         </td>
@@ -3872,20 +4103,14 @@ input[list] {
                     </div>
                     
                     <!-- Footer with tracking number and page numbers -->
-                    <div style="mso-element:footer; mso-first-footer:yes;" id="f1">
-                        <p style="border-top: solid black 5.0pt; width: 80%; margin-left: auto; margin-right: auto; padding-top: 0.5cm;">
-                            <span style="font-family:'Times New Roman'; font-size:12pt; float:left; margin-top: 0.5cm;">Tracking Number___________________</span>
-                            <span style="font-family:'Times New Roman'; font-size:12pt; float:right; margin-top: 0.5cm;">Page 1 of <span style="mso-field-code:' NUMPAGES '"></span></span>
-                            <br style="clear:both;"/>
-                        </p>
-                    </div>
-                    
-                    <!-- Footer for other pages -->
-                    <div style="mso-element:footer" id="f2">
-                        <p style="border-top: solid black 5.0pt; width: 80%; margin-left: auto; margin-right: auto; padding-top: 0.5cm;">
-                            <span style="font-family:'Times New Roman'; font-size:12pt; float:right; margin-top: 0.5cm;">Page <span style="mso-field-code:' PAGE '"></span> of <span style="mso-field-code:' NUMPAGES '"></span></span>
-                            <br style="clear:both;"/>
-                        </p>
+                    <div style="mso-element:footer" id="f1">
+                        <table width="100%" style="border: none; border-collapse: collapse;">
+                            <tr>
+                                <td style="border: none; padding-top: 5px;">
+                                    <p style="margin: 0;"></p>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </body>
                 </html>
@@ -3896,7 +4121,10 @@ input[list] {
             
             setTimeout(() => {
                 printWindow.print();
-                // Don't close the window automatically to allow user to change printer settings
+                // Add event listener to close the window after printing is complete
+                printWindow.addEventListener('afterprint', function() {
+                    printWindow.close();
+                });
             }, 250);
         }
 
@@ -3925,8 +4153,11 @@ input[list] {
         // Function to reload the current proposal with the current theme
         function loadSelectedProposal() {
             const proposalId = $('#proposal_id').val();
-            if (proposalId) {
-                fetchProposalDetails(proposalId);
+            const selectedCampus = $('#campus').val();
+            const selectedYear = $('#year').val();
+            
+            if (proposalId && selectedCampus && selectedYear) {
+                fetchProposalDetails(selectedCampus, selectedYear, proposalId);
             }
         }
 
@@ -4009,201 +4240,101 @@ input[list] {
             });
 
             try {
-                // Get a direct copy of the printable HTML rather than clone and modify
-                // This ensures Word and print versions use the exact same source
+                // Get report content
+                let reportContent = $('#reportPreview').html();
                 
-                // Log parameters for debugging
-                console.log('Export parameters:', {
-                    campus: selectedCampus,
-                    year: selectedYear, 
-                    proposal_id: selectedProposalId,
-                    format: 'word'
-                });
+                // Process the report content to be Word-friendly
+                // Fix checkboxes to display in one row
+                reportContent = reportContent.replace(/<input[^>]*type=["']checkbox["'][^>]*>/g, 
+                    '<span style="font-family:Wingdings; font-size:12pt;">☐</span>');
                 
-                // Use exact HTML from print version without any modifications
-                const htmlContent = $('#reportPreview').html();
+                // Fix any empty divs
+                reportContent = reportContent.replace(/<div[^>]*>\s*<\/div>/g, '');
                 
-                // Process the HTML to ensure compatibility with Word
-                let processedContent = htmlContent
-                    .replace(/<div[^>]*>\s*<\/div>/g, '') // Remove empty divs
-                    .replace(/\s+/g, ' ') // Normalize whitespace
-                    .replace(/<(\/?)span[^>]*>/g, '<$1span>'); // Simplify span tags
-                
-                // Add section divisions for major content blocks to help with pagination
-                processedContent = processedContent
-                    // Add class to major section headers to avoid page breaks in the middle
-                    .replace(/<h3([^>]*)>(.*?)<\/h3>/g, '<h3$1 class="major-section">$2</h3>')
-                    // Add class to tables to avoid page breaks in the middle of tables where possible
-                    .replace(/<table([^>]*)>/g, '<table$1 class="major-section">');
-                
-                // Create Word document HTML with the formatted content
+                // Create a Word document with proper formatting
                 const html = `
-                    <html xmlns:o='urn:schemas-microsoft-com:office:office' 
-                          xmlns:w='urn:schemas-microsoft-com:office:word' 
-                          xmlns='http://www.w3.org/TR/REC-html40'>
+                    <html xmlns:o="urn:schemas-microsoft-com:office:office"
+                          xmlns:w="urn:schemas-microsoft-com:office:word"
+                          xmlns="http://www.w3.org/TR/REC-html40">
                     <head>
-                        <meta charset='utf-8'>
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
                         <title>GAD Proposal</title>
-                        <xml>
-                            <w:WordDocument>
-                                <w:View>Print</w:View>
-                                <w:Zoom>100</w:Zoom>
-                                <w:DoNotOptimizeForBrowser/>
-                                <w:DefaultTabStop>36pt</w:DefaultTabStop>
-                                <w:DrawingGridHorizontalSpacing>9pt</w:DrawingGridHorizontalSpacing>
-                                <w:DrawingGridVerticalSpacing>9pt</w:DrawingGridVerticalSpacing>
-                                <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
-                                <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
-                                <w:BreakWrappedTables/>
-                                <w:SnapToGridInCell/>
-                                <w:WrapTextWithPunct/>
-                                <w:UseAsianBreakRules/>
-                                <w:DontGrowAutofit/>
-                                <w:DontUseIndentAsNumberingTabStop/>
-                                <w:FELineBreak11/>
-                                <w:WW11IndentRules/>
-                                <w:UseFELayout/>
-                            </w:WordDocument>
-                        </xml>
                         <style>
-                            /* Page setup */
                             @page {
-                                size: 21.59cm 33.02cm; /* Folio paper size */
-                                mso-page-orientation: portrait;
-                                margin: 1.52cm 2.03cm 2cm 1.78cm; /* Top Right Bottom Left */
-                                mso-header-margin: 1.27cm;
-                                mso-footer-margin: 0.82cm;
-                                mso-gutter-margin: 0cm;
-                                mso-vertical-align: top;
+                                mso-page-border-surround-header: yes;
+                                mso-page-border-surround-footer: yes;
+                                mso-page-border-display: yes;
                             }
                             
-                            /* Different first page setting */
-                            @page :first {
+                            @page Section1 {
+                                size: 8.5in 13in;
+                                margin: 1.52cm 2.03cm 3cm 1.78cm;
                                 mso-header-margin: 1.27cm;
-                                mso-footer-margin: 0.82cm;
-                                margin: 1.52cm 2.03cm 2cm 1.78cm; /* Top Right Bottom Left */
+                                mso-footer-margin: 1.5cm;
+                                mso-footer: f1;
+                                mso-paper-source: 0;
+                                mso-border-top: solid black 1.0pt;
+                                mso-border-left: solid black 1.0pt;
+                                mso-border-right: solid black 1.0pt;
+                                mso-border-bottom: solid black 1.0pt;
                             }
                             
-                            /* Word specific settings */
-                            .WordSection1 {
+                            div.Section1 {
                                 page: Section1;
                             }
-                            div.WordSection1 {page:WordSection1;}
                             
-                            /* Set paper size explicitly */
-                            @page WordSection1 {
-                                size: 21.59cm 33.02cm;
-                                margin: 1.52cm 2.03cm 2cm 1.78cm;
-                                mso-header-margin: 1.27cm;
-                                mso-footer-margin: 0.82cm;
-                                mso-gutter-margin: 0cm;
-                                mso-paper-source: 0;
-                            }
-                            
-                            /* Basic styling */
                             body {
-                                font-family: 'Times New Roman', Times, serif;
+                                font-family: 'Times New Roman', serif;
                                 font-size: 12pt;
-                                line-height: 1.15;
-                                margin: 0;
-                                padding: 0;
                             }
                             
-                            /* Table styles */
                             table {
-                                width: 100%;
                                 border-collapse: collapse;
-                                border: 1px solid black;
+                                width: 100%;
                             }
                             
                             td, th {
                                 border: 1px solid black;
-                                padding: 4px;
+                                padding: 4pt 6pt;
                                 vertical-align: top;
                             }
                             
-                            /* Header table */
-                            .header-table {
-                                margin-bottom: 10px;
-                            }
-                            
-                            /* Section headers (with Roman numerals) */
-                            h3 {
-                                margin-top: 10px;
-                                margin-bottom: 5px;
-                                font-weight: bold;
-                            }
-                            
-                            /* Lists */
-                            ul, ol {
-                                margin-top: 5px;
-                                margin-bottom: 5px;
-                            }
-                            
-                            /* Checkboxes */
-                            input[type="checkbox"] {
-                                border: 1px solid black;
-                            }
-                            
-                            /* Footer */
-                            .footer {
-                                border-top: 1px solid black;
-                                margin-top: 20px;
-                                padding-top: 5px;
-                            }
-                            
-                            /* Page and section breaks */
-                            .page-break {
-                                page-break-before: always;
-                            }
-                            
-                            .section-break {
-                                page-break-before: always;
-                                mso-break-type: section-break;
-                            }
-                            
-                            /* Content dividers to ensure proper page breaks */
-                            .major-section {
-                                page-break-inside: avoid;
-                            }
-                            
-                            /* Control table break behavior */
-                            tr { 
-                                page-break-inside: avoid;
-                            }
-                            
-                            /* Add minimum page height to ensure footer placement */
-                            .WordSection1 {
-                                min-height: 28cm; /* Ensure enough space for footer */
+                            /* Footer styling */
+                            p.MsoFooter {
+                                margin: 0;
+                                font-family: 'Times New Roman', serif;
+                                font-size: 12pt;
                             }
                         </style>
                     </head>
                     <body>
-                        <div class="WordSection1">
-                            ${processedContent}
+                        <div class="Section1">
+                            ${reportContent}
                         </div>
                         
-                        <!-- Footer with tracking number and page numbers -->
-                        <div style="mso-element:footer; mso-first-footer:yes;" id="f1">
-                            <p style="border-top: solid black 5.0pt; width: 80%; margin-left: auto; margin-right: auto; padding-top: 0.5cm;">
-                                <span style="font-family:'Times New Roman'; font-size:12pt; float:left; margin-top: 0.5cm;">Tracking Number___________________</span>
-                                <span style="font-family:'Times New Roman'; font-size:12pt; float:right; margin-top: 0.5cm;">Page 1 of <span style="mso-field-code:' NUMPAGES '"></span></span>
-                                <br style="clear:both;"/>
-                            </p>
-                        </div>
-                        
-                        <!-- Footer for other pages -->
-                        <div style="mso-element:footer" id="f2">
-                            <p style="border-top: solid black 5.0pt; width: 80%; margin-left: auto; margin-right: auto; padding-top: 0.5cm;">
-                                <span style="font-family:'Times New Roman'; font-size:12pt; float:right; margin-top: 0.5cm;">Page <span style="mso-field-code:' PAGE '"></span> of <span style="mso-field-code:' NUMPAGES '"></span></span>
-                                <br style="clear:both;"/>
-                            </p>
+                        <div style="mso-element:footer" id="f1">
+                            <hr align="center" width="100%" size="5" color="black" />
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:none;">
+                                <tr>
+                                    <td width="50%" style="border:none; padding:5px 0 0 0;">
+                                        <p class="MsoFooter">Tracking Number</p>
+                                    </td>
+                                    <td width="50%" align="right" style="border:none; padding:5px 0 0 0;">
+                                        <p class="MsoFooter">Page <span style="mso-field-code:PAGE"></span> of <span style="mso-field-code:NUMPAGES"></span></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="border:none; padding:0;">
+                                        <p class="MsoFooter">Page <span style="mso-field-code:PAGE"></span> of <span style="mso-field-code:NUMPAGES"></span></p>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </body>
                     </html>
                 `;
 
-                // Create blob and download
+                // Create a blob and trigger download
                 const blob = new Blob([html], { type: 'application/msword' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
@@ -4211,7 +4342,7 @@ input[list] {
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-
+                
                 Swal.close();
             } catch (error) {
                 console.error('Word export error:', error);

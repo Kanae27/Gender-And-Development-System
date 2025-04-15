@@ -25,7 +25,7 @@ $_SESSION['campus'] = $userCampus;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPB Reports - GAD System</title>
+    <title>PPAS Forms - GAD System</title>
     <link rel="icon" type="image/x-icon" href="../images/Batangas_State_Logo.ico">
     <script src="../js/common.js"></script>
     <!-- Immediate theme loading to prevent flash -->
@@ -1166,7 +1166,6 @@ html {
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../academic_rank/academic.php">Academic Rank</a></li>
                         <li><a class="dropdown-item" href="../personnel_list/personnel_list.php">Personnel List</a></li>
-                        <li><a class="dropdown-item" href="../signatory/sign.php">Signatory</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -1202,8 +1201,9 @@ html {
                 </div>
             </nav>
         </div>
+        <!-- Bottom controls -->
         <div class="bottom-controls">
-            <a href="../index.php" class="logout-button" onclick="handleLogout(event)">
+            <a href="#" class="logout-button" onclick="handleLogout(event)">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
             </a>
@@ -1432,7 +1432,6 @@ html {
                         // Add change event handler
                         campusSelect.on('change', function() {
                             const selectedCampus = $(this).val();
-                            console.log('User selected campus:', selectedCampus); // Debug log
                             const yearSelect = $('#year');
                             
                             // Clear and disable year dropdown
@@ -1461,7 +1460,6 @@ html {
                         // Add change event handler
                         campusSelect.on('change', function() {
                             const selectedCampus = $(this).val();
-                            console.log('User selected campus (fallback):', selectedCampus); // Debug log
                             const yearSelect = $('#year');
                             
                             // Clear and disable year dropdown
@@ -1505,9 +1503,6 @@ html {
                 method: 'GET',
                 data: { campus_id: selectedCampus }, // Fixed parameter name to match API expectation
                 dataType: 'json',
-                beforeSend: function() {
-                    console.log('Sending request to get_years.php with campus_id:', selectedCampus);
-                },
                 success: function(response) {
                     console.log('Years response:', response);
                     yearSelect.empty().append('<option value="">Select Year</option>');
@@ -1655,10 +1650,9 @@ html {
             
             // First load signatories from database to ensure we have them
             try {
-                console.log('Loading signatories before report generation for campus:', selectedCampus);
-                // Pass the selected campus specifically for this function call
+                console.log('Loading signatories before report generation');
                 signatories = await loadSignatories();
-                console.log('Loaded signatories for', selectedCampus, ':', signatories);
+                console.log('Loaded signatories:', signatories);
                 
                 // Add a small delay to ensure signatories are fully processed
                 await new Promise(resolve => setTimeout(resolve, 300));
@@ -1722,7 +1716,6 @@ html {
             // Use our async function that's already working to get signatories
             // We've already loaded them in loadReport() so we'll use the global variable
             console.log('Using previously loaded signatories for report:', signatories);
-            console.log('loadReportData called with campus:', selectedCampus, 'and year:', selectedYear);
             
             // Show loading indicator in preview area
             $('#reportPreview').html(`
@@ -1741,12 +1734,6 @@ html {
                 data: {
                     campus: selectedCampus,
                     year: selectedYear
-                },
-                beforeSend: function() {
-                    console.log('Sending request to get_gpb_report.php with params:', {
-                        campus: selectedCampus,
-                        year: selectedYear
-                    });
                 },
                 success: function(response) {
                     console.log('Report response:', response);
@@ -2498,20 +2485,8 @@ html {
         // Instead of using multiple fetch calls, load all signatories at once and sync
         async function loadSignatories() {
             try {
-                // For central users, get the selected campus
-                const isCentral = <?php echo $isCentral ? 'true' : 'false' ?>;
-                const selectedCampus = isCentral ? $('#campus').val() : '';
-                
-                console.log('Loading signatories - isCentral:', isCentral, 'selectedCampus:', selectedCampus);
-                
                 // Get signatories from database
-                let url = 'get_all_signatories.php';
-                if (isCentral && selectedCampus) {
-                    url += `?campus=${encodeURIComponent(selectedCampus)}`;
-                }
-                
-                console.log('Fetching signatories from:', url);
-                const response = await fetch(url);
+                const response = await fetch('get_all_signatories.php');
                 const result = await response.json();
                 
                 if (result.status === 'success' && result.data && result.data.length > 0) {

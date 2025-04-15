@@ -1094,3 +1094,1211 @@
 [10-Apr-2025 06:26:12 UTC] Query executed successfully
 [10-Apr-2025 06:26:12 UTC] Fetching results
 [10-Apr-2025 06:26:12 UTC] Found 1 records
+[10-Apr-2025 07:38:43 UTC] get_ppas.php started - 2025-04-10 07:38:43
+[10-Apr-2025 07:38:43 UTC] GET parameters: {"quarter":"1"}
+[10-Apr-2025 07:38:43 UTC] Database connection successful
+[10-Apr-2025 07:38:43 UTC] Received quarter: 1
+[10-Apr-2025 07:38:43 UTC] Formatted quarter: Q1
+[10-Apr-2025 07:38:43 UTC] get_ppas.php started - 2025-04-10 07:38:43
+[10-Apr-2025 07:38:43 UTC] GET parameters: {"quarter":"4"}
+[10-Apr-2025 07:38:44 UTC] Database connection successful
+[10-Apr-2025 07:38:44 UTC] Received quarter: 4
+[10-Apr-2025 07:38:44 UTC] Formatted quarter: Q4
+[10-Apr-2025 07:38:44 UTC] get_ppas.php started - 2025-04-10 07:38:44
+[10-Apr-2025 07:38:44 UTC] GET parameters: {"quarter":"3"}
+[10-Apr-2025 07:38:44 UTC] get_ppas.php started - 2025-04-10 07:38:44
+[10-Apr-2025 07:38:44 UTC] GET parameters: {"quarter":"2"}
+[10-Apr-2025 07:38:44 UTC] Database connection successful
+[10-Apr-2025 07:38:44 UTC] Received quarter: 3
+[10-Apr-2025 07:38:44 UTC] Formatted quarter: Q3
+[10-Apr-2025 07:38:44 UTC] Database connection successful
+[10-Apr-2025 07:38:44 UTC] Received quarter: 2
+[10-Apr-2025 07:38:44 UTC] Formatted quarter: Q2
+[10-Apr-2025 07:38:44 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[10-Apr-2025 07:38:44 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[10-Apr-2025 07:38:44 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[10-Apr-2025 07:38:44 UTC] Bound parameter: Q3
+[10-Apr-2025 07:38:44 UTC] Bound parameter: Q1
+[10-Apr-2025 07:38:44 UTC] Bound parameter: Q4
+[10-Apr-2025 07:38:44 UTC] Query executed successfully
+[10-Apr-2025 07:38:44 UTC] Query executed successfully
+[10-Apr-2025 07:38:44 UTC] Query executed successfully
+[10-Apr-2025 07:38:44 UTC] Fetching results
+[10-Apr-2025 07:38:44 UTC] Fetching results
+[10-Apr-2025 07:38:44 UTC] Fetching results
+[10-Apr-2025 07:38:44 UTC] Found 1 records
+[10-Apr-2025 07:38:44 UTC] Found 2 records
+[10-Apr-2025 07:38:44 UTC] Found 8 records
+[10-Apr-2025 07:38:44 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[10-Apr-2025 07:38:44 UTC] Bound parameter: Q2
+[10-Apr-2025 07:38:44 UTC] Query executed successfully
+[10-Apr-2025 07:38:44 UTC] Fetching results
+[10-Apr-2025 07:38:44 UTC] Found 1 records
+[14-Apr-2025 00:46:02 UTC] get_ppas.php started - 2025-04-14 00:46:02
+[14-Apr-2025 00:46:02 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 00:46:02 UTC] get_ppas.php started - 2025-04-14 00:46:02
+[14-Apr-2025 00:46:02 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 00:46:02 UTC] get_ppas.php started - 2025-04-14 00:46:02
+[14-Apr-2025 00:46:02 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 00:46:02 UTC] get_ppas.php started - 2025-04-14 00:46:02
+[14-Apr-2025 00:46:02 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 00:46:02 UTC] Database connection successful
+[14-Apr-2025 00:46:02 UTC] Database connection successful
+[14-Apr-2025 00:46:02 UTC] Database connection successful
+[14-Apr-2025 00:46:02 UTC] Database connection successful
+[14-Apr-2025 00:46:02 UTC] Received quarter: 1
+[14-Apr-2025 00:46:02 UTC] Received quarter: 4
+[14-Apr-2025 00:46:02 UTC] Received quarter: 2
+[14-Apr-2025 00:46:02 UTC] Received quarter: 3
+[14-Apr-2025 00:46:02 UTC] Formatted quarter: Q1
+[14-Apr-2025 00:46:02 UTC] Formatted quarter: Q4
+[14-Apr-2025 00:46:02 UTC] Formatted quarter: Q2
+[14-Apr-2025 00:46:02 UTC] Formatted quarter: Q3
+[14-Apr-2025 00:46:02 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:46:02 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:46:02 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:46:02 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:46:02 UTC] Bound parameter: Q1
+[14-Apr-2025 00:46:02 UTC] Bound parameter: Q4
+[14-Apr-2025 00:46:02 UTC] Bound parameter: Q3
+[14-Apr-2025 00:46:02 UTC] Bound parameter: Q2
+[14-Apr-2025 00:46:02 UTC] Query executed successfully
+[14-Apr-2025 00:46:02 UTC] Query executed successfully
+[14-Apr-2025 00:46:02 UTC] Query executed successfully
+[14-Apr-2025 00:46:02 UTC] Query executed successfully
+[14-Apr-2025 00:46:02 UTC] Fetching results
+[14-Apr-2025 00:46:02 UTC] Fetching results
+[14-Apr-2025 00:46:02 UTC] Fetching results
+[14-Apr-2025 00:46:02 UTC] Fetching results
+[14-Apr-2025 00:46:02 UTC] Found 1 records
+[14-Apr-2025 00:46:02 UTC] Found 2 records
+[14-Apr-2025 00:46:02 UTC] Found 8 records
+[14-Apr-2025 00:46:02 UTC] Found 1 records
+[14-Apr-2025 00:51:33 UTC] get_ppas.php started - 2025-04-14 00:51:33
+[14-Apr-2025 00:51:33 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 00:51:33 UTC] get_ppas.php started - 2025-04-14 00:51:33
+[14-Apr-2025 00:51:33 UTC] get_ppas.php started - 2025-04-14 00:51:33
+[14-Apr-2025 00:51:33 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 00:51:33 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 00:51:33 UTC] get_ppas.php started - 2025-04-14 00:51:33
+[14-Apr-2025 00:51:33 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 00:51:33 UTC] Database connection successful
+[14-Apr-2025 00:51:33 UTC] Database connection successful
+[14-Apr-2025 00:51:33 UTC] Database connection successful
+[14-Apr-2025 00:51:33 UTC] Received quarter: 1
+[14-Apr-2025 00:51:33 UTC] Received quarter: 2
+[14-Apr-2025 00:51:33 UTC] Received quarter: 3
+[14-Apr-2025 00:51:33 UTC] Formatted quarter: Q1
+[14-Apr-2025 00:51:33 UTC] Formatted quarter: Q2
+[14-Apr-2025 00:51:33 UTC] Formatted quarter: Q3
+[14-Apr-2025 00:51:33 UTC] Database connection successful
+[14-Apr-2025 00:51:33 UTC] Received quarter: 4
+[14-Apr-2025 00:51:33 UTC] Formatted quarter: Q4
+[14-Apr-2025 00:51:33 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:51:33 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:51:33 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:51:33 UTC] Bound parameter: Q3
+[14-Apr-2025 00:51:33 UTC] Bound parameter: Q2
+[14-Apr-2025 00:51:33 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:51:33 UTC] Query executed successfully
+[14-Apr-2025 00:51:33 UTC] Fetching results
+[14-Apr-2025 00:51:33 UTC] Bound parameter: Q4
+[14-Apr-2025 00:51:33 UTC] Bound parameter: Q1
+[14-Apr-2025 00:51:33 UTC] Found 2 records
+[14-Apr-2025 00:51:33 UTC] Query executed successfully
+[14-Apr-2025 00:51:33 UTC] Query executed successfully
+[14-Apr-2025 00:51:33 UTC] Query executed successfully
+[14-Apr-2025 00:51:33 UTC] Fetching results
+[14-Apr-2025 00:51:33 UTC] Fetching results
+[14-Apr-2025 00:51:33 UTC] Found 1 records
+[14-Apr-2025 00:51:33 UTC] Fetching results
+[14-Apr-2025 00:51:33 UTC] Found 1 records
+[14-Apr-2025 00:51:33 UTC] Found 8 records
+[14-Apr-2025 00:53:54 UTC] get_ppas.php started - 2025-04-14 00:53:54
+[14-Apr-2025 00:53:54 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 00:53:54 UTC] get_ppas.php started - 2025-04-14 00:53:54
+[14-Apr-2025 00:53:54 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 00:53:54 UTC] Database connection successful
+[14-Apr-2025 00:53:54 UTC] Database connection successful
+[14-Apr-2025 00:53:54 UTC] Received quarter: 1
+[14-Apr-2025 00:53:54 UTC] Formatted quarter: Q1
+[14-Apr-2025 00:53:54 UTC] Received quarter: 2
+[14-Apr-2025 00:53:54 UTC] Formatted quarter: Q2
+[14-Apr-2025 00:53:54 UTC] get_ppas.php started - 2025-04-14 00:53:54
+[14-Apr-2025 00:53:54 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:53:54 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 00:53:54 UTC] Bound parameter: Q1
+[14-Apr-2025 00:53:54 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:53:54 UTC] Query executed successfully
+[14-Apr-2025 00:53:54 UTC] get_ppas.php started - 2025-04-14 00:53:54
+[14-Apr-2025 00:53:54 UTC] Bound parameter: Q2
+[14-Apr-2025 00:53:54 UTC] Fetching results
+[14-Apr-2025 00:53:54 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 00:53:54 UTC] Found 8 records
+[14-Apr-2025 00:53:54 UTC] Query executed successfully
+[14-Apr-2025 00:53:54 UTC] Fetching results
+[14-Apr-2025 00:53:54 UTC] Found 1 records
+[14-Apr-2025 00:53:54 UTC] Database connection successful
+[14-Apr-2025 00:53:54 UTC] Received quarter: 3
+[14-Apr-2025 00:53:54 UTC] Formatted quarter: Q3
+[14-Apr-2025 00:53:54 UTC] Database connection successful
+[14-Apr-2025 00:53:54 UTC] Received quarter: 4
+[14-Apr-2025 00:53:54 UTC] Formatted quarter: Q4
+[14-Apr-2025 00:53:54 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:53:54 UTC] Bound parameter: Q3
+[14-Apr-2025 00:53:54 UTC] Query executed successfully
+[14-Apr-2025 00:53:54 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:53:54 UTC] Fetching results
+[14-Apr-2025 00:53:54 UTC] Found 2 records
+[14-Apr-2025 00:53:54 UTC] Bound parameter: Q4
+[14-Apr-2025 00:53:54 UTC] Query executed successfully
+[14-Apr-2025 00:53:54 UTC] Fetching results
+[14-Apr-2025 00:53:54 UTC] Found 1 records
+[14-Apr-2025 00:54:47 UTC] get_ppas.php started - 2025-04-14 00:54:47
+[14-Apr-2025 00:54:47 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 00:54:47 UTC] get_ppas.php started - 2025-04-14 00:54:47
+[14-Apr-2025 00:54:47 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 00:54:47 UTC] get_ppas.php started - 2025-04-14 00:54:47
+[14-Apr-2025 00:54:47 UTC] get_ppas.php started - 2025-04-14 00:54:47
+[14-Apr-2025 00:54:47 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 00:54:47 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 00:54:47 UTC] Database connection successful
+[14-Apr-2025 00:54:47 UTC] Received quarter: 1
+[14-Apr-2025 00:54:47 UTC] Formatted quarter: Q1
+[14-Apr-2025 00:54:47 UTC] Database connection successful
+[14-Apr-2025 00:54:47 UTC] Database connection successful
+[14-Apr-2025 00:54:47 UTC] Received quarter: 4
+[14-Apr-2025 00:54:47 UTC] Database connection successful
+[14-Apr-2025 00:54:47 UTC] Formatted quarter: Q4
+[14-Apr-2025 00:54:47 UTC] Received quarter: 2
+[14-Apr-2025 00:54:47 UTC] Received quarter: 3
+[14-Apr-2025 00:54:47 UTC] Formatted quarter: Q2
+[14-Apr-2025 00:54:47 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:54:47 UTC] Bound parameter: Q1
+[14-Apr-2025 00:54:47 UTC] Formatted quarter: Q3
+[14-Apr-2025 00:54:47 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:54:47 UTC] Bound parameter: Q4
+[14-Apr-2025 00:54:47 UTC] Query executed successfully
+[14-Apr-2025 00:54:47 UTC] Fetching results
+[14-Apr-2025 00:54:47 UTC] Query executed successfully
+[14-Apr-2025 00:54:47 UTC] Found 8 records
+[14-Apr-2025 00:54:47 UTC] Fetching results
+[14-Apr-2025 00:54:47 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:54:47 UTC] Found 1 records
+[14-Apr-2025 00:54:47 UTC] Bound parameter: Q3
+[14-Apr-2025 00:54:47 UTC] Query executed successfully
+[14-Apr-2025 00:54:47 UTC] Fetching results
+[14-Apr-2025 00:54:47 UTC] Found 2 records
+[14-Apr-2025 00:54:47 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:54:47 UTC] Bound parameter: Q2
+[14-Apr-2025 00:54:47 UTC] Query executed successfully
+[14-Apr-2025 00:54:47 UTC] Fetching results
+[14-Apr-2025 00:54:47 UTC] Found 1 records
+[14-Apr-2025 00:55:39 UTC] get_ppas.php started - 2025-04-14 00:55:39
+[14-Apr-2025 00:55:39 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 00:55:39 UTC] get_ppas.php started - 2025-04-14 00:55:39
+[14-Apr-2025 00:55:39 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 00:55:39 UTC] get_ppas.php started - 2025-04-14 00:55:39
+[14-Apr-2025 00:55:39 UTC] get_ppas.php started - 2025-04-14 00:55:39
+[14-Apr-2025 00:55:39 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 00:55:39 UTC] Database connection successful
+[14-Apr-2025 00:55:39 UTC] Received quarter: 1
+[14-Apr-2025 00:55:39 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 00:55:39 UTC] Formatted quarter: Q1
+[14-Apr-2025 00:55:39 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:55:39 UTC] Database connection successful
+[14-Apr-2025 00:55:39 UTC] Received quarter: 2
+[14-Apr-2025 00:55:39 UTC] Bound parameter: Q1
+[14-Apr-2025 00:55:39 UTC] Database connection successful
+[14-Apr-2025 00:55:39 UTC] Formatted quarter: Q2
+[14-Apr-2025 00:55:39 UTC] Received quarter: 3
+[14-Apr-2025 00:55:39 UTC] Formatted quarter: Q3
+[14-Apr-2025 00:55:39 UTC] Query executed successfully
+[14-Apr-2025 00:55:39 UTC] Fetching results
+[14-Apr-2025 00:55:39 UTC] Database connection successful
+[14-Apr-2025 00:55:39 UTC] Found 8 records
+[14-Apr-2025 00:55:39 UTC] Received quarter: 4
+[14-Apr-2025 00:55:39 UTC] Formatted quarter: Q4
+[14-Apr-2025 00:55:39 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:55:39 UTC] Bound parameter: Q3
+[14-Apr-2025 00:55:39 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:55:39 UTC] Query executed successfully
+[14-Apr-2025 00:55:39 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:55:39 UTC] Bound parameter: Q4
+[14-Apr-2025 00:55:39 UTC] Fetching results
+[14-Apr-2025 00:55:39 UTC] Found 2 records
+[14-Apr-2025 00:55:39 UTC] Bound parameter: Q2
+[14-Apr-2025 00:55:39 UTC] Query executed successfully
+[14-Apr-2025 00:55:39 UTC] Fetching results
+[14-Apr-2025 00:55:39 UTC] Found 1 records
+[14-Apr-2025 00:55:39 UTC] Query executed successfully
+[14-Apr-2025 00:55:39 UTC] Fetching results
+[14-Apr-2025 00:55:39 UTC] Found 1 records
+[14-Apr-2025 00:59:11 UTC] get_ppas.php started - 2025-04-14 00:59:11
+[14-Apr-2025 00:59:11 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 00:59:11 UTC] get_ppas.php started - 2025-04-14 00:59:11
+[14-Apr-2025 00:59:11 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 00:59:11 UTC] get_ppas.php started - 2025-04-14 00:59:11
+[14-Apr-2025 00:59:11 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 00:59:11 UTC] get_ppas.php started - 2025-04-14 00:59:11
+[14-Apr-2025 00:59:11 UTC] Database connection successful
+[14-Apr-2025 00:59:11 UTC] Database connection successful
+[14-Apr-2025 00:59:11 UTC] Received quarter: 1
+[14-Apr-2025 00:59:11 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 00:59:11 UTC] Received quarter: 3
+[14-Apr-2025 00:59:11 UTC] Formatted quarter: Q1
+[14-Apr-2025 00:59:11 UTC] Formatted quarter: Q3
+[14-Apr-2025 00:59:11 UTC] Database connection successful
+[14-Apr-2025 00:59:11 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:59:11 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:59:11 UTC] Received quarter: 2
+[14-Apr-2025 00:59:11 UTC] Bound parameter: Q3
+[14-Apr-2025 00:59:11 UTC] Bound parameter: Q1
+[14-Apr-2025 00:59:11 UTC] Formatted quarter: Q2
+[14-Apr-2025 00:59:11 UTC] Database connection successful
+[14-Apr-2025 00:59:11 UTC] Received quarter: 4
+[14-Apr-2025 00:59:11 UTC] Query executed successfully
+[14-Apr-2025 00:59:11 UTC] Query executed successfully
+[14-Apr-2025 00:59:11 UTC] Formatted quarter: Q4
+[14-Apr-2025 00:59:11 UTC] Fetching results
+[14-Apr-2025 00:59:11 UTC] Fetching results
+[14-Apr-2025 00:59:11 UTC] Found 2 records
+[14-Apr-2025 00:59:11 UTC] Found 8 records
+[14-Apr-2025 00:59:11 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:59:11 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:59:11 UTC] Bound parameter: Q4
+[14-Apr-2025 00:59:11 UTC] Bound parameter: Q2
+[14-Apr-2025 00:59:11 UTC] Query executed successfully
+[14-Apr-2025 00:59:11 UTC] Query executed successfully
+[14-Apr-2025 00:59:11 UTC] Fetching results
+[14-Apr-2025 00:59:11 UTC] Fetching results
+[14-Apr-2025 00:59:11 UTC] Found 1 records
+[14-Apr-2025 00:59:11 UTC] Found 1 records
+[14-Apr-2025 00:59:34 UTC] get_ppas.php started - 2025-04-14 00:59:34
+[14-Apr-2025 00:59:34 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 00:59:34 UTC] get_ppas.php started - 2025-04-14 00:59:34
+[14-Apr-2025 00:59:34 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 00:59:34 UTC] get_ppas.php started - 2025-04-14 00:59:34
+[14-Apr-2025 00:59:34 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 00:59:34 UTC] get_ppas.php started - 2025-04-14 00:59:34
+[14-Apr-2025 00:59:34 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 00:59:34 UTC] Database connection successful
+[14-Apr-2025 00:59:34 UTC] Received quarter: 3
+[14-Apr-2025 00:59:34 UTC] Database connection successful
+[14-Apr-2025 00:59:34 UTC] Database connection successful
+[14-Apr-2025 00:59:34 UTC] Formatted quarter: Q3
+[14-Apr-2025 00:59:34 UTC] Received quarter: 1
+[14-Apr-2025 00:59:34 UTC] Received quarter: 2
+[14-Apr-2025 00:59:34 UTC] Formatted quarter: Q1
+[14-Apr-2025 00:59:34 UTC] Formatted quarter: Q2
+[14-Apr-2025 00:59:34 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:59:34 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:59:34 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:59:34 UTC] Bound parameter: Q2
+[14-Apr-2025 00:59:34 UTC] Bound parameter: Q3
+[14-Apr-2025 00:59:34 UTC] Bound parameter: Q1
+[14-Apr-2025 00:59:34 UTC] Query executed successfully
+[14-Apr-2025 00:59:34 UTC] Query executed successfully
+[14-Apr-2025 00:59:34 UTC] Query executed successfully
+[14-Apr-2025 00:59:34 UTC] Fetching results
+[14-Apr-2025 00:59:34 UTC] Fetching results
+[14-Apr-2025 00:59:34 UTC] Fetching results
+[14-Apr-2025 00:59:34 UTC] Found 1 records
+[14-Apr-2025 00:59:34 UTC] Found 2 records
+[14-Apr-2025 00:59:34 UTC] Found 8 records
+[14-Apr-2025 00:59:34 UTC] Database connection successful
+[14-Apr-2025 00:59:34 UTC] Received quarter: 4
+[14-Apr-2025 00:59:34 UTC] Formatted quarter: Q4
+[14-Apr-2025 00:59:34 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 00:59:34 UTC] Bound parameter: Q4
+[14-Apr-2025 00:59:34 UTC] Query executed successfully
+[14-Apr-2025 00:59:34 UTC] Fetching results
+[14-Apr-2025 00:59:34 UTC] Found 1 records
+[14-Apr-2025 01:01:08 UTC] get_ppas.php started - 2025-04-14 01:01:08
+[14-Apr-2025 01:01:08 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:01:08 UTC] get_ppas.php started - 2025-04-14 01:01:08
+[14-Apr-2025 01:01:08 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:01:08 UTC] get_ppas.php started - 2025-04-14 01:01:08
+[14-Apr-2025 01:01:08 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:01:08 UTC] get_ppas.php started - 2025-04-14 01:01:08
+[14-Apr-2025 01:01:08 UTC] Database connection successful
+[14-Apr-2025 01:01:08 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:01:08 UTC] Received quarter: 3
+[14-Apr-2025 01:01:08 UTC] Database connection successful
+[14-Apr-2025 01:01:08 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:01:08 UTC] Received quarter: 2
+[14-Apr-2025 01:01:08 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:01:08 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:01:08 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:01:08 UTC] Bound parameter: Q3
+[14-Apr-2025 01:01:08 UTC] Bound parameter: Q2
+[14-Apr-2025 01:01:08 UTC] Query executed successfully
+[14-Apr-2025 01:01:08 UTC] Database connection successful
+[14-Apr-2025 01:01:08 UTC] Fetching results
+[14-Apr-2025 01:01:08 UTC] Query executed successfully
+[14-Apr-2025 01:01:08 UTC] Received quarter: 4
+[14-Apr-2025 01:01:08 UTC] Found 2 records
+[14-Apr-2025 01:01:08 UTC] Fetching results
+[14-Apr-2025 01:01:08 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:01:08 UTC] Found 1 records
+[14-Apr-2025 01:01:08 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:01:08 UTC] Bound parameter: Q4
+[14-Apr-2025 01:01:08 UTC] Query executed successfully
+[14-Apr-2025 01:01:08 UTC] Fetching results
+[14-Apr-2025 01:01:08 UTC] Found 1 records
+[14-Apr-2025 01:01:08 UTC] Database connection successful
+[14-Apr-2025 01:01:08 UTC] Received quarter: 1
+[14-Apr-2025 01:01:08 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:01:08 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:01:08 UTC] Bound parameter: Q1
+[14-Apr-2025 01:01:08 UTC] Query executed successfully
+[14-Apr-2025 01:01:08 UTC] Fetching results
+[14-Apr-2025 01:01:08 UTC] Found 8 records
+[14-Apr-2025 01:01:37 UTC] get_ppas.php started - 2025-04-14 01:01:37
+[14-Apr-2025 01:01:37 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:01:37 UTC] get_ppas.php started - 2025-04-14 01:01:37
+[14-Apr-2025 01:01:37 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:01:37 UTC] get_ppas.php started - 2025-04-14 01:01:37
+[14-Apr-2025 01:01:37 UTC] get_ppas.php started - 2025-04-14 01:01:37
+[14-Apr-2025 01:01:37 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:01:37 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:01:37 UTC] Database connection successful
+[14-Apr-2025 01:01:37 UTC] Database connection successful
+[14-Apr-2025 01:01:37 UTC] Database connection successful
+[14-Apr-2025 01:01:37 UTC] Database connection successful
+[14-Apr-2025 01:01:37 UTC] Received quarter: 4
+[14-Apr-2025 01:01:37 UTC] Received quarter: 3
+[14-Apr-2025 01:01:37 UTC] Received quarter: 2
+[14-Apr-2025 01:01:37 UTC] Received quarter: 1
+[14-Apr-2025 01:01:37 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:01:37 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:01:37 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:01:37 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:01:37 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:01:37 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:01:37 UTC] Bound parameter: Q4
+[14-Apr-2025 01:01:37 UTC] Bound parameter: Q2
+[14-Apr-2025 01:01:37 UTC] Query executed successfully
+[14-Apr-2025 01:01:37 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:01:37 UTC] Fetching results
+[14-Apr-2025 01:01:37 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:01:37 UTC] Query executed successfully
+[14-Apr-2025 01:01:37 UTC] Found 1 records
+[14-Apr-2025 01:01:37 UTC] Fetching results
+[14-Apr-2025 01:01:37 UTC] Bound parameter: Q1
+[14-Apr-2025 01:01:37 UTC] Bound parameter: Q3
+[14-Apr-2025 01:01:37 UTC] Found 1 records
+[14-Apr-2025 01:01:37 UTC] Query executed successfully
+[14-Apr-2025 01:01:37 UTC] Query executed successfully
+[14-Apr-2025 01:01:37 UTC] Fetching results
+[14-Apr-2025 01:01:37 UTC] Fetching results
+[14-Apr-2025 01:01:37 UTC] Found 2 records
+[14-Apr-2025 01:01:37 UTC] Found 8 records
+[14-Apr-2025 01:02:38 UTC] get_ppas.php started - 2025-04-14 01:02:38
+[14-Apr-2025 01:02:38 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:02:38 UTC] get_ppas.php started - 2025-04-14 01:02:38
+[14-Apr-2025 01:02:38 UTC] get_ppas.php started - 2025-04-14 01:02:38
+[14-Apr-2025 01:02:38 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:02:38 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:02:38 UTC] get_ppas.php started - 2025-04-14 01:02:38
+[14-Apr-2025 01:02:38 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:02:38 UTC] Database connection successful
+[14-Apr-2025 01:02:38 UTC] Received quarter: 1
+[14-Apr-2025 01:02:38 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:02:38 UTC] Database connection successful
+[14-Apr-2025 01:02:38 UTC] Database connection successful
+[14-Apr-2025 01:02:38 UTC] Received quarter: 4
+[14-Apr-2025 01:02:38 UTC] Received quarter: 3
+[14-Apr-2025 01:02:38 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:02:38 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:02:38 UTC] Database connection successful
+[14-Apr-2025 01:02:38 UTC] Received quarter: 2
+[14-Apr-2025 01:02:38 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:02:38 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:02:38 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:02:38 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:02:38 UTC] Bound parameter: Q1
+[14-Apr-2025 01:02:38 UTC] Bound parameter: Q4
+[14-Apr-2025 01:02:38 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:02:38 UTC] Bound parameter: Q3
+[14-Apr-2025 01:02:38 UTC] Query executed successfully
+[14-Apr-2025 01:02:38 UTC] Query executed successfully
+[14-Apr-2025 01:02:38 UTC] Fetching results
+[14-Apr-2025 01:02:38 UTC] Fetching results
+[14-Apr-2025 01:02:38 UTC] Query executed successfully
+[14-Apr-2025 01:02:38 UTC] Bound parameter: Q2
+[14-Apr-2025 01:02:38 UTC] Found 1 records
+[14-Apr-2025 01:02:38 UTC] Found 8 records
+[14-Apr-2025 01:02:38 UTC] Fetching results
+[14-Apr-2025 01:02:38 UTC] Query executed successfully
+[14-Apr-2025 01:02:38 UTC] Found 2 records
+[14-Apr-2025 01:02:38 UTC] Fetching results
+[14-Apr-2025 01:02:38 UTC] Found 1 records
+[14-Apr-2025 01:06:21 UTC] get_ppas.php started - 2025-04-14 01:06:21
+[14-Apr-2025 01:06:21 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:06:21 UTC] get_ppas.php started - 2025-04-14 01:06:21
+[14-Apr-2025 01:06:21 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:06:21 UTC] get_ppas.php started - 2025-04-14 01:06:21
+[14-Apr-2025 01:06:21 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:06:21 UTC] get_ppas.php started - 2025-04-14 01:06:21
+[14-Apr-2025 01:06:21 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:06:22 UTC] Database connection successful
+[14-Apr-2025 01:06:22 UTC] Database connection successful
+[14-Apr-2025 01:06:22 UTC] Received quarter: 2
+[14-Apr-2025 01:06:22 UTC] Received quarter: 1
+[14-Apr-2025 01:06:22 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:06:22 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:06:22 UTC] Database connection successful
+[14-Apr-2025 01:06:22 UTC] Received quarter: 4
+[14-Apr-2025 01:06:22 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:06:22 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:06:22 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:06:22 UTC] Bound parameter: Q2
+[14-Apr-2025 01:06:22 UTC] Bound parameter: Q1
+[14-Apr-2025 01:06:22 UTC] Query executed successfully
+[14-Apr-2025 01:06:22 UTC] Query executed successfully
+[14-Apr-2025 01:06:22 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:06:22 UTC] Fetching results
+[14-Apr-2025 01:06:22 UTC] Fetching results
+[14-Apr-2025 01:06:22 UTC] Found 1 records
+[14-Apr-2025 01:06:22 UTC] Found 8 records
+[14-Apr-2025 01:06:22 UTC] Bound parameter: Q4
+[14-Apr-2025 01:06:22 UTC] Query executed successfully
+[14-Apr-2025 01:06:22 UTC] Fetching results
+[14-Apr-2025 01:06:22 UTC] Found 1 records
+[14-Apr-2025 01:06:22 UTC] Database connection successful
+[14-Apr-2025 01:06:22 UTC] Received quarter: 3
+[14-Apr-2025 01:06:22 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:06:22 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:06:22 UTC] Bound parameter: Q3
+[14-Apr-2025 01:06:22 UTC] Query executed successfully
+[14-Apr-2025 01:06:22 UTC] Fetching results
+[14-Apr-2025 01:06:22 UTC] Found 2 records
+[14-Apr-2025 01:12:43 UTC] get_ppas.php started - 2025-04-14 01:12:43
+[14-Apr-2025 01:12:43 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:12:43 UTC] get_ppas.php started - 2025-04-14 01:12:43
+[14-Apr-2025 01:12:43 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:12:43 UTC] get_ppas.php started - 2025-04-14 01:12:43
+[14-Apr-2025 01:12:43 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:12:43 UTC] Database connection successful
+[14-Apr-2025 01:12:43 UTC] Database connection successful
+[14-Apr-2025 01:12:43 UTC] Received quarter: 2
+[14-Apr-2025 01:12:43 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:12:43 UTC] Received quarter: 1
+[14-Apr-2025 01:12:43 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:12:43 UTC] get_ppas.php started - 2025-04-14 01:12:43
+[14-Apr-2025 01:12:43 UTC] Database connection successful
+[14-Apr-2025 01:12:43 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:12:43 UTC] Received quarter: 3
+[14-Apr-2025 01:12:43 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:12:43 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:12:43 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:12:43 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:12:43 UTC] Bound parameter: Q2
+[14-Apr-2025 01:12:43 UTC] Bound parameter: Q1
+[14-Apr-2025 01:12:43 UTC] Query executed successfully
+[14-Apr-2025 01:12:43 UTC] Query executed successfully
+[14-Apr-2025 01:12:43 UTC] Bound parameter: Q3
+[14-Apr-2025 01:12:43 UTC] Fetching results
+[14-Apr-2025 01:12:43 UTC] Fetching results
+[14-Apr-2025 01:12:43 UTC] Found 1 records
+[14-Apr-2025 01:12:43 UTC] Found 8 records
+[14-Apr-2025 01:12:43 UTC] Query executed successfully
+[14-Apr-2025 01:12:43 UTC] Fetching results
+[14-Apr-2025 01:12:43 UTC] Found 2 records
+[14-Apr-2025 01:12:43 UTC] Database connection successful
+[14-Apr-2025 01:12:43 UTC] Received quarter: 4
+[14-Apr-2025 01:12:43 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:12:43 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:12:43 UTC] Bound parameter: Q4
+[14-Apr-2025 01:12:43 UTC] Query executed successfully
+[14-Apr-2025 01:12:43 UTC] Fetching results
+[14-Apr-2025 01:12:43 UTC] Found 1 records
+[14-Apr-2025 01:18:20 UTC] get_ppas.php started - 2025-04-14 01:18:20
+[14-Apr-2025 01:18:20 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:18:20 UTC] get_ppas.php started - 2025-04-14 01:18:20
+[14-Apr-2025 01:18:20 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:18:20 UTC] get_ppas.php started - 2025-04-14 01:18:20
+[14-Apr-2025 01:18:20 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:18:20 UTC] Database connection successful
+[14-Apr-2025 01:18:20 UTC] Received quarter: 1
+[14-Apr-2025 01:18:20 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:18:20 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:18:20 UTC] get_ppas.php started - 2025-04-14 01:18:20
+[14-Apr-2025 01:18:20 UTC] Bound parameter: Q1
+[14-Apr-2025 01:18:20 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:18:20 UTC] Query executed successfully
+[14-Apr-2025 01:18:20 UTC] Fetching results
+[14-Apr-2025 01:18:20 UTC] Found 8 records
+[14-Apr-2025 01:18:20 UTC] Database connection successful
+[14-Apr-2025 01:18:20 UTC] Received quarter: 3
+[14-Apr-2025 01:18:20 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:18:20 UTC] Database connection successful
+[14-Apr-2025 01:18:20 UTC] Received quarter: 2
+[14-Apr-2025 01:18:20 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:18:20 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:18:20 UTC] Bound parameter: Q3
+[14-Apr-2025 01:18:20 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:18:20 UTC] Query executed successfully
+[14-Apr-2025 01:18:20 UTC] Fetching results
+[14-Apr-2025 01:18:20 UTC] Bound parameter: Q2
+[14-Apr-2025 01:18:20 UTC] Found 2 records
+[14-Apr-2025 01:18:20 UTC] Query executed successfully
+[14-Apr-2025 01:18:20 UTC] Fetching results
+[14-Apr-2025 01:18:20 UTC] Found 1 records
+[14-Apr-2025 01:18:20 UTC] Database connection successful
+[14-Apr-2025 01:18:20 UTC] Received quarter: 4
+[14-Apr-2025 01:18:20 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:18:20 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:18:20 UTC] Bound parameter: Q4
+[14-Apr-2025 01:18:20 UTC] Query executed successfully
+[14-Apr-2025 01:18:20 UTC] Fetching results
+[14-Apr-2025 01:18:20 UTC] Found 1 records
+[14-Apr-2025 01:18:57 UTC] get_ppas.php started - 2025-04-14 01:18:57
+[14-Apr-2025 01:18:57 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:18:57 UTC] get_ppas.php started - 2025-04-14 01:18:57
+[14-Apr-2025 01:18:57 UTC] get_ppas.php started - 2025-04-14 01:18:57
+[14-Apr-2025 01:18:57 UTC] get_ppas.php started - 2025-04-14 01:18:57
+[14-Apr-2025 01:18:57 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:18:57 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:18:57 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:18:57 UTC] Database connection successful
+[14-Apr-2025 01:18:57 UTC] Database connection successful
+[14-Apr-2025 01:18:57 UTC] Database connection successful
+[14-Apr-2025 01:18:57 UTC] Database connection successful
+[14-Apr-2025 01:18:57 UTC] Received quarter: 3
+[14-Apr-2025 01:18:57 UTC] Received quarter: 2
+[14-Apr-2025 01:18:57 UTC] Received quarter: 1
+[14-Apr-2025 01:18:57 UTC] Received quarter: 4
+[14-Apr-2025 01:18:57 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:18:57 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:18:57 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:18:57 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:18:57 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:18:57 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:18:57 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:18:57 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:18:57 UTC] Bound parameter: Q2
+[14-Apr-2025 01:18:57 UTC] Bound parameter: Q1
+[14-Apr-2025 01:18:57 UTC] Query executed successfully
+[14-Apr-2025 01:18:57 UTC] Fetching results
+[14-Apr-2025 01:18:57 UTC] Query executed successfully
+[14-Apr-2025 01:18:57 UTC] Bound parameter: Q3
+[14-Apr-2025 01:18:57 UTC] Fetching results
+[14-Apr-2025 01:18:57 UTC] Found 8 records
+[14-Apr-2025 01:18:57 UTC] Found 1 records
+[14-Apr-2025 01:18:57 UTC] Query executed successfully
+[14-Apr-2025 01:18:57 UTC] Fetching results
+[14-Apr-2025 01:18:57 UTC] Found 2 records
+[14-Apr-2025 01:18:57 UTC] Bound parameter: Q4
+[14-Apr-2025 01:18:57 UTC] Query executed successfully
+[14-Apr-2025 01:18:57 UTC] Fetching results
+[14-Apr-2025 01:18:57 UTC] Found 1 records
+[14-Apr-2025 01:22:31 UTC] get_ppas.php started - 2025-04-14 01:22:31
+[14-Apr-2025 01:22:31 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:22:31 UTC] get_ppas.php started - 2025-04-14 01:22:31
+[14-Apr-2025 01:22:31 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:22:31 UTC] get_ppas.php started - 2025-04-14 01:22:31
+[14-Apr-2025 01:22:31 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:22:31 UTC] get_ppas.php started - 2025-04-14 01:22:31
+[14-Apr-2025 01:22:31 UTC] Database connection successful
+[14-Apr-2025 01:22:31 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:22:31 UTC] Received quarter: 1
+[14-Apr-2025 01:22:31 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:22:31 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:22:31 UTC] Bound parameter: Q1
+[14-Apr-2025 01:22:31 UTC] Database connection successful
+[14-Apr-2025 01:22:31 UTC] Received quarter: 4
+[14-Apr-2025 01:22:31 UTC] Query executed successfully
+[14-Apr-2025 01:22:31 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:22:31 UTC] Fetching results
+[14-Apr-2025 01:22:31 UTC] Database connection successful
+[14-Apr-2025 01:22:31 UTC] Found 8 records
+[14-Apr-2025 01:22:31 UTC] Received quarter: 2
+[14-Apr-2025 01:22:31 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:22:31 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:22:31 UTC] Bound parameter: Q4
+[14-Apr-2025 01:22:31 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:22:31 UTC] Query executed successfully
+[14-Apr-2025 01:22:31 UTC] Fetching results
+[14-Apr-2025 01:22:31 UTC] Bound parameter: Q2
+[14-Apr-2025 01:22:31 UTC] Found 1 records
+[14-Apr-2025 01:22:31 UTC] Query executed successfully
+[14-Apr-2025 01:22:31 UTC] Fetching results
+[14-Apr-2025 01:22:31 UTC] Found 1 records
+[14-Apr-2025 01:22:31 UTC] Database connection successful
+[14-Apr-2025 01:22:31 UTC] Received quarter: 3
+[14-Apr-2025 01:22:31 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:22:31 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:22:31 UTC] Bound parameter: Q3
+[14-Apr-2025 01:22:31 UTC] Query executed successfully
+[14-Apr-2025 01:22:31 UTC] Fetching results
+[14-Apr-2025 01:22:31 UTC] Found 2 records
+[14-Apr-2025 01:28:18 UTC] get_ppas.php started - 2025-04-14 01:28:18
+[14-Apr-2025 01:28:18 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:28:18 UTC] get_ppas.php started - 2025-04-14 01:28:18
+[14-Apr-2025 01:28:18 UTC] get_ppas.php started - 2025-04-14 01:28:18
+[14-Apr-2025 01:28:18 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:28:18 UTC] get_ppas.php started - 2025-04-14 01:28:18
+[14-Apr-2025 01:28:18 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:28:18 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:28:18 UTC] Database connection successful
+[14-Apr-2025 01:28:18 UTC] Received quarter: 1
+[14-Apr-2025 01:28:18 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:28:18 UTC] Database connection successful
+[14-Apr-2025 01:28:18 UTC] Received quarter: 3
+[14-Apr-2025 01:28:18 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:28:18 UTC] Database connection successful
+[14-Apr-2025 01:28:18 UTC] Database connection successful
+[14-Apr-2025 01:28:18 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:28:18 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:28:18 UTC] Received quarter: 4
+[14-Apr-2025 01:28:18 UTC] Received quarter: 2
+[14-Apr-2025 01:28:18 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:28:18 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:28:18 UTC] Bound parameter: Q3
+[14-Apr-2025 01:28:18 UTC] Bound parameter: Q1
+[14-Apr-2025 01:28:18 UTC] Query executed successfully
+[14-Apr-2025 01:28:18 UTC] Query executed successfully
+[14-Apr-2025 01:28:18 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:28:18 UTC] Fetching results
+[14-Apr-2025 01:28:18 UTC] Fetching results
+[14-Apr-2025 01:28:18 UTC] Found 2 records
+[14-Apr-2025 01:28:18 UTC] Found 8 records
+[14-Apr-2025 01:28:18 UTC] Bound parameter: Q2
+[14-Apr-2025 01:28:18 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:28:18 UTC] Query executed successfully
+[14-Apr-2025 01:28:18 UTC] Fetching results
+[14-Apr-2025 01:28:18 UTC] Found 1 records
+[14-Apr-2025 01:28:18 UTC] Bound parameter: Q4
+[14-Apr-2025 01:28:18 UTC] Query executed successfully
+[14-Apr-2025 01:28:18 UTC] Fetching results
+[14-Apr-2025 01:28:18 UTC] Found 1 records
+[14-Apr-2025 01:30:23 UTC] get_ppas.php started - 2025-04-14 01:30:23
+[14-Apr-2025 01:30:23 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:30:23 UTC] get_ppas.php started - 2025-04-14 01:30:23
+[14-Apr-2025 01:30:23 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:30:23 UTC] get_ppas.php started - 2025-04-14 01:30:23
+[14-Apr-2025 01:30:23 UTC] get_ppas.php started - 2025-04-14 01:30:23
+[14-Apr-2025 01:30:23 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:30:23 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:30:24 UTC] Database connection successful
+[14-Apr-2025 01:30:24 UTC] Database connection successful
+[14-Apr-2025 01:30:24 UTC] Database connection successful
+[14-Apr-2025 01:30:24 UTC] Database connection successful
+[14-Apr-2025 01:30:24 UTC] Received quarter: 1
+[14-Apr-2025 01:30:24 UTC] Received quarter: 2
+[14-Apr-2025 01:30:24 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:30:24 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:30:24 UTC] Received quarter: 3
+[14-Apr-2025 01:30:24 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:30:24 UTC] Received quarter: 4
+[14-Apr-2025 01:30:24 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:30:24 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:30:24 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:30:24 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:30:24 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:30:24 UTC] Bound parameter: Q1
+[14-Apr-2025 01:30:24 UTC] Bound parameter: Q2
+[14-Apr-2025 01:30:24 UTC] Bound parameter: Q4
+[14-Apr-2025 01:30:24 UTC] Bound parameter: Q3
+[14-Apr-2025 01:30:24 UTC] Query executed successfully
+[14-Apr-2025 01:30:24 UTC] Query executed successfully
+[14-Apr-2025 01:30:24 UTC] Fetching results
+[14-Apr-2025 01:30:24 UTC] Query executed successfully
+[14-Apr-2025 01:30:24 UTC] Query executed successfully
+[14-Apr-2025 01:30:24 UTC] Fetching results
+[14-Apr-2025 01:30:24 UTC] Fetching results
+[14-Apr-2025 01:30:24 UTC] Fetching results
+[14-Apr-2025 01:30:24 UTC] Found 1 records
+[14-Apr-2025 01:30:24 UTC] Found 2 records
+[14-Apr-2025 01:30:24 UTC] Found 1 records
+[14-Apr-2025 01:30:24 UTC] Found 8 records
+[14-Apr-2025 01:33:06 UTC] get_ppas.php started - 2025-04-14 01:33:06
+[14-Apr-2025 01:33:06 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:33:06 UTC] get_ppas.php started - 2025-04-14 01:33:06
+[14-Apr-2025 01:33:06 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:33:06 UTC] get_ppas.php started - 2025-04-14 01:33:06
+[14-Apr-2025 01:33:06 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:33:06 UTC] get_ppas.php started - 2025-04-14 01:33:06
+[14-Apr-2025 01:33:06 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:33:06 UTC] Database connection successful
+[14-Apr-2025 01:33:06 UTC] Database connection successful
+[14-Apr-2025 01:33:06 UTC] Received quarter: 1
+[14-Apr-2025 01:33:06 UTC] Received quarter: 3
+[14-Apr-2025 01:33:06 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:33:06 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:33:06 UTC] Database connection successful
+[14-Apr-2025 01:33:06 UTC] Received quarter: 4
+[14-Apr-2025 01:33:06 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:33:06 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:33:06 UTC] Bound parameter: Q1
+[14-Apr-2025 01:33:06 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:33:06 UTC] Query executed successfully
+[14-Apr-2025 01:33:06 UTC] Bound parameter: Q4
+[14-Apr-2025 01:33:06 UTC] Fetching results
+[14-Apr-2025 01:33:06 UTC] Found 8 records
+[14-Apr-2025 01:33:06 UTC] Query executed successfully
+[14-Apr-2025 01:33:06 UTC] Fetching results
+[14-Apr-2025 01:33:06 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:33:06 UTC] Found 1 records
+[14-Apr-2025 01:33:06 UTC] Bound parameter: Q3
+[14-Apr-2025 01:33:06 UTC] Query executed successfully
+[14-Apr-2025 01:33:06 UTC] Fetching results
+[14-Apr-2025 01:33:06 UTC] Found 2 records
+[14-Apr-2025 01:33:06 UTC] Database connection successful
+[14-Apr-2025 01:33:06 UTC] Received quarter: 2
+[14-Apr-2025 01:33:06 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:33:06 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:33:06 UTC] Bound parameter: Q2
+[14-Apr-2025 01:33:06 UTC] Query executed successfully
+[14-Apr-2025 01:33:06 UTC] Fetching results
+[14-Apr-2025 01:33:06 UTC] Found 1 records
+[14-Apr-2025 01:56:05 UTC] get_ppas.php started - 2025-04-14 01:56:05
+[14-Apr-2025 01:56:05 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:56:05 UTC] get_ppas.php started - 2025-04-14 01:56:05
+[14-Apr-2025 01:56:05 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:56:05 UTC] get_ppas.php started - 2025-04-14 01:56:05
+[14-Apr-2025 01:56:05 UTC] get_ppas.php started - 2025-04-14 01:56:05
+[14-Apr-2025 01:56:05 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:56:05 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:56:05 UTC] Database connection successful
+[14-Apr-2025 01:56:05 UTC] Database connection successful
+[14-Apr-2025 01:56:05 UTC] Database connection successful
+[14-Apr-2025 01:56:05 UTC] Database connection successful
+[14-Apr-2025 01:56:05 UTC] Received quarter: 1
+[14-Apr-2025 01:56:05 UTC] Received quarter: 4
+[14-Apr-2025 01:56:05 UTC] Received quarter: 2
+[14-Apr-2025 01:56:05 UTC] Received quarter: 3
+[14-Apr-2025 01:56:05 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:56:05 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:56:05 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:56:05 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:56:05 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:56:05 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:56:05 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:56:05 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:56:05 UTC] Bound parameter: Q2
+[14-Apr-2025 01:56:05 UTC] Bound parameter: Q1
+[14-Apr-2025 01:56:05 UTC] Bound parameter: Q4
+[14-Apr-2025 01:56:05 UTC] Bound parameter: Q3
+[14-Apr-2025 01:56:05 UTC] Query executed successfully
+[14-Apr-2025 01:56:05 UTC] Query executed successfully
+[14-Apr-2025 01:56:05 UTC] Query executed successfully
+[14-Apr-2025 01:56:05 UTC] Query executed successfully
+[14-Apr-2025 01:56:05 UTC] Fetching results
+[14-Apr-2025 01:56:05 UTC] Fetching results
+[14-Apr-2025 01:56:05 UTC] Fetching results
+[14-Apr-2025 01:56:05 UTC] Fetching results
+[14-Apr-2025 01:56:05 UTC] Found 1 records
+[14-Apr-2025 01:56:05 UTC] Found 2 records
+[14-Apr-2025 01:56:05 UTC] Found 1 records
+[14-Apr-2025 01:56:05 UTC] Found 8 records
+[14-Apr-2025 01:59:33 UTC] get_ppas.php started - 2025-04-14 01:59:33
+[14-Apr-2025 01:59:33 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 01:59:33 UTC] get_ppas.php started - 2025-04-14 01:59:33
+[14-Apr-2025 01:59:33 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 01:59:33 UTC] get_ppas.php started - 2025-04-14 01:59:33
+[14-Apr-2025 01:59:33 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 01:59:33 UTC] get_ppas.php started - 2025-04-14 01:59:33
+[14-Apr-2025 01:59:33 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 01:59:33 UTC] Database connection successful
+[14-Apr-2025 01:59:33 UTC] Database connection successful
+[14-Apr-2025 01:59:33 UTC] Database connection successful
+[14-Apr-2025 01:59:33 UTC] Received quarter: 2
+[14-Apr-2025 01:59:33 UTC] Received quarter: 1
+[14-Apr-2025 01:59:33 UTC] Formatted quarter: Q2
+[14-Apr-2025 01:59:33 UTC] Received quarter: 4
+[14-Apr-2025 01:59:33 UTC] Formatted quarter: Q1
+[14-Apr-2025 01:59:33 UTC] Formatted quarter: Q4
+[14-Apr-2025 01:59:33 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:59:33 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:59:33 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:59:33 UTC] Bound parameter: Q4
+[14-Apr-2025 01:59:33 UTC] Bound parameter: Q2
+[14-Apr-2025 01:59:33 UTC] Bound parameter: Q1
+[14-Apr-2025 01:59:33 UTC] Query executed successfully
+[14-Apr-2025 01:59:33 UTC] Query executed successfully
+[14-Apr-2025 01:59:33 UTC] Query executed successfully
+[14-Apr-2025 01:59:33 UTC] Fetching results
+[14-Apr-2025 01:59:33 UTC] Fetching results
+[14-Apr-2025 01:59:33 UTC] Fetching results
+[14-Apr-2025 01:59:33 UTC] Found 1 records
+[14-Apr-2025 01:59:33 UTC] Found 8 records
+[14-Apr-2025 01:59:33 UTC] Found 1 records
+[14-Apr-2025 01:59:33 UTC] Database connection successful
+[14-Apr-2025 01:59:33 UTC] Received quarter: 3
+[14-Apr-2025 01:59:33 UTC] Formatted quarter: Q3
+[14-Apr-2025 01:59:33 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 01:59:33 UTC] Bound parameter: Q3
+[14-Apr-2025 01:59:33 UTC] Query executed successfully
+[14-Apr-2025 01:59:33 UTC] Fetching results
+[14-Apr-2025 01:59:33 UTC] Found 2 records
+[14-Apr-2025 02:08:39 UTC] get_ppas.php started - 2025-04-14 02:08:39
+[14-Apr-2025 02:08:39 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 02:08:39 UTC] get_ppas.php started - 2025-04-14 02:08:39
+[14-Apr-2025 02:08:39 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 02:08:39 UTC] get_ppas.php started - 2025-04-14 02:08:39
+[14-Apr-2025 02:08:39 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 02:08:39 UTC] get_ppas.php started - 2025-04-14 02:08:39
+[14-Apr-2025 02:08:39 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 02:08:39 UTC] Database connection successful
+[14-Apr-2025 02:08:39 UTC] Database connection successful
+[14-Apr-2025 02:08:39 UTC] Database connection successful
+[14-Apr-2025 02:08:39 UTC] Received quarter: 1
+[14-Apr-2025 02:08:39 UTC] Received quarter: 3
+[14-Apr-2025 02:08:39 UTC] Database connection successful
+[14-Apr-2025 02:08:39 UTC] Received quarter: 2
+[14-Apr-2025 02:08:39 UTC] Formatted quarter: Q1
+[14-Apr-2025 02:08:39 UTC] Formatted quarter: Q3
+[14-Apr-2025 02:08:39 UTC] Received quarter: 4
+[14-Apr-2025 02:08:39 UTC] Formatted quarter: Q2
+[14-Apr-2025 02:08:39 UTC] Formatted quarter: Q4
+[14-Apr-2025 02:08:39 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 02:08:39 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 02:08:39 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 02:08:39 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 02:08:39 UTC] Bound parameter: Q1
+[14-Apr-2025 02:08:39 UTC] Bound parameter: Q4
+[14-Apr-2025 02:08:39 UTC] Bound parameter: Q2
+[14-Apr-2025 02:08:39 UTC] Bound parameter: Q3
+[14-Apr-2025 02:08:39 UTC] Query executed successfully
+[14-Apr-2025 02:08:39 UTC] Query executed successfully
+[14-Apr-2025 02:08:39 UTC] Query executed successfully
+[14-Apr-2025 02:08:39 UTC] Query executed successfully
+[14-Apr-2025 02:08:39 UTC] Fetching results
+[14-Apr-2025 02:08:39 UTC] Fetching results
+[14-Apr-2025 02:08:39 UTC] Fetching results
+[14-Apr-2025 02:08:39 UTC] Fetching results
+[14-Apr-2025 02:08:39 UTC] Found 1 records
+[14-Apr-2025 02:08:39 UTC] Found 1 records
+[14-Apr-2025 02:08:39 UTC] Found 2 records
+[14-Apr-2025 02:08:39 UTC] Found 8 records
+[14-Apr-2025 02:08:41 UTC] Getting academic ranks for PPA ID: 1
+[14-Apr-2025 02:08:41 UTC] Found 31 academic ranks for PPA ID: 1
+[14-Apr-2025 02:08:41 UTC] Getting details for PPA ID: 1
+[14-Apr-2025 02:08:41 UTC] Successfully fetched PPA details
+[14-Apr-2025 02:09:10 UTC] get_ppas.php started - 2025-04-14 02:09:10
+[14-Apr-2025 02:09:10 UTC] GET parameters: {"quarter":"1"}
+[14-Apr-2025 02:09:10 UTC] get_ppas.php started - 2025-04-14 02:09:10
+[14-Apr-2025 02:09:10 UTC] GET parameters: {"quarter":"2"}
+[14-Apr-2025 02:09:10 UTC] get_ppas.php started - 2025-04-14 02:09:10
+[14-Apr-2025 02:09:10 UTC] GET parameters: {"quarter":"3"}
+[14-Apr-2025 02:09:10 UTC] get_ppas.php started - 2025-04-14 02:09:10
+[14-Apr-2025 02:09:10 UTC] GET parameters: {"quarter":"4"}
+[14-Apr-2025 02:09:10 UTC] Database connection successful
+[14-Apr-2025 02:09:10 UTC] Database connection successful
+[14-Apr-2025 02:09:10 UTC] Received quarter: 2
+[14-Apr-2025 02:09:10 UTC] Received quarter: 1
+[14-Apr-2025 02:09:10 UTC] Formatted quarter: Q1
+[14-Apr-2025 02:09:10 UTC] Formatted quarter: Q2
+[14-Apr-2025 02:09:10 UTC] Database connection successful
+[14-Apr-2025 02:09:10 UTC] Received quarter: 4
+[14-Apr-2025 02:09:10 UTC] Database connection successful
+[14-Apr-2025 02:09:10 UTC] Formatted quarter: Q4
+[14-Apr-2025 02:09:10 UTC] Received quarter: 3
+[14-Apr-2025 02:09:10 UTC] Formatted quarter: Q3
+[14-Apr-2025 02:09:10 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 02:09:10 UTC] Bound parameter: Q4
+[14-Apr-2025 02:09:10 UTC] Query executed successfully
+[14-Apr-2025 02:09:10 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 02:09:10 UTC] Fetching results
+[14-Apr-2025 02:09:10 UTC] Bound parameter: Q3
+[14-Apr-2025 02:09:10 UTC] Found 1 records
+[14-Apr-2025 02:09:10 UTC] Query executed successfully
+[14-Apr-2025 02:09:10 UTC] Fetching results
+[14-Apr-2025 02:09:10 UTC] Found 2 records
+[14-Apr-2025 02:09:10 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 02:09:10 UTC] Bound parameter: Q1
+[14-Apr-2025 02:09:10 UTC] Query executed successfully
+[14-Apr-2025 02:09:10 UTC] Fetching results
+[14-Apr-2025 02:09:10 UTC] Found 8 records
+[14-Apr-2025 02:09:10 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[14-Apr-2025 02:09:10 UTC] Bound parameter: Q2
+[14-Apr-2025 02:09:10 UTC] Query executed successfully
+[14-Apr-2025 02:09:10 UTC] Fetching results
+[14-Apr-2025 02:09:10 UTC] Found 1 records
+[15-Apr-2025 03:05:13 UTC] get_ppas.php started - 2025-04-15 03:05:13
+[15-Apr-2025 03:05:13 UTC] get_ppas.php started - 2025-04-15 03:05:13
+[15-Apr-2025 03:05:13 UTC] GET parameters: {"quarter":"2"}
+[15-Apr-2025 03:05:13 UTC] GET parameters: {"quarter":"3"}
+[15-Apr-2025 03:05:13 UTC] Database connection successful
+[15-Apr-2025 03:05:13 UTC] Received quarter: 2
+[15-Apr-2025 03:05:13 UTC] Formatted quarter: Q2
+[15-Apr-2025 03:05:13 UTC] Database connection successful
+[15-Apr-2025 03:05:13 UTC] Received quarter: 3
+[15-Apr-2025 03:05:13 UTC] Formatted quarter: Q3
+[15-Apr-2025 03:05:13 UTC] get_ppas.php started - 2025-04-15 03:05:13
+[15-Apr-2025 03:05:13 UTC] GET parameters: {"quarter":"1"}
+[15-Apr-2025 03:05:13 UTC] get_ppas.php started - 2025-04-15 03:05:13
+[15-Apr-2025 03:05:13 UTC] GET parameters: {"quarter":"4"}
+[15-Apr-2025 03:05:13 UTC] Database connection successful
+[15-Apr-2025 03:05:13 UTC] Received quarter: 1
+[15-Apr-2025 03:05:13 UTC] Formatted quarter: Q1
+[15-Apr-2025 03:05:13 UTC] Database connection successful
+[15-Apr-2025 03:05:13 UTC] Received quarter: 4
+[15-Apr-2025 03:05:13 UTC] Formatted quarter: Q4
+[15-Apr-2025 03:05:13 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[15-Apr-2025 03:05:13 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[15-Apr-2025 03:05:13 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[15-Apr-2025 03:05:13 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[15-Apr-2025 03:05:13 UTC] Bound parameter: Q3
+[15-Apr-2025 03:05:13 UTC] Bound parameter: Q1
+[15-Apr-2025 03:05:13 UTC] Bound parameter: Q4
+[15-Apr-2025 03:05:13 UTC] Bound parameter: Q2
+[15-Apr-2025 03:05:13 UTC] Query executed successfully
+[15-Apr-2025 03:05:13 UTC] Query executed successfully
+[15-Apr-2025 03:05:13 UTC] Fetching results
+[15-Apr-2025 03:05:13 UTC] Fetching results
+[15-Apr-2025 03:05:13 UTC] Query executed successfully
+[15-Apr-2025 03:05:13 UTC] Query executed successfully
+[15-Apr-2025 03:05:13 UTC] Found 2 records
+[15-Apr-2025 03:05:13 UTC] Found 8 records
+[15-Apr-2025 03:05:13 UTC] Fetching results
+[15-Apr-2025 03:05:13 UTC] Fetching results
+[15-Apr-2025 03:05:13 UTC] Found 1 records
+[15-Apr-2025 03:05:13 UTC] Found 1 records
+[15-Apr-2025 06:36:17 UTC] get_ppas.php started - 2025-04-15 06:36:17
+[15-Apr-2025 06:36:17 UTC] GET parameters: {"quarter":"3"}
+[15-Apr-2025 06:36:17 UTC] get_ppas.php started - 2025-04-15 06:36:17
+[15-Apr-2025 06:36:17 UTC] GET parameters: {"quarter":"2"}
+[15-Apr-2025 06:36:17 UTC] Database connection successful
+[15-Apr-2025 06:36:17 UTC] Received quarter: 3
+[15-Apr-2025 06:36:17 UTC] Formatted quarter: Q3
+[15-Apr-2025 06:36:17 UTC] get_ppas.php started - 2025-04-15 06:36:17
+[15-Apr-2025 06:36:17 UTC] GET parameters: {"quarter":"1"}
+[15-Apr-2025 06:36:17 UTC] Database connection successful
+[15-Apr-2025 06:36:17 UTC] Received quarter: 2
+[15-Apr-2025 06:36:17 UTC] Formatted quarter: Q2
+[15-Apr-2025 06:36:17 UTC] get_ppas.php started - 2025-04-15 06:36:17
+[15-Apr-2025 06:36:17 UTC] GET parameters: {"quarter":"4"}
+[15-Apr-2025 06:36:17 UTC] Database connection successful
+[15-Apr-2025 06:36:17 UTC] Received quarter: 1
+[15-Apr-2025 06:36:17 UTC] Formatted quarter: Q1
+[15-Apr-2025 06:36:17 UTC] Database connection successful
+[15-Apr-2025 06:36:17 UTC] Received quarter: 4
+[15-Apr-2025 06:36:17 UTC] Formatted quarter: Q4
+[15-Apr-2025 06:36:17 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[15-Apr-2025 06:36:17 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[15-Apr-2025 06:36:17 UTC] Bound parameter: Q3
+[15-Apr-2025 06:36:17 UTC] Bound parameter: Q2
+[15-Apr-2025 06:36:17 UTC] Query executed successfully
+[15-Apr-2025 06:36:17 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[15-Apr-2025 06:36:17 UTC] Fetching results
+[15-Apr-2025 06:36:17 UTC] Query executed successfully
+[15-Apr-2025 06:36:17 UTC] Bound parameter: Q1
+[15-Apr-2025 06:36:17 UTC] Fetching results
+[15-Apr-2025 06:36:17 UTC] Query executed successfully
+[15-Apr-2025 06:36:17 UTC] Fetching results
+[15-Apr-2025 06:36:17 UTC] Preparing SQL: SELECT id, activity as title, start_date 
+            FROM ppas_forms 
+            WHERE quarter = ?
+[15-Apr-2025 06:36:17 UTC] Found 1 records
+[15-Apr-2025 06:36:17 UTC] Found 2 records
+[15-Apr-2025 06:36:17 UTC] Bound parameter: Q4
+[15-Apr-2025 06:36:17 UTC] Found 8 records
+[15-Apr-2025 06:36:17 UTC] Query executed successfully
+[15-Apr-2025 06:36:17 UTC] Fetching results
+[15-Apr-2025 06:36:17 UTC] Found 1 records
+[15-Apr-2025 06:36:22 UTC] Getting academic ranks for PPA ID: 1
+[15-Apr-2025 06:36:22 UTC] Getting details for PPA ID: 1
+[15-Apr-2025 06:36:22 UTC] Successfully fetched PPA details
+[15-Apr-2025 06:36:22 UTC] Found 31 academic ranks for PPA ID: 1
